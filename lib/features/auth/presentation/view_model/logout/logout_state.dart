@@ -1,0 +1,24 @@
+part of 'logout_cubit.dart';
+
+sealed class LogoutState extends Equatable {
+  const LogoutState();
+
+  @override
+  List<Object> get props => [];
+}
+
+final class LogoutInitial extends LogoutState {}
+
+final class LogoutLoading extends LogoutState {}
+
+final class LogoutSuccess extends LogoutState {
+  final AuthModel logoutModel;
+
+  const LogoutSuccess(this.logoutModel);
+}
+
+final class LogoutFailure extends LogoutState {
+  final String err;
+
+  const LogoutFailure(this.err);
+}

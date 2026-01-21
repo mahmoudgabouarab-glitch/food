@@ -25,7 +25,7 @@ class LoginCubit extends Cubit<LoginState> {
         emit(LoginFailure(failure.errormessage));
       },
       (success) async {
-        await CacheHelper.saveData(
+        await CacheHelper.saveSecuredString(
           key: CacheKeys.token,
           value: success.data.token,
         );

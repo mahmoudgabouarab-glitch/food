@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/features/auth/data/models/auth_model.dart';
 import 'package:food/features/auth/data/repo/auth_repo.dart';
+import 'package:image_picker/image_picker.dart';
 
 part 'profile_state.dart';
 
@@ -12,7 +13,9 @@ class ProfileCubit extends Cubit<ProfileState> {
   final TextEditingController emailcontrollar = .new();
   final TextEditingController addresscontrollar = .new();
   final TextEditingController visacontrollar = .new();
+  XFile? selectedImage;
   final AuthRepo _repo;
+  //get profile
   Future<void> getProfile() async {
     emit(ProfileLoading());
     var data = await _repo.getProfile();
@@ -29,4 +32,29 @@ class ProfileCubit extends Cubit<ProfileState> {
       },
     );
   }
+
+  void pickImage(XFile? file) {
+    selectedImage = file;
+    emit(ImageSuccess(file!));
+  }
+
+  Future<void> postUpdataProfile() async {
+    emit(ProfileLoading());
+    var data = await _repo.postUpdataProfile(
+      name: namecontrollar.text,
+      email: emailcontrollar.text,
+      address: addresscontrollar.text,
+      visa: visacontrollar.text,
+      image: selectedImage,
+    );
+    data.fold(
+      (failure) {
+        emit(ProfileFailure(failure.errormessage));
+      },
+      (success) {
+        emit(ProfileSuccess(success));
+      },
+    );
+  }
+   
 }

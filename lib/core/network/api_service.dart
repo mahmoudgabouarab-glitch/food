@@ -9,9 +9,18 @@ class ApiServise {
   ApiServise(this._dio) {
     _dio.options.headers = {
       "Accept": "application/json",
-      "Authorization":
-          "Bearer ${CacheHelper.getDataString(key: CacheKeys.token)}",
     };
+    _dio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) async {
+          final token = await CacheHelper.getSecuredString(key: CacheKeys.token);
+          if (token != null && token.isNotEmpty) {
+            options.headers['Authorization'] = 'Bearer $token';
+          }
+          return handler.next(options);
+        },
+      ),
+    );
     _dio.interceptors.add(
       PrettyDioLogger(
         requestBody: true,
@@ -20,7 +29,6 @@ class ApiServise {
       ),
     );
   }
-
 
   Future<Map<String, dynamic>> get({
     required String endpoint,

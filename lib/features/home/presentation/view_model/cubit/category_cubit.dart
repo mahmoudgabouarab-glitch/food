@@ -8,6 +8,7 @@ part 'category_state.dart';
 class CategoryCubit extends Cubit<CategoryState> {
   CategoryCubit(this._repo) : super(CategoryInitial());
   final HomeRepo _repo;
+
   Future<void> getCategory() async {
     emit(CategoryLoading());
     var data = await _repo.getCategory();

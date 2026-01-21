@@ -17,6 +17,12 @@ final class ProfileSuccess extends ProfileState {
   const ProfileSuccess(this.profilemodel);
 }
 
+final class ImageSuccess extends ProfileState {
+  final XFile picImage;
+
+  const ImageSuccess(this.picImage);
+}
+
 final class ProfileFailure extends ProfileState {
   final String err;
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:food/core/utils/function.dart';
 import 'package:food/features/auth/presentation/view/login_view.dart';
 import 'package:food/features/main_layout.dart';
-import 'package:food/main.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
