@@ -4,21 +4,14 @@ import 'package:food/core/network/servise_locator.dart';
 import 'package:food/features/auth/data/repo/auth_repo_impl.dart';
 import 'package:food/features/auth/presentation/view/widgets/profile/profile_body.dart';
 import 'package:food/features/auth/presentation/view_model/logout/logout_cubit.dart';
-import 'package:food/features/auth/presentation/view_model/profile/profile_cubit.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) =>
-              ProfileCubit(getIt<AuthRepoImpl>())..getProfile(),
-        ),
-        BlocProvider(create: (context) => LogoutCubit(getIt<AuthRepoImpl>())),
-      ],
+    return BlocProvider(
+      create: (context) => LogoutCubit(getIt<AuthRepoImpl>()),
       child: const ProfileBody(),
     );
   }

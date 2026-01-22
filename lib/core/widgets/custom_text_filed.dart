@@ -58,14 +58,14 @@ class _CustomTextFormFiledState extends State<CustomTextFormFiled> {
                 onPressed: () => setState(() => _obscure = !_obscure),
               )
             : widget.suffix,
-        fillColor: widget.fillcolor ??const Color(0xffEDEDED),
+        fillColor: widget.fillcolor ?? const Color(0xffEDEDED),
         filled: true,
         focusedBorder: OutlineInputBorder(
-          borderSide:const BorderSide(color: AppColor.primary),
+          borderSide: const BorderSide(color: AppColor.primary),
           borderRadius: BorderRadius.circular(16),
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide:const BorderSide(color: Color(0xffEDEDED)),
+          borderSide: const BorderSide(color: Color(0xffEDEDED)),
           borderRadius: BorderRadius.circular(16),
         ),
         errorBorder: OutlineInputBorder(

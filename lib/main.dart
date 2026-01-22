@@ -6,7 +6,6 @@ import 'package:food/core/network/servise_locator.dart';
 import 'package:food/core/utils/function.dart';
 import 'package:food/myapp.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper().init();

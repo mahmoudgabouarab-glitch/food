@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food/features/home/data/model/products_model/products_model.dart';
 
 class ProductDescription extends StatelessWidget {
-  const ProductDescription({super.key});
+  final OneOfProduct oneProduct;
+  const ProductDescription({super.key, required this.oneProduct});
 
   @override
   Widget build(BuildContext context) {
@@ -11,13 +13,20 @@ class ProductDescription extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text("Cheeseburger"),
-          const Text("Wendy's Burger"),
+          Text(oneProduct.name, maxLines: 1, overflow: TextOverflow.ellipsis),
+          SizedBox(height: 4.h),
+          Text(
+            oneProduct.description,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
           SizedBox(height: 9.h),
           Row(
             children: [
               Icon(Icons.star_rate_rounded, color: Colors.yellow[800]),
-              const Text("4.6"),
+              Text(oneProduct.rating),
+              const Spacer(),
+              Text(oneProduct.price),
             ],
           ),
         ],

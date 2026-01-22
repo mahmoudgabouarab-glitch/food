@@ -4,7 +4,6 @@ import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/extension.dart';
 import 'package:food/core/widgets/custom_btn_nav_bar.dart';
 import 'package:food/core/widgets/custom_button.dart';
-import 'package:food/features/home/presentation/view/widgets/product_item_stack.dart';
 import 'package:food/features/order/presentation/view/order_view.dart';
 
 class CartView extends StatelessWidget {
@@ -33,7 +32,7 @@ class CartView extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          ProductItemStack(width: 120.w),
+                          //ProductItemStack(width: 120.w),
                           const Text("dkfldsata\nvrtrvtrtr"),
                         ],
                       ),

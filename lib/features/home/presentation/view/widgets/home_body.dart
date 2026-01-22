@@ -10,28 +10,30 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      physics: const BouncingScrollPhysics(),
-      slivers: [
-        const HomeAppBar(),
-        SliverPadding(
-          padding: EdgeInsets.symmetric(horizontal: 12.w),
-          sliver: SliverToBoxAdapter(
-            child: Column(
-              children: [
-                SizedBox(height: 20.h),
-                const CustomTextFormFiled(
-                  hint: "Search",
-                  prefixIcon: Icon(Icons.search, color: Colors.black),
-                ),
-                SizedBox(height: 20.h),
-                const ProductCategoryName(),
-              ],
+    return Scaffold(
+      body: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
+        slivers: [
+          const HomeAppBar(),
+          SliverPadding(
+            padding: EdgeInsets.symmetric(horizontal: 12.w),
+            sliver: SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  SizedBox(height: 20.h),
+                  const CustomTextFormFiled(
+                    hint: "Search",
+                    prefixIcon: Icon(Icons.search, color: Colors.black),
+                  ),
+                  SizedBox(height: 20.h),
+                  const ProductCategoryName(),
+                ],
+              ),
             ),
           ),
-        ),
-        const ProductListView(),
-      ],
+          const ProductListView(),
+        ],
+      ),
     );
   }
 }

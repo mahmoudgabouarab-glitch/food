@@ -28,3 +28,17 @@ final class ProfileFailure extends ProfileState {
 
   const ProfileFailure(this.err);
 }
+
+final class UpdataLoading extends ProfileState {}
+
+final class UpdataSuccess extends ProfileState {
+  final AuthModel updatamodel;
+
+  const UpdataSuccess(this.updatamodel);
+}
+
+final class UpdataFailure extends ProfileState {
+  final String err;
+
+  const UpdataFailure(this.err);
+}

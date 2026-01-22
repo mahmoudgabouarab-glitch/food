@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/widgets/custom_button.dart';
-import 'package:food/features/home/presentation/view/widgets/product_item_stack.dart';
 
 class ItemOrderHistory extends StatelessWidget {
   const ItemOrderHistory({super.key});
@@ -16,7 +15,7 @@ class ItemOrderHistory extends StatelessWidget {
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                ProductItemStack(width: 100),
+               // ProductItemStack(width: 100),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [Text("data"), Text("data"), Text("data")],

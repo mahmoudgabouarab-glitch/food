@@ -1,14 +1,17 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food/features/home/data/model/products_model/products_model.dart';
 
 class ProductItemStack extends StatelessWidget {
+  final OneOfProduct oneProduct;
   final double? width;
-  const ProductItemStack({super.key, this.width});
+  const ProductItemStack({super.key, this.width, required this.oneProduct});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 121.h,
+      height: 120.h,
       width: width,
       child: Stack(
         children: [
@@ -21,8 +24,11 @@ class ProductItemStack extends StatelessWidget {
           Positioned(
             right: 0,
             left: 0,
-            bottom: 9.h,
-            child: Image.asset("assets/image/test.png", height: 110.h),
+            bottom: 8.h,
+            child: CachedNetworkImage(
+              imageUrl: oneProduct.image,
+              height: 100.h,
+            ),
           ),
         ],
       ),

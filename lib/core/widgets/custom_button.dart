@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:food/core/utils/app_color.dart';
 
 class Btn extends StatelessWidget {
-  final void Function() ontap;
-
+  final void Function()? ontap;
   final double radius;
-  final String text;
+  final String? text;
   final double? minWidth;
   final Color? color;
-  
+  final Widget? child;
+
   const Btn({
     super.key,
     required this.ontap,
     required this.radius,
-    required this.text,
+     this.text,
     this.minWidth,
     this.color,
+    this.child,
   });
 
   @override
@@ -27,7 +28,7 @@ class Btn extends StatelessWidget {
       ),
       onPressed: ontap,
       color: color ?? AppColor.btn,
-      child: Center(child: Text(text)),
+      child: child ?? Center(child: Text(text??"")),
     );
   }
 }

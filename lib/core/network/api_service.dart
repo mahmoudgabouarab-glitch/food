@@ -7,13 +7,13 @@ class ApiServise {
   final String _baseurl = "https://sonic-zdi0.onrender.com/api/";
   final Dio _dio;
   ApiServise(this._dio) {
-    _dio.options.headers = {
-      "Accept": "application/json",
-    };
+    _dio.options.headers = {"Accept": "application/json"};
     _dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
-          final token = await CacheHelper.getSecuredString(key: CacheKeys.token);
+          final token = await CacheHelper.getSecuredString(
+            key: CacheKeys.token,
+          );
           if (token != null && token.isNotEmpty) {
             options.headers['Authorization'] = 'Bearer $token';
           }

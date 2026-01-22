@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/styles.dart';
-import 'package:food/features/home/presentation/view_model/cubit/category_cubit.dart';
+import 'package:food/features/home/presentation/view_model/category_cubit/category_cubit.dart';
 
 class ProductCategoryName extends StatefulWidget {
   const ProductCategoryName({super.key});

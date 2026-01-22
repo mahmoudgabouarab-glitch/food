@@ -22,6 +22,4 @@ abstract class AuthRepo {
     required XFile? image,
   });
   Future<Either<Failure, AuthModel>> postlogout();
-
-
 }

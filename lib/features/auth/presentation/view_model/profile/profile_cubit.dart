@@ -15,6 +15,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   final TextEditingController visacontrollar = .new();
   XFile? selectedImage;
   final AuthRepo _repo;
+
   //get profile
   Future<void> getProfile() async {
     emit(ProfileLoading());
@@ -34,12 +35,13 @@ class ProfileCubit extends Cubit<ProfileState> {
   }
 
   void pickImage(XFile? file) {
+    if (file == null) return;
     selectedImage = file;
-    emit(ImageSuccess(file!));
+    emit(ImageSuccess(file));
   }
 
   Future<void> postUpdataProfile() async {
-    emit(ProfileLoading());
+    emit(UpdataLoading());
     var data = await _repo.postUpdataProfile(
       name: namecontrollar.text,
       email: emailcontrollar.text,
@@ -49,12 +51,11 @@ class ProfileCubit extends Cubit<ProfileState> {
     );
     data.fold(
       (failure) {
-        emit(ProfileFailure(failure.errormessage));
+        emit(UpdataFailure(failure.errormessage));
       },
       (success) {
-        emit(ProfileSuccess(success));
+        emit(UpdataSuccess(success));
       },
     );
   }
-   
 }
