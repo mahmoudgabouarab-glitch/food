@@ -34,12 +34,14 @@ class ProfileCubit extends Cubit<ProfileState> {
     );
   }
 
+  //pick image
   void pickImage(XFile? file) {
     if (file == null) return;
     selectedImage = file;
     emit(ImageSuccess(file));
   }
 
+  //update profile
   Future<void> postUpdataProfile() async {
     emit(UpdataLoading());
     var data = await _repo.postUpdataProfile(
@@ -57,5 +59,13 @@ class ProfileCubit extends Cubit<ProfileState> {
         emit(UpdataSuccess(success));
       },
     );
+  }
+
+  //clear
+  void clear() {
+    namecontrollar.clear();
+    emailcontrollar.clear();
+    addresscontrollar.clear();
+    visacontrollar.clear();
   }
 }

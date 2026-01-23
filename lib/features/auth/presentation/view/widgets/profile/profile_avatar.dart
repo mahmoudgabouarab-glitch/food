@@ -23,9 +23,9 @@ class ProfileAvatar extends StatelessWidget {
       },
       child: BlocBuilder<ProfileCubit, ProfileState>(
         builder: (context, state) {
-          return CircleAvatar(
-            radius: 80,
-            backgroundColor: Colors.grey.shade300,
+          return SizedBox(
+            height: 140.h,
+            width: 140.w,
             child: _buildAvatar(state, cubit),
           );
         },
@@ -36,20 +36,13 @@ class ProfileAvatar extends StatelessWidget {
   Widget _buildAvatar(ProfileState state, ProfileCubit cubit) {
     if (cubit.selectedImage != null) {
       return ClipOval(
-        child: Image.file(
-          File(cubit.selectedImage!.path),
-          width: 160,
-          height: 160,
-          fit: BoxFit.cover,
-        ),
+        child: Image.file(File(cubit.selectedImage!.path), fit: BoxFit.cover),
       );
     }
     if (state is ProfileSuccess && state.profilemodel.data.image.isNotEmpty) {
       return ClipOval(
         child: CachedNetworkImage(
           imageUrl: state.profilemodel.data.image,
-          height: 160.h,
-          width: 160.w,
           fit: BoxFit.cover,
         ),
       );

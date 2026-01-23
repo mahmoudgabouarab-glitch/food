@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/widgets/custom_text_filed.dart';
-import 'package:food/features/home/presentation/view/widgets/home_app_bar.dart';
-import 'package:food/features/home/presentation/view/widgets/product_category_name.dart';
-import 'package:food/features/home/presentation/view/widgets/product_list_view.dart';
+import 'package:food/features/home/presentation/view/widgets/home/home_app_bar.dart';
+import 'package:food/features/home/presentation/view/widgets/home/product_category_name.dart';
+import 'package:food/features/home/presentation/view/widgets/home/product_list_view.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({super.key});

@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/extension.dart';
-import 'package:food/features/details/presentation/view/details_view.dart';
-import 'package:food/features/home/presentation/view/widgets/product_description.dart';
-import 'package:food/features/home/presentation/view/widgets/product_item_stack.dart';
+import 'package:food/features/home/presentation/view/details_view.dart';
+import 'package:food/features/home/presentation/view/widgets/home/product_description.dart';
+import 'package:food/features/home/presentation/view/widgets/home/product_item_stack.dart';
 import 'package:food/features/home/presentation/view_model/products_cubit/products_cubit.dart';
 
 class ProductListView extends StatelessWidget {
