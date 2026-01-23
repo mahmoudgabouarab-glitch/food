@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:food/core/network/servise_locator.dart';
 import 'package:food/core/utils/function.dart';
-import 'package:food/features/auth/data/repo/auth_repo_impl.dart';
 import 'package:food/features/auth/presentation/view/login_view.dart';
-import 'package:food/features/auth/presentation/view_model/profile/profile_cubit.dart';
 import 'package:food/features/main_layout.dart';
 
 class Splash extends StatefulWidget {
@@ -52,13 +48,8 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
     if (!mounted) return;
     Navigator.of(context).pushReplacement(
       PageRouteBuilder(
-        pageBuilder: (_, animation, _) => isloggedInUser
-            ? BlocProvider(
-                create: (context) =>
-                    ProfileCubit(getIt<AuthRepoImpl>())..getProfile(),
-                child: const MainLayout(),
-              )
-            : const LoginView(),
+        pageBuilder: (_, animation, _) =>
+            isloggedInUser ? const MainLayout() : const LoginView(),
         transitionsBuilder: (_, animation, _, child) {
           return FadeTransition(opacity: animation, child: child);
         },

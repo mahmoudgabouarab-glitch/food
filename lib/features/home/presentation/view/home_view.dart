@@ -4,7 +4,6 @@ import 'package:food/core/network/servise_locator.dart';
 import 'package:food/features/home/data/repo/home_repo_impl.dart';
 import 'package:food/features/home/presentation/view/widgets/home/home_body.dart';
 import 'package:food/features/home/presentation/view_model/category_cubit/category_cubit.dart';
-import 'package:food/features/home/presentation/view_model/details_cubit/details_cubit.dart';
 import 'package:food/features/home/presentation/view_model/products_cubit/products_cubit.dart';
 
 class HomeView extends StatelessWidget {
