@@ -391,3 +391,48 @@
 //     );
 //   }
 // }
+import 'package:flutter/material.dart';
+
+
+
+Future showCustomDialog(BuildContext context,
+    {required Widget child,
+    BorderRadiusGeometry? borderRadius,
+    EdgeInsetsGeometry? padding,
+    EdgeInsetsGeometry? margin,
+    bool barrierDismissible = true,
+    Color? color}) async {
+  showGeneralDialog(
+    context: context,
+    barrierLabel: "",
+    barrierDismissible: barrierDismissible,
+    barrierColor: Colors.black.withValues(alpha: 0.5),
+    transitionDuration: const Duration(milliseconds: 250),
+    pageBuilder: (_, _, _) {
+      return Center(
+        child: Material(
+          color: Colors.transparent,
+          child: Container(
+            width: double.infinity,
+            margin: margin ?? EdgeInsets.symmetric(horizontal: 20),
+            padding: padding ?? EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: color ?? Colors.white,
+              borderRadius: borderRadius ?? BorderRadius.circular(25),
+            ),
+            child: child,
+          ),
+        ),
+      );
+    },
+    transitionBuilder: (_, anim, _, child) {
+      return ScaleTransition(
+        scale: anim,
+        child: FadeTransition(
+          opacity: anim,
+          child: child,
+        ),
+      );
+    },
+  );
+}
