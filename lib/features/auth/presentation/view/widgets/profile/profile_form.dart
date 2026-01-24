@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
@@ -21,15 +22,24 @@ class ProfileForm extends StatelessWidget {
         SizedBox(height: 20.h),
         _buildField("Address", cubit.addresscontrollar),
         SizedBox(height: 20.h),
-        _buildField("Visa", cubit.visacontrollar),
+        _buildField(
+          "Visa",
+          cubit.visacontrollar,
+          inputFormatters: [CardNumberFormatter()],
+        ),
         SizedBox(height: 20.h),
         const Divider(),
       ],
     );
   }
 
-  Widget _buildField(String label, TextEditingController controller) {
+  Widget _buildField(
+    String label,
+    TextEditingController controller, {
+    List<TextInputFormatter>? inputFormatters,
+  }) {
     return CustomTextFormFiled(
+      inputFormatters: inputFormatters,
       controller: controller,
       textstyle: const TextStyle(color: Colors.white),
       fillcolor: AppColor.surface,
@@ -39,6 +49,30 @@ class ProfileForm extends StatelessWidget {
         fontWeight: FontWeight.bold,
         fontSize: 15,
       ),
+    );
+  }
+}
+
+// format card number
+class CardNumberFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
+    var text = newValue.text.replaceAll(' ', '');
+
+    if (text.length > 16) return oldValue;
+
+    final buffer = StringBuffer();
+    for (int i = 0; i < text.length; i++) {
+      if (i % 4 == 0 && i != 0) buffer.write(' ');
+      buffer.write(text[i]);
+    }
+
+    return TextEditingValue(
+      text: buffer.toString(),
+      selection: TextSelection.collapsed(offset: buffer.length),
     );
   }
 }

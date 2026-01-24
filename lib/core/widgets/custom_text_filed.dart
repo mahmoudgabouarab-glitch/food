@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:food/core/utils/app_color.dart';
 
 class CustomTextFormFiled extends StatefulWidget {
@@ -14,6 +15,9 @@ class CustomTextFormFiled extends StatefulWidget {
   final TextStyle? textstyle;
   final Function(String)? onchange;
   final TextInputType? keybordtype;
+  final int? maxLength;
+  final List<TextInputFormatter>? inputFormatters;
+
   const CustomTextFormFiled({
     super.key,
     this.hint,
@@ -28,6 +32,8 @@ class CustomTextFormFiled extends StatefulWidget {
     this.textstyle,
     this.onchange,
     this.keybordtype,
+    this.maxLength,
+    this.inputFormatters,
   });
 
   @override
@@ -45,6 +51,8 @@ class _CustomTextFormFiledState extends State<CustomTextFormFiled> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      inputFormatters: widget.inputFormatters,
+      maxLength: widget.maxLength,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
       keyboardType: widget.keybordtype,
@@ -52,6 +60,8 @@ class _CustomTextFormFiledState extends State<CustomTextFormFiled> {
       validator: widget.validator,
       controller: widget.controller,
       decoration: InputDecoration(
+        // display counter text when max length is set
+        counterText: '',
         labelText: widget.labelText,
         labelStyle: widget.labelStyle,
         prefixIcon: widget.prefixIcon,

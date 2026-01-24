@@ -48,7 +48,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       name: namecontrollar.text,
       email: emailcontrollar.text,
       address: addresscontrollar.text,
-      visa: visacontrollar.text,
+      visa: visacontrollar.text.replaceAll(' ', ''),
       image: selectedImage,
     );
     data.fold(
