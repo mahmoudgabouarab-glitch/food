@@ -7,6 +7,7 @@ import 'package:food/core/widgets/custom_text_filed.dart';
 import 'package:food/core/widgets/app_text_button.dart';
 import 'package:food/features/auth/presentation/view/widgets/signup/signup_bloc.dart';
 import 'package:food/features/auth/presentation/view/widgets/signup/signup_text_botton_login.dart';
+import 'package:food/features/auth/presentation/view/widgets/signup/upload_pic_profile.dart';
 import 'package:food/features/auth/presentation/view_model/signup/signup_cubit.dart';
 
 class SignupBody extends StatelessWidget {
@@ -31,7 +32,9 @@ class SignupBody extends StatelessWidget {
                     'Sign up now and start exploring all that our app has to offer. We\'re excited to welcome you to our community!',
                     style: Styles.s16_500,
                   ),
-                  SizedBox(height: 100.h),
+                  SizedBox(height: 20.h),
+                  UploadPicProfile(),
+                  SizedBox(height: 30.h),
                   CustomTextFormFiled(
                     hint: 'Name',
                     controller: cubit.nameController,
@@ -40,6 +43,11 @@ class SignupBody extends StatelessWidget {
                   CustomTextFormFiled(
                     hint: 'Email',
                     controller: cubit.emailController,
+                  ),
+                  SizedBox(height: 16.h),
+                  CustomTextFormFiled(
+                    hint: 'phone',
+                    controller: cubit.phoneController,
                   ),
                   SizedBox(height: 16.h),
                   CustomTextFormFiled(

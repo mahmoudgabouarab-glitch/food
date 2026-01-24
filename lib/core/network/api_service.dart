@@ -10,10 +10,8 @@ class ApiServise {
     _dio.options.headers = {"Accept": "application/json"};
     _dio.interceptors.add(
       InterceptorsWrapper(
-        onRequest: (options, handler) async {
-          final token = await CacheHelper.getSecuredString(
-            key: CacheKeys.token,
-          );
+        onRequest: (options, handler) {
+          final token = CacheHelper.getDataString(key: CacheKeys.token);
           if (token != null && token.isNotEmpty) {
             options.headers['Authorization'] = 'Bearer $token';
           }

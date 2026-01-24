@@ -25,12 +25,19 @@ class LoginCubit extends Cubit<LoginState> {
         emit(LoginFailure(failure.errormessage));
       },
       (success) async {
-        await CacheHelper.saveSecuredString(
+        await CacheHelper.saveData(
           key: CacheKeys.token,
           value: success.data.token,
         );
         emit(LoginSuccess(success));
       },
     );
+  }
+
+  @override
+  Future<void> close() {
+    emailController.dispose();
+    passwordController.dispose();
+    return super.close();
   }
 }

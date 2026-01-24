@@ -19,7 +19,6 @@ class DetailsCubit extends Cubit<DetailsState> {
   }
 
   Future<void> getSideOptions() async {
-    emit(SideOptionsLoading());
     final result = await _repo.getSideOptions();
     result.fold(
       (failure) => emit(SideOptionsFailure(failure.errormessage)),

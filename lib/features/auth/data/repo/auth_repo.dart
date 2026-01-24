@@ -12,6 +12,8 @@ abstract class AuthRepo {
     required String name,
     required String email,
     required String password,
+    required String phone,
+    required XFile? image,
   });
   Future<Either<Failure, AuthModel>> getProfile();
   Future<Either<Failure, AuthModel>> postUpdataProfile({

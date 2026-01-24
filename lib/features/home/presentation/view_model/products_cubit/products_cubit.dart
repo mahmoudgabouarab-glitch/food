@@ -6,7 +6,9 @@ import 'package:food/features/home/data/repo/home_repo.dart';
 part 'products_state.dart';
 
 class ProductsCubit extends Cubit<ProductsState> {
-  ProductsCubit(this._repo) : super(ProductsInitial());
+  ProductsCubit(this._repo) : super(ProductsInitial()) {
+    getProducts();
+  }
   final HomeRepo _repo;
 
   Future<void> getProducts() async {

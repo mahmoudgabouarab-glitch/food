@@ -77,29 +77,29 @@ class CacheHelper {
 
   //------------------FlutterSecureStorage method--------------\\
 
-  /// Saves a [value] with a [key] in the FlutterSecureStorage.
-  static Future<void> saveSecuredString({
-    required String key,
-    required String value,
-  }) async {
-    const flutterSecureStorage = FlutterSecureStorage();
-    debugPrint(
-      "FlutterSecureStorage : setSecuredString with key : $key and value : $value",
-    );
-    await flutterSecureStorage.write(key: key, value: value);
-  }
+  // /// Saves a [value] with a [key] in the FlutterSecureStorage.
+  // static Future<void> saveSecuredString({
+  //   required String key,
+  //   required String value,
+  // }) async {
+  //   const flutterSecureStorage = FlutterSecureStorage();
+  //   debugPrint(
+  //     "FlutterSecureStorage : setSecuredString with key : $key and value : $value",
+  //   );
+  //   await flutterSecureStorage.write(key: key, value: value);
+  // }
 
-  /// Gets an String value from FlutterSecureStorage with given [key].
-  static Future<String?> getSecuredString({required String key}) {
-    const flutterSecureStorage = FlutterSecureStorage();
-    debugPrint('FlutterSecureStorage : getSecuredString with key :');
-    return flutterSecureStorage.read(key: key);
-  }
+  // /// Gets an String value from FlutterSecureStorage with given [key].
+  // static Future<String?> getSecuredString({required String key}) {
+  //   const flutterSecureStorage = FlutterSecureStorage();
+  //   debugPrint('FlutterSecureStorage : getSecuredString with key :');
+  //   return flutterSecureStorage.read(key: key);
+  // }
 
-  /// Removes all keys and values in the FlutterSecureStorage
-  static Future<void> clearAllSecuredData() async {
-    debugPrint('FlutterSecureStorage : all data has been cleared');
-    const flutterSecureStorage = FlutterSecureStorage();
-    await flutterSecureStorage.deleteAll();
-  }
+  // /// Removes all keys and values in the FlutterSecureStorage
+  // static Future<void> clearAllSecuredData() async {
+  //   debugPrint('FlutterSecureStorage : all data has been cleared');
+  //   const flutterSecureStorage = FlutterSecureStorage();
+  //   await flutterSecureStorage.deleteAll();
+  // }
 }

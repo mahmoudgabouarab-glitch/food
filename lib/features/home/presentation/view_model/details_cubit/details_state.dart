@@ -20,7 +20,6 @@ final class DetailsFailure extends DetailsState {
   final String err;
   const DetailsFailure(this.err);
 }
-final class SideOptionsLoading extends DetailsState {}
 
 final class SideOptionsSuccess extends DetailsState {
   final ToppingsModel toppingsModel;

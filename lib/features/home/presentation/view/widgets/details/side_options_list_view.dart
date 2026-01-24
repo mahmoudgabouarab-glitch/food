@@ -12,7 +12,7 @@ class SideOptionsListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<DetailsCubit, DetailsState>(
       builder: (context, state) {
-        if (state is SideOptionsLoading) {
+        if (state is DetailsLoading) {
           return const Center(child: CircularProgressIndicator());
         } else if (state is SideOptionsSuccess) {
           return SingleChildScrollView(

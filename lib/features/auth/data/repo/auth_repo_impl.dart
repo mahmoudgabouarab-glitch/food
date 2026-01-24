@@ -35,11 +35,23 @@ class AuthRepoImpl extends AuthRepo {
     required String name,
     required String email,
     required String password,
+    required String phone,
+    required XFile? image,
   }) async {
     try {
+       MultipartFile? file;
+      if (image != null) {
+        file = await MultipartFile.fromFile(image.path, filename: image.name);
+      }
       var data = await _api.post(
         endpoint: "register",
-        data: {"email": email, "password": password, "name": name},
+        data: {
+          "email": email,
+          "password": password,
+          "name": name,
+          "phone": phone,
+          "image": file
+        },
       );
       final user = AuthModel.fromJson(data);
       return Right(user);

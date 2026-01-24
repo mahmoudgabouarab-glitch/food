@@ -17,7 +17,8 @@ class LogoutCubit extends Cubit<LogoutState> {
         emit(LogoutFailure(failure.errormessage));
       },
       (success) async {
-        await CacheHelper.clearAllSecuredData();
+        await CacheHelper.clearData();
+       
         emit(LogoutSuccess(success));
       },
     );

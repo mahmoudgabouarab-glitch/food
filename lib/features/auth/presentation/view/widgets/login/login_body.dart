@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food/features/auth/presentation/view/widgets/login/cubit.dart';
+import 'package:food/features/auth/presentation/view/widgets/login/login_cubit.dart';
 import 'package:food/features/auth/presentation/view_model/login/login_cubit.dart';
 import 'package:food/features/auth/presentation/view/widgets/login/login_text_button_signup.dart';
 import 'package:food/features/auth/presentation/view/widgets/login/login_text_filed.dart';
