@@ -17,6 +17,7 @@ class LoginTextFiled extends StatelessWidget {
           SizedBox(height: 100.h),
           CustomTextFormFiled(
             hint: 'Email',
+            keybordtype: TextInputType.emailAddress,
             controller: cubit.emailController,
             validator: (val) {
               if (val == null || val.isEmpty) {
@@ -27,8 +28,8 @@ class LoginTextFiled extends StatelessWidget {
           ),
           SizedBox(height: 16.h),
           CustomTextFormFiled(
+            keybordtype: TextInputType.visiblePassword,
             hint: 'Password',
-            controller: cubit.passwordController,
             validator: (val) {
               if (val == null || val.isEmpty) {
                 return 'Password is required';

@@ -13,6 +13,7 @@ class CustomTextFormFiled extends StatefulWidget {
   final Color? fillcolor;
   final TextStyle? textstyle;
   final Function(String)? onchange;
+  final TextInputType? keybordtype;
   const CustomTextFormFiled({
     super.key,
     this.hint,
@@ -26,6 +27,7 @@ class CustomTextFormFiled extends StatefulWidget {
     this.fillcolor,
     this.textstyle,
     this.onchange,
+    this.keybordtype,
   });
 
   @override
@@ -43,6 +45,7 @@ class _CustomTextFormFiledState extends State<CustomTextFormFiled> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: widget.keybordtype,
       onChanged: widget.onchange,
       validator: widget.validator,
       controller: widget.controller,
