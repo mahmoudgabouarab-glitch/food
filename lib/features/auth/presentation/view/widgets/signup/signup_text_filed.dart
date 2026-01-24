@@ -10,55 +10,58 @@ class SignupTextFiled extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<SignupCubit>();
-    return Column(
-      children: [
-        SizedBox(height: 15.h),
-        CustomTextFormFiled(
-          hint: 'Name',
-          controller: cubit.nameController,
-          validator: (val) {
-            if (val == null || val.isEmpty) {
-              return 'Name is required';
-            }
-            return null;
-          },
-        ),
-        SizedBox(height: 16.h),
-        CustomTextFormFiled(
-          hint: 'Email',
-          controller: cubit.emailController,
-          validator: (val) {
-            if (val == null || val.isEmpty) {
-              return 'Email is required';
-            }
-            return null;
-          },
-        ),
-        SizedBox(height: 16.h),
-        CustomTextFormFiled(
-          hint: 'phone',
-          controller: cubit.phoneController,
-          validator: (val) {
-            if (val == null || val.isEmpty) {
-              return 'phone is required';
-            }
-            return null;
-          },
-        ),
-        SizedBox(height: 16.h),
-        CustomTextFormFiled(
-          hint: 'Password',
-          controller: context.read<SignupCubit>().passwordController,
-          obscureText: true,
-          validator: (val) {
-            if (val == null || val.isEmpty) {
-              return 'Password is required';
-            }
-            return null;
-          },
-        ),
-        SizedBox(height: 32.h),
-      ],
+    return Form(
+      key: cubit.signupKey,
+      child: Column(
+        children: [
+          SizedBox(height: 15.h),
+          CustomTextFormFiled(
+            hint: 'Name',
+            controller: cubit.nameController,
+            validator: (val) {
+              if (val == null || val.isEmpty) {
+                return 'Name is required';
+              }
+              return null;
+            },
+          ),
+          SizedBox(height: 16.h),
+          CustomTextFormFiled(
+            hint: 'Email',
+            controller: cubit.emailController,
+            validator: (val) {
+              if (val == null || val.isEmpty) {
+                return 'Email is required';
+              }
+              return null;
+            },
+          ),
+          SizedBox(height: 16.h),
+          CustomTextFormFiled(
+            hint: 'phone',
+            controller: cubit.phoneController,
+            validator: (val) {
+              if (val == null || val.isEmpty) {
+                return 'phone is required';
+              }
+              return null;
+            },
+          ),
+          SizedBox(height: 16.h),
+          CustomTextFormFiled(
+            hint: 'Password',
+            controller: context.read<SignupCubit>().passwordController,
+            obscureText: true,
+            validator: (val) {
+              if (val == null || val.isEmpty) {
+                return 'Password is required';
+              }
+              return null;
+            },
+          ),
+          SizedBox(height: 32.h),
+        ],
+      ),
     );
   }
 }
