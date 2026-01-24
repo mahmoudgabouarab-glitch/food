@@ -6,8 +6,8 @@ import 'package:food/core/widgets/custom_snakbar.dart';
 import 'package:food/features/auth/presentation/view_model/login/login_cubit.dart';
 import 'package:food/features/main_layout.dart';
 
-class LogInCubit extends StatelessWidget {
-  const LogInCubit({super.key});
+class LogInBloc extends StatelessWidget {
+  const LogInBloc({super.key});
 
   @override
   Widget build(BuildContext context) {

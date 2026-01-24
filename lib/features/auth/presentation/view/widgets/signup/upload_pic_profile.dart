@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food/core/utils/spacing.dart';
 import 'package:food/features/auth/presentation/view_model/signup/signup_cubit.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -72,7 +73,7 @@ class UploadPicProfile extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 20.h),
+            spaceH(20),
             const Center(child: Text("(optional)")),
           ],
         );

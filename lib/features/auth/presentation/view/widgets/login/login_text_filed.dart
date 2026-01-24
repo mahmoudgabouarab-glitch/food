@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food/core/utils/spacing.dart';
 import 'package:food/core/widgets/custom_text_filed.dart';
 import 'package:food/features/auth/presentation/view_model/login/login_cubit.dart';
 
@@ -14,7 +14,7 @@ class LoginTextFiled extends StatelessWidget {
       key: cubit.loginKey,
       child: Column(
         children: [
-          SizedBox(height: 100.h),
+          spaceH(100),
           CustomTextFormFiled(
             hint: 'Email',
             keybordtype: TextInputType.emailAddress,
@@ -26,7 +26,7 @@ class LoginTextFiled extends StatelessWidget {
               return null;
             },
           ),
-          SizedBox(height: 16.h),
+          spaceH(16),
           CustomTextFormFiled(
             keybordtype: TextInputType.visiblePassword,
             hint: 'Password',
@@ -38,7 +38,7 @@ class LoginTextFiled extends StatelessWidget {
             },
             obscureText: true,
           ),
-          SizedBox(height: 32.h),
+          spaceH(32),
         ],
       ),
     );

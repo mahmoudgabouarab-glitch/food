@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/extension.dart';
+import 'package:food/core/utils/spacing.dart';
 import 'package:food/core/utils/styles.dart';
 import 'package:food/features/auth/presentation/view/signup_view.dart';
 
@@ -13,7 +14,7 @@ class LoginTextButtonSingup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 20.h),
+        spaceH(20),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -32,7 +33,7 @@ class LoginTextButtonSingup extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 40.h),
+        spaceH(40),
         Center(child: SvgPicture.asset("assets/svg/Hungry_.svg", height: 20.h)),
       ],
     );

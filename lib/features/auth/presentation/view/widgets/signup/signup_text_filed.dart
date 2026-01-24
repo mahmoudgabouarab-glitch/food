@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food/core/utils/spacing.dart';
 import 'package:food/core/widgets/custom_text_filed.dart';
 import 'package:food/features/auth/presentation/view_model/signup/signup_cubit.dart';
 
@@ -14,7 +14,7 @@ class SignupTextFiled extends StatelessWidget {
       key: cubit.signupKey,
       child: Column(
         children: [
-          SizedBox(height: 15.h),
+          spaceH(15),
           CustomTextFormFiled(
             hint: 'Name',
             controller: cubit.nameController,
@@ -25,7 +25,7 @@ class SignupTextFiled extends StatelessWidget {
               return null;
             },
           ),
-          SizedBox(height: 16.h),
+          spaceH(16),
           CustomTextFormFiled(
             hint: 'Email',
             controller: cubit.emailController,
@@ -36,7 +36,7 @@ class SignupTextFiled extends StatelessWidget {
               return null;
             },
           ),
-          SizedBox(height: 16.h),
+          spaceH(16),
           CustomTextFormFiled(
             hint: 'phone',
             controller: cubit.phoneController,
@@ -47,7 +47,7 @@ class SignupTextFiled extends StatelessWidget {
               return null;
             },
           ),
-          SizedBox(height: 16.h),
+          spaceH(16),
           CustomTextFormFiled(
             hint: 'Password',
             controller: context.read<SignupCubit>().passwordController,
@@ -59,7 +59,7 @@ class SignupTextFiled extends StatelessWidget {
               return null;
             },
           ),
-          SizedBox(height: 32.h),
+          spaceH(32),
         ],
       ),
     );
