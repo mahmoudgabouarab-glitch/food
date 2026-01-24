@@ -43,10 +43,12 @@ class ProfileAvatar extends StatelessWidget {
       return ClipOval(
         child: CachedNetworkImage(
           imageUrl: state.profilemodel.data.image,
+          errorWidget: (context, url, error) => const Icon(Icons.person),
           fit: BoxFit.cover,
         ),
       );
     }
+   
     return const Icon(Icons.person, size: 60);
   }
 }

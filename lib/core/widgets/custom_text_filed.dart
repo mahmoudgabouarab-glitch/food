@@ -45,6 +45,7 @@ class _CustomTextFormFiledState extends State<CustomTextFormFiled> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
       keyboardType: widget.keybordtype,
       onChanged: widget.onchange,

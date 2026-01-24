@@ -43,16 +43,10 @@ class HomeAppBar extends StatelessWidget {
                       ? ClipOval(
                           child: CachedNetworkImage(
                             imageUrl: state.profilemodel.data.image,
+                             errorWidget: (context, url, error) => const Icon(Icons.person),
                             width: 80,
                             height: 80,
                           ),
-
-                          //   Image.network(
-                          //     state.profilemodel.data.image,
-                          //     width: 80,
-                          //     height: 80,
-                          //     fit: BoxFit.cover,
-                          //   ),
                         )
                       : null,
                 ),

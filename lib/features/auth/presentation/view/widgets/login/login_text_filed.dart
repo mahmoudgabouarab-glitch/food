@@ -29,6 +29,7 @@ class LoginTextFiled extends StatelessWidget {
           spaceH(16),
           CustomTextFormFiled(
             keybordtype: TextInputType.visiblePassword,
+            controller: cubit.passwordController,
             hint: 'Password',
             validator: (val) {
               if (val == null || val.isEmpty) {

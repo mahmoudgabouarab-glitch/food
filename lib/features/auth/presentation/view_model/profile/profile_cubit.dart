@@ -62,10 +62,12 @@ class ProfileCubit extends Cubit<ProfileState> {
   }
 
   //clear
-  void clear() {
-    namecontrollar.clear();
-    emailcontrollar.clear();
-    addresscontrollar.clear();
-    visacontrollar.clear();
+  @override
+  Future<void> close() {
+    namecontrollar.dispose();
+    emailcontrollar.dispose();
+    addresscontrollar.dispose();
+    visacontrollar.dispose();
+    return super.close();
   }
 }

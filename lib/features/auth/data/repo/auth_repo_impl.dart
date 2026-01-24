@@ -39,7 +39,7 @@ class AuthRepoImpl extends AuthRepo {
     required XFile? image,
   }) async {
     try {
-       MultipartFile? file;
+      MultipartFile? file;
       if (image != null) {
         file = await MultipartFile.fromFile(image.path, filename: image.name);
       }
@@ -50,7 +50,7 @@ class AuthRepoImpl extends AuthRepo {
           "password": password,
           "name": name,
           "phone": phone,
-          "image": file
+          "image": file,
         },
       );
       final user = AuthModel.fromJson(data);
