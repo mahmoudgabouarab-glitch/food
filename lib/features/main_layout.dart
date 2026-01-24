@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/widgets/custom_nav_bar.dart';
+import 'package:food/features/auth/presentation/view_model/profile/profile_cubit.dart';
 import 'package:food/features/cart/presentation/view/cart_view.dart';
 import 'package:food/features/home/presentation/view/home_view.dart';
 import 'package:food/features/order_history/presentation/view/order_history_view.dart';
@@ -21,6 +23,12 @@ class _MainLayoutState extends State<MainLayout> {
     OrderHistoryView(),
     ProfileView(),
   ];
+  @override
+  void initState() {
+    context.read<ProfileCubit>().getProfile();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

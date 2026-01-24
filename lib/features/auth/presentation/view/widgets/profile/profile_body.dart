@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/core/utils/app_color.dart';
-import 'package:food/features/auth/presentation/view/widgets/profile/cubit.dart';
+import 'package:food/features/auth/presentation/view/widgets/profile/profile_bloc_listener.dart';
 import 'package:food/features/auth/presentation/view/widgets/profile/profile_actions.dart';
 import 'package:food/features/auth/presentation/view/widgets/profile/profile_app_bar.dart';
 import 'package:food/features/auth/presentation/view/widgets/profile/profile_avatar.dart';
@@ -30,7 +30,7 @@ class ProfileBody extends StatelessWidget {
                 ProfileAvatar(),
                 ProfileForm(),
                 ProfileActions(),
-                ProfileCubitt(),
+                ProfileBlocListener(),
               ],
             ),
           ),

@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProfileCubit(getIt<AuthRepoImpl>())..getProfile(),
+      create: (context) => ProfileCubit(getIt<AuthRepoImpl>()),
       child: ScreenUtilInit(
         designSize: const Size(430, 932),
         child: MaterialApp(

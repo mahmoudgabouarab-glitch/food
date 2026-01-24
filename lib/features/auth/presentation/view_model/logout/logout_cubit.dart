@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/core/network/cache_helper.dart';
+import 'package:food/core/network/cache_keys.dart';
 import 'package:food/features/auth/data/models/auth_model.dart';
 import 'package:food/features/auth/data/repo/auth_repo.dart';
 
@@ -17,8 +18,8 @@ class LogoutCubit extends Cubit<LogoutState> {
         emit(LogoutFailure(failure.errormessage));
       },
       (success) async {
-        await CacheHelper.clearData();
-       
+        await CacheHelper.removeData(key: CacheKeys.token);
+
         emit(LogoutSuccess(success));
       },
     );

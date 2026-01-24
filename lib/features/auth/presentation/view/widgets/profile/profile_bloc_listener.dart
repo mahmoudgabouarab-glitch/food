@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/core/widgets/custom_snakbar.dart';
 import 'package:food/features/auth/presentation/view_model/profile/profile_cubit.dart';
 
-class ProfileCubitt extends StatelessWidget {
-  const ProfileCubitt({super.key});
+class ProfileBlocListener extends StatelessWidget {
+  const ProfileBlocListener({super.key});
 
   @override
   Widget build(BuildContext context) {
