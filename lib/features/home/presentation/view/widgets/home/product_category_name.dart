@@ -18,38 +18,40 @@ class _ProductCategoryNameState extends State<ProductCategoryName> {
   Widget build(BuildContext context) {
     return BlocBuilder<CategoryCubit, CategoryState>(
       builder: (context, state) {
-        return SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: state is CategorySuccess
-                ? List.generate(state.categoryModel.data.length, (index) {
-                    final cubit = state.categoryModel.data[index];
-                    return Padding(
-                      padding: EdgeInsets.only(right: 14.w),
-                      child: MaterialButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.r),
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            currentIndex = index;
-                          });
-                        },
-                        color: currentIndex == index
-                            ? AppColor.btn
-                            : AppColor.background,
-                        child: Text(
-                          cubit.name,
-                          style: Styles.s16_500.copyWith(
-                            color: currentIndex == index
-                                ? Colors.white
-                                : AppColor.textthirth,
+        return SliverToBoxAdapter(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: state is CategorySuccess
+                  ? List.generate(state.categoryModel.data.length, (index) {
+                      final cubit = state.categoryModel.data[index];
+                      return Padding(
+                        padding: EdgeInsets.only(right: 14.w),
+                        child: MaterialButton(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.r),
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              currentIndex = index;
+                            });
+                          },
+                          color: currentIndex == index
+                              ? AppColor.btn
+                              : AppColor.background,
+                          child: Text(
+                            cubit.name,
+                            style: Styles.s16_500.copyWith(
+                              color: currentIndex == index
+                                  ? Colors.white
+                                  : AppColor.textthirth,
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  })
-                : [],
+                      );
+                    })
+                  : [],
+            ),
           ),
         );
       },

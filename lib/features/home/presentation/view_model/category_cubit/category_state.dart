@@ -15,10 +15,15 @@ final class CategorySuccess extends CategoryState {
   final CategoryModel categoryModel;
 
   const CategorySuccess(this.categoryModel);
+  @override
+  List<Object> get props => [categoryModel];
 }
 
 final class CategoryFailure extends CategoryState {
   final String err;
 
   const CategoryFailure(this.err);
+
+  @override
+  List<Object> get props => [err];
 }

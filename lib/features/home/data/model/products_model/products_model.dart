@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 class ProductsModel extends Equatable {
   final int? code;
   final String message;
-  final List<OneOfProduct> data;
+  final List<ListOfProducts> data;
 
   const ProductsModel({this.code, required this.message, required this.data});
 
@@ -12,7 +12,7 @@ class ProductsModel extends Equatable {
     message: json['message'] as String? ?? "",
     data:
         (json['data'] as List<dynamic>?)
-            ?.map((e) => OneOfProduct.fromJson(e as Map<String, dynamic>))
+            ?.map((e) => ListOfProducts.fromJson(e as Map<String, dynamic>))
             .toList() ??
         [],
   );
@@ -27,7 +27,7 @@ class ProductsModel extends Equatable {
   List<Object?> get props => [code, message, data];
 }
 
-class OneOfProduct extends Equatable {
+class ListOfProducts extends Equatable {
   final int id;
   final String name;
   final String description;
@@ -35,7 +35,7 @@ class OneOfProduct extends Equatable {
   final String rating;
   final String price;
 
-  const OneOfProduct({
+  const ListOfProducts({
     required this.id,
     required this.name,
     required this.description,
@@ -44,7 +44,7 @@ class OneOfProduct extends Equatable {
     required this.price,
   });
 
-  factory OneOfProduct.fromJson(Map<String, dynamic> json) => OneOfProduct(
+  factory ListOfProducts.fromJson(Map<String, dynamic> json) => ListOfProducts(
     id: json['id'] as int? ?? 1,
     name: json['name'] as String? ?? "",
     description: json['description'] as String? ?? "",

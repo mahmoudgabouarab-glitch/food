@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/features/home/data/model/products_model/products_model.dart';
 
 class ProductItemStack extends StatelessWidget {
-  final OneOfProduct oneProduct;
+  final ListOfProducts oneProduct;
   final double? width;
   const ProductItemStack({super.key, this.width, required this.oneProduct});
 

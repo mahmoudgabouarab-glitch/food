@@ -24,7 +24,7 @@ class ProductListView extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
             sliver: SliverGrid(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, 
+                crossAxisCount: 2,
                 mainAxisSpacing: 15.h,
                 crossAxisSpacing: 10.w,
                 childAspectRatio: .8.h,
@@ -40,8 +40,7 @@ class ProductListView extends StatelessWidget {
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize:
-                          MainAxisSize.min, 
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         SizedBox(height: 5.h),
                         ProductItemStack(oneProduct: product),
