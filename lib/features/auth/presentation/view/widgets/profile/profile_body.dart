@@ -19,7 +19,7 @@ class ProfileBody extends StatelessWidget {
         color: AppColor.btn,
         displacement: 60,
         onRefresh: () async {
-          await context.read<ProfileCubit>().getProfile();
+          await context.read<ProfileCubit>().getProfile(refresh: true);
         },
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),

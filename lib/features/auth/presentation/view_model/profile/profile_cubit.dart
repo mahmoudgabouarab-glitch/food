@@ -15,9 +15,10 @@ class ProfileCubit extends Cubit<ProfileState> {
   final TextEditingController visacontrollar = .new();
   XFile? selectedImage;
   final AuthRepo _repo;
-
+  bool isRefresh = false;
   //get profile
-  Future<void> getProfile() async {
+  Future<void> getProfile({bool refresh = false}) async {
+    isRefresh = refresh;
     emit(ProfileLoading());
     var data = await _repo.getProfile();
     data.fold(
@@ -55,8 +56,9 @@ class ProfileCubit extends Cubit<ProfileState> {
       (failure) {
         emit(UpdataFailure(failure.errormessage));
       },
-      (success) {
+      (success) async {
         emit(UpdataSuccess(success));
+        await getProfile();
       },
     );
   }

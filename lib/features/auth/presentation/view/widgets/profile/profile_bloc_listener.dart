@@ -18,11 +18,14 @@ class ProfileBlocListener extends StatelessWidget {
           );
         }
         if (state is ProfileSuccess) {
-          CustomSnackBar.show(
-            context,
-            message: state.profilemodel.message,
-            type: SnackBarType.success,
-          );
+          final cubit = context.read<ProfileCubit>();
+          if (cubit.isRefresh) {
+            CustomSnackBar.show(
+              context,
+              message: state.profilemodel.message,
+              type: SnackBarType.success,
+            );
+          }
         }
         if (state is UpdataFailure) {
           CustomSnackBar.show(

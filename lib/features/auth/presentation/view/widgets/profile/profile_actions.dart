@@ -12,7 +12,6 @@ class ProfileActions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<ProfileCubit>();
-   
 
     return Column(
       children: [
@@ -33,6 +32,7 @@ class ProfileActions extends StatelessWidget {
                   ? null
                   : () async {
                       await cubit.postUpdataProfile();
+                    
                     },
               child: state is UpdataLoading
                   ? Center(
