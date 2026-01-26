@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food/core/utils/spacing.dart';
 import 'package:food/features/home/data/model/products_model/products_model.dart';
 
 class ProductDescription extends StatelessWidget {
@@ -13,12 +14,22 @@ class ProductDescription extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(oneProduct.name, maxLines: 1, overflow: TextOverflow.ellipsis),
-          SizedBox(height: 4.h),
+          Text(
+            oneProduct.name,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontSize: 14.sp,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
+          spaceH(4),
           Text(
             oneProduct.description,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
+            style: TextStyle(fontSize: 12.sp, color: Colors.grey[50]),
           ),
           SizedBox(height: 9.h),
           Row(
@@ -26,7 +37,14 @@ class ProductDescription extends StatelessWidget {
               Icon(Icons.star_rate_rounded, color: Colors.yellow[800]),
               Text(oneProduct.rating),
               const Spacer(),
-              Text(oneProduct.price),
+              Text(
+                "\$${oneProduct.price}",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12.sp,
+                  color: Colors.black,
+                ),
+              ),
             ],
           ),
         ],

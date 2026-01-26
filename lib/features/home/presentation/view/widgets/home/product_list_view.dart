@@ -78,7 +78,7 @@ class _ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => context.push(const DetailsView()),
+      onTap: () => context.push(DetailsView(products: product)),
       child: Container(
         decoration: BoxDecoration(
           color: AppColor.primary,

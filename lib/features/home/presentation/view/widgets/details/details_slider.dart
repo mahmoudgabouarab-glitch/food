@@ -1,9 +1,13 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
+import 'package:food/core/utils/spacing.dart';
+import 'package:food/features/home/data/model/products_model/products_model.dart';
 
 class DetailsSlider extends StatefulWidget {
-  const DetailsSlider({super.key});
+  final ListOfProducts products;
+  const DetailsSlider({super.key, required this.products});
 
   @override
   State<DetailsSlider> createState() => _DetailsSliderState();
@@ -16,19 +20,36 @@ class _DetailsSliderState extends State<DetailsSlider> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Image.asset("assets/image/test2.png", height: 210.h),
-        SizedBox(width: 30.w),
+        CachedNetworkImage(imageUrl: widget.products.image, height: 140.h),
+        spaceW(10),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
-                "Customize Your Burger to Your Tastes. Ultimate Experience",
-                maxLines: 3,
-                overflow: TextOverflow.clip,
+              RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: '${widget.products.name}\n\n',
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.bold,
+                        color: AppColor.primary,
+                      ),
+                    ),
+                    TextSpan(
+                      text: widget.products.description,
+                      style: TextStyle(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              SizedBox(height: 40.h),
+              spaceH(20),
               Slider(
                 activeColor: AppColor.primary,
                 inactiveColor: AppColor.textSecondary,
@@ -40,7 +61,6 @@ class _DetailsSliderState extends State<DetailsSlider> {
                   setState(() {
                     slider = val;
                   });
-                  print(val);
                 },
               ),
               SizedBox(height: 8.h),

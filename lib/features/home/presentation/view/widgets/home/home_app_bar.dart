@@ -58,7 +58,7 @@ class HomeAppBar extends StatelessWidget {
                       : "Hello .......",
                   style: Theme.of(
                     context,
-                  ).textTheme.titleMedium?.copyWith(fontSize: 14.sp),
+                  ).textTheme.titleMedium?.copyWith(fontSize: 16.sp),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
