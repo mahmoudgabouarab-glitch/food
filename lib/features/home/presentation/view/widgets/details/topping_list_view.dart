@@ -12,14 +12,14 @@ class ToppingListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<DetailsCubit, DetailsState>(
       builder: (context, state) {
-        if (state is DetailsLoading) {
+        if (state.isLoading) {
           return const Center(child: CircularProgressIndicator());
-        } else if (state is DetailsSuccess) {
+        } else if (state.toppings!= null) {
           return SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              children: List.generate(state.toppingsModel.data.length, (index) {
-                final cubit = state.toppingsModel.data[index];
+              children: List.generate(state.toppings!.data.length, (index) {
+                final cubit = state.toppings!.data[index];
                 return Padding(
                   padding: const EdgeInsets.only(right: 8),
                   child: Container(
@@ -61,14 +61,3 @@ class ToppingListView extends StatelessWidget {
     );
   }
 }
-    
-    // Row(
-                      //   children: [
-                      //     const Spacer(),
-                      //     CircleAvatar(
-                      //       maxRadius: 11.r,
-                      //       backgroundColor: AppColor.primary,
-                      //       child: Center(child: Icon(Icons.add, size: 20.sp)),
-                      //     ),
-                      //   ],
-                      // ),

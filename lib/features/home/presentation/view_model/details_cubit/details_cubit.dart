@@ -6,23 +6,27 @@ import 'package:food/features/home/data/repo/home_repo.dart';
 part 'details_state.dart';
 
 class DetailsCubit extends Cubit<DetailsState> {
-  DetailsCubit(this._repo) : super(DetailsInitial());
+  DetailsCubit(this._repo) : super(DetailsState.initial());
   final HomeRepo _repo;
 
   Future<void> getToppings() async {
-    emit(DetailsLoading());
+    emit(state.copyWith(isLoading: true, error: null));
     final result = await _repo.getToppings();
     result.fold(
-      (failure) => emit(DetailsFailure(failure.errormessage)),
-      (success) => emit(DetailsSuccess(success)),
+      (failure) =>
+          emit(state.copyWith(error: failure.errormessage, isLoading: false)),
+      (success) => emit(state.copyWith(toppings: success, isLoading: false)),
     );
   }
 
   Future<void> getSideOptions() async {
+    emit(state.copyWith(isLoading: true, error: null));
+
     final result = await _repo.getSideOptions();
     result.fold(
-      (failure) => emit(SideOptionsFailure(failure.errormessage)),
-      (success) => emit(SideOptionsSuccess(success)),
+      (failure) =>
+          emit(state.copyWith(error: failure.errormessage, isLoading: false)),
+      (success) => emit(state.copyWith(sideOptions: success, isLoading: false)),
     );
   }
 }

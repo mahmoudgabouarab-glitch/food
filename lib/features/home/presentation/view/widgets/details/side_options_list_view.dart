@@ -12,14 +12,14 @@ class SideOptionsListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<DetailsCubit, DetailsState>(
       builder: (context, state) {
-        if (state is DetailsLoading) {
+        if (state.isLoading) {
           return const Center(child: CircularProgressIndicator());
-        } else if (state is SideOptionsSuccess) {
+        } else if (state.sideOptions != null) {
           return SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              children: List.generate(state.toppingsModel.data.length, (index) {
-                final cubit = state.toppingsModel.data[index];
+              children: List.generate(state.sideOptions!.data.length, (index) {
+                final cubit = state.sideOptions!.data[index];
                 return Padding(
                   padding: const EdgeInsets.only(right: 8),
                   child: Container(
@@ -50,10 +50,10 @@ class SideOptionsListView extends StatelessWidget {
               }),
             ),
           );
-        } else if (state is SideOptionsFailure) {
+        } else if (state.error != null) {
           return Column(
             children: [
-              Text(state.err),
+              Text(state.error!),
               IconButton(onPressed: () {}, icon: const Icon(Icons.refresh)),
             ],
           );

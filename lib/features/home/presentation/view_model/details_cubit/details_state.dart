@@ -1,33 +1,34 @@
 part of 'details_cubit.dart';
 
-sealed class DetailsState extends Equatable {
-  const DetailsState();
+class DetailsState extends Equatable {
+  final ToppingsModel? toppings;
+  final ToppingsModel? sideOptions;
+  final bool isLoading;
+  final String? error;
+
+  const DetailsState({
+    this.toppings,
+    this.sideOptions,
+    this.isLoading = false,
+    this.error,
+  });
+
+  factory DetailsState.initial() => const DetailsState();
+
+  DetailsState copyWith({
+    ToppingsModel? toppings,
+    ToppingsModel? sideOptions,
+    bool? isLoading,
+    String? error,
+  }) {
+    return DetailsState(
+      toppings: toppings ?? this.toppings,
+      sideOptions: sideOptions ?? this.sideOptions,
+      isLoading: isLoading ?? this.isLoading,
+      error: error,
+    );
+  }
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [toppings, sideOptions, isLoading, error];
 }
-
-final class DetailsInitial extends DetailsState {}
-
-final class DetailsLoading extends DetailsState {}
-
-final class DetailsSuccess extends DetailsState {
-  final ToppingsModel toppingsModel;
-  const DetailsSuccess(this.toppingsModel);
-}
-
-final class DetailsFailure extends DetailsState {
-  final String err;
-  const DetailsFailure(this.err);
-}
-
-final class SideOptionsSuccess extends DetailsState {
-  final ToppingsModel toppingsModel;
-  const SideOptionsSuccess(this.toppingsModel);
-}
-
-final class SideOptionsFailure extends DetailsState {
-  final String err;
-  const SideOptionsFailure(this.err);
-}
-
