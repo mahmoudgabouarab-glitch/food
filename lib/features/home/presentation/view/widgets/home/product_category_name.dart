@@ -26,7 +26,9 @@ class _ProductCategoryNameState extends State<ProductCategoryName> {
                   ? List.generate(state.categoryModel.data.length, (index) {
                       final cubit = state.categoryModel.data[index];
                       return Padding(
-                        padding: EdgeInsets.only(right: 14.w),
+                        padding: currentIndex == 0
+                            ? EdgeInsets.only(left: 12.w)
+                            : EdgeInsets.only(right: 12.w),
                         child: MaterialButton(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.r),
