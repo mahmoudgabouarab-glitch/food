@@ -6,7 +6,7 @@ import 'package:food/features/home/data/repo/home_repo.dart';
 part 'details_state.dart';
 
 class DetailsCubit extends Cubit<DetailsState> {
-  DetailsCubit(this._repo) : super(DetailsState.initial());
+  DetailsCubit(this._repo) : super(DetailsState());
   final HomeRepo _repo;
 
   Future<void> getToppings() async {

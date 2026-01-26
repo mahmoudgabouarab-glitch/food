@@ -13,8 +13,6 @@ class DetailsState extends Equatable {
     this.error,
   });
 
-  factory DetailsState.initial() => const DetailsState();
-
   DetailsState copyWith({
     ToppingsModel? toppings,
     ToppingsModel? sideOptions,
