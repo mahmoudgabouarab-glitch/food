@@ -1,31 +1,23 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/spacing.dart';
 import 'package:food/features/home/data/model/products_model/products_model.dart';
+import 'package:food/features/home/presentation/view_model/details_cubit/slider_cubit.dart';
 
-class DetailsSlider extends StatefulWidget {
+class DetailsSlider extends StatelessWidget {
   final ListOfProducts products;
-  final ValueChanged<double> onChanged;
-  const DetailsSlider({
-    super.key,
-    required this.products,
-    required this.onChanged,
-  });
 
-  @override
-  State<DetailsSlider> createState() => _DetailsSliderState();
-}
+  const DetailsSlider({super.key, required this.products});
 
-class _DetailsSliderState extends State<DetailsSlider> {
-  double slider = .5;
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        CachedNetworkImage(imageUrl: widget.products.image, height: 140.h),
+        CachedNetworkImage(imageUrl: products.image, height: 140.h),
         spaceW(10),
         Expanded(
           child: Column(
@@ -36,7 +28,7 @@ class _DetailsSliderState extends State<DetailsSlider> {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: '${widget.products.name}\n\n',
+                      text: '${products.name}\n\n',
                       style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.bold,
@@ -44,7 +36,7 @@ class _DetailsSliderState extends State<DetailsSlider> {
                       ),
                     ),
                     TextSpan(
-                      text: widget.products.description,
+                      text: products.description,
                       style: TextStyle(
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w500,
@@ -55,20 +47,7 @@ class _DetailsSliderState extends State<DetailsSlider> {
                 ),
               ),
               spaceH(20),
-              Slider(
-                activeColor: AppColor.primary,
-                inactiveColor: AppColor.textSecondary,
-                thumbColor: AppColor.primary,
-                divisions: 5,
-                padding: EdgeInsets.zero,
-                value: slider,
-                onChanged: (val) {
-                  setState(() {
-                    slider = val;
-                  });
-                  widget.onChanged(val);
-                },
-              ),
+              _slider(),
               SizedBox(height: 8.h),
               Row(
                 children: [
@@ -86,4 +65,25 @@ class _DetailsSliderState extends State<DetailsSlider> {
       ],
     );
   }
+}
+
+Widget _slider() {
+  return BlocBuilder<SpicyCubit, double>(
+    buildWhen: (p, c) => p != c,
+    builder: (context, state) {
+      return Slider(
+        activeColor: AppColor.primary,
+        inactiveColor: AppColor.textSecondary,
+        thumbColor: AppColor.primary,
+        min: 0.1,
+        max: 1.0,
+        divisions: 9,
+        padding: EdgeInsets.zero,
+        value: state,
+        onChanged: (val) {
+          context.read<SpicyCubit>().changeSpicy(val);
+        },
+      );
+    },
+  );
 }

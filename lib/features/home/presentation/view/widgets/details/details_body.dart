@@ -11,12 +11,10 @@ import 'package:food/features/home/presentation/view/widgets/details/topping_lis
 class DetailsBody extends StatelessWidget {
   final ListOfProducts products;
   const DetailsBody({super.key, required this.products});
-
   @override
   Widget build(BuildContext context) {
-    double spicy = 0.5;
     return Scaffold(
-      bottomNavigationBar: DetailsActions(products: products, spicy: spicy),
+      bottomNavigationBar: DetailsActions(products: products),
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
@@ -24,12 +22,7 @@ class DetailsBody extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              DetailsSlider(
-                products: products,
-                onChanged: (double value) {
-                  spicy = value;
-                },
-              ),
+              DetailsSlider(products: products),
               spaceH(20),
               const Text("Toppings"),
               spaceH(10),

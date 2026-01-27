@@ -6,6 +6,7 @@ import 'package:food/features/home/data/repo/home_repo_impl.dart';
 import 'package:food/features/home/presentation/view/widgets/details/details_body.dart';
 import 'package:food/features/home/presentation/view_model/add_to_cart_cubit/add_to_cart_cubit.dart';
 import 'package:food/features/home/presentation/view_model/details_cubit/side_options_cubit/side_options_cubit.dart';
+import 'package:food/features/home/presentation/view_model/details_cubit/slider_cubit.dart';
 import 'package:food/features/home/presentation/view_model/details_cubit/toppings_cubit/toppings_cubit.dart';
 
 class DetailsView extends StatelessWidget {
@@ -27,6 +28,7 @@ class DetailsView extends StatelessWidget {
         BlocProvider(
           create: (context) => AddToCartCubit(getIt<HomeRepoImpl>()),
         ),
+        BlocProvider(create: (context) => SpicyCubit()),
       ],
       child: DetailsBody(products: products),
     );
