@@ -13,9 +13,13 @@ final class SideOptionsLoading extends SideOptionsState {}
 
 final class SideOptionsSuccess extends SideOptionsState {
   final SideOptionsModel sideOptionsModel;
-  const SideOptionsSuccess(this.sideOptionsModel);
+  final Set<int> selectedIndexes;
+  const SideOptionsSuccess(
+    this.sideOptionsModel, {
+    this.selectedIndexes = const {},
+  });
   @override
-  List<Object> get props => [sideOptionsModel];
+  List<Object> get props => [sideOptionsModel, selectedIndexes];
 }
 
 final class SideOptionsFailure extends SideOptionsState {

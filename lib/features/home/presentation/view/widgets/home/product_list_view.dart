@@ -59,7 +59,7 @@ class _ProductsGrid extends StatelessWidget {
           crossAxisCount: 2,
           mainAxisSpacing: 15.h,
           crossAxisSpacing: 10.w,
-          childAspectRatio: .8.h,
+          childAspectRatio: 1 / 1.2.h,
         ),
         delegate: SliverChildBuilderDelegate(
           (context, index) => _ProductItem(product: products[index]),

@@ -32,7 +32,6 @@ class ProfileActions extends StatelessWidget {
                   ? null
                   : () async {
                       await cubit.postUpdataProfile();
-                    
                     },
               child: state is UpdataLoading
                   ? Center(

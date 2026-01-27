@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:food/core/errors/failure.dart';
 import 'package:food/core/network/api_service.dart';
+import 'package:food/features/home/data/model/add_to_cart_model.dart';
 import 'package:food/features/home/data/model/category_model/category_model.dart';
 import 'package:food/features/home/data/model/details_model/side_options_model.dart';
 import 'package:food/features/home/data/model/details_model/toppings_model.dart';
@@ -56,12 +57,46 @@ class HomeRepoImpl implements HomeRepo {
       return Left(ServiseFailure(e.toString()));
     }
   }
+
   //getSideOptions
   @override
   Future<Either<Failure, SideOptionsModel>> getSideOptions() async {
     try {
       var data = await _api.get(endpoint: "side-options");
       final user = SideOptionsModel.fromJson(data);
+      return Right(user);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServiseFailure.fromdioException(e));
+      }
+      return Left(ServiseFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, AddToCartModel>> postAddToCart({
+    required int productid,
+    required int quantity,
+    required num spicy,
+    required List<int> toppings,
+    required List<int> sideoptions,
+  }) async {
+    try {
+      var data = await _api.post(
+        endpoint: "cart/add",
+        data: {
+          "items": [
+            {
+              "product_id": productid,
+              "quantity": quantity,
+              "spicy": spicy,
+              "toppings": toppings,
+              "side_options": sideoptions,
+            },
+          ],
+        },
+      );
+      final user = AddToCartModel.fromJson(data);
       return Right(user);
     } catch (e) {
       if (e is DioException) {

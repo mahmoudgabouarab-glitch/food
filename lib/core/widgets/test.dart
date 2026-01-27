@@ -214,14 +214,13 @@
 //                 if (widget.isMandatory)
 //                   TextSpan(
 //                     text: ' *',
-//                     style: 
+//                     style:
 //                     TextStyle(
 //                     fontSize: 12.sp,
 //                     fontWeight: FontWeight.bold,
 //                     color: Colors.red,
 //                   ),
-                    
-                    
+
 //                   ),
 //                 if (widget.isOptionalOrHasSubTitle)
 //                   TextSpan(
@@ -232,7 +231,7 @@
 //                     fontSize: 12.sp,
 //                     fontWeight: FontWeight.bold,
 //                     color: Colors.grey,
-//                   ), 
+//                   ),
 //                   ),
 //               ],
 //             ),
@@ -279,7 +278,7 @@
 //                     fontSize: 14.sp,
 //                     fontWeight: FontWeight.bold,
 //                     color: Colors.grey,
-//                   ), 
+//                   ),
 //             textAlign: widget.textAlign ?? TextAlign.start,
 //             decoration: InputDecoration(
 //               errorMaxLines: 2,
@@ -299,7 +298,7 @@
 //                     fontWeight: FontWeight.bold,
 //                     color: Colors.grey,
 //                   ),
-                
+
 //               errorText: widget.errorText,
 //               fillColor: widget.fillColor ?? Colors.white,
 //               filled: true,
@@ -393,15 +392,15 @@
 // }
 import 'package:flutter/material.dart';
 
-
-
-Future showCustomDialog(BuildContext context,
-    {required Widget child,
-    BorderRadiusGeometry? borderRadius,
-    EdgeInsetsGeometry? padding,
-    EdgeInsetsGeometry? margin,
-    bool barrierDismissible = true,
-    Color? color}) async {
+Future showCustomDialog(
+  BuildContext context, {
+  required Widget child,
+  BorderRadiusGeometry? borderRadius,
+  EdgeInsetsGeometry? padding,
+  EdgeInsetsGeometry? margin,
+  bool barrierDismissible = true,
+  Color? color,
+}) async {
   showGeneralDialog(
     context: context,
     barrierLabel: "",
@@ -428,10 +427,7 @@ Future showCustomDialog(BuildContext context,
     transitionBuilder: (_, anim, _, child) {
       return ScaleTransition(
         scale: anim,
-        child: FadeTransition(
-          opacity: anim,
-          child: child,
-        ),
+        child: FadeTransition(opacity: anim, child: child),
       );
     },
   );

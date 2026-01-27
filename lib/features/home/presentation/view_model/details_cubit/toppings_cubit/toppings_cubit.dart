@@ -18,5 +18,23 @@ class ToppingsCubit extends Cubit<ToppingsState> {
     );
   }
 
+  void selectToppings(int index) {
+    if (state is! ToppingsSuccess) return;
+    final currentState = state as ToppingsSuccess;
+    final selected = Set<int>.from(currentState.selectedIndexes);
+    selected.contains(index) ? selected.remove(index) : selected.add(index);
 
+    emit(
+      ToppingsSuccess(currentState.toppingsModel, selectedIndexes: selected),
+    );
+  }
+
+  List<int> get selectedToppingIds {
+    if (state is! ToppingsSuccess) return [];
+
+    final currentState = state as ToppingsSuccess;
+    final toppings = currentState.toppingsModel.data;
+
+    return currentState.selectedIndexes.map((i) => toppings[i].id).toList();
+  }
 }

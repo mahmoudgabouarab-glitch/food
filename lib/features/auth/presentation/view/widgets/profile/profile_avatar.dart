@@ -48,7 +48,7 @@ class ProfileAvatar extends StatelessWidget {
         ),
       );
     }
-   
+
     return const Icon(Icons.person, size: 60);
   }
 }

@@ -20,4 +20,8 @@ class AppColor {
   static const Color error = Color(0xFFFF5252);
   static const Color warning = Color(0xFFFFC107);
   static const linearCATE = [Color(0xFFFF8A50), Color.fromARGB(82, 0, 0, 0)];
+  static const linearCATE2 = [
+    Color.fromARGB(111, 255, 138, 80),
+    Color.fromARGB(115, 0, 0, 0),
+  ];
 }

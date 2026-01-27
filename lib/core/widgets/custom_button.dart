@@ -13,7 +13,7 @@ class Btn extends StatelessWidget {
     super.key,
     required this.ontap,
     required this.radius,
-     this.text,
+    this.text,
     this.minWidth,
     this.color,
     this.child,
@@ -28,7 +28,7 @@ class Btn extends StatelessWidget {
       ),
       onPressed: ontap,
       color: color ?? AppColor.btn,
-      child: child ?? Center(child: Text(text??"")),
+      child: child ?? Center(child: Text(text ?? "")),
     );
   }
 }

@@ -16,7 +16,6 @@ class LoginActions extends StatelessWidget {
       onPressed: () async {
         if (cubit.loginKey.currentState!.validate()) {
           await cubit.postLogIn();
-
         }
       },
     );

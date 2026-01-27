@@ -19,7 +19,7 @@ class SideOptionsListView extends StatelessWidget {
           case SideOptionsLoading():
             return const CustomLoading();
           case SideOptionsSuccess():
-            return _sideOptionsList(state);
+            return _sideOptionsList(state, context);
           case SideOptionsFailure():
             break;
         }
@@ -29,26 +29,35 @@ class SideOptionsListView extends StatelessWidget {
   }
 }
 
-Widget _sideOptionsList(SideOptionsSuccess state) {
+Widget _sideOptionsList(SideOptionsSuccess state, BuildContext context) {
   return SingleChildScrollView(
     scrollDirection: Axis.horizontal,
     child: Row(
       children: List.generate(state.sideOptionsModel.data.length, (index) {
         final cubit = state.sideOptionsModel.data[index];
+        final isSelected = state.selectedIndexes.contains(index);
         return Padding(
           padding: const EdgeInsets.only(right: 8),
-          child: InkWell(
-            onTap: () {},
+          child: GestureDetector(
+            onTap: () {
+              context.read<SideOptionsCubit>().selectSideOptions(index);
+            },
             child: Container(
               padding: const EdgeInsets.all(5),
               height: 115.h,
               width: 120.w,
               decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                  colors: AppColor.linearCATE,
-                  begin: AlignmentGeometry.topCenter,
-                  end: AlignmentGeometry.bottomCenter,
-                ),
+                gradient: isSelected
+                    ? const LinearGradient(
+                        colors: AppColor.linearCATE2,
+                        begin: AlignmentGeometry.topCenter,
+                        end: AlignmentGeometry.bottomCenter,
+                      )
+                    : const LinearGradient(
+                        colors: AppColor.linearCATE,
+                        begin: AlignmentGeometry.topCenter,
+                        end: AlignmentGeometry.bottomCenter,
+                      ),
                 borderRadius: BorderRadius.circular(20.r),
               ),
               child: Column(

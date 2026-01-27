@@ -13,10 +13,11 @@ final class ToppingsLoading extends ToppingsState {}
 
 final class ToppingsSuccess extends ToppingsState {
   final ToppingsModel toppingsModel;
-  const ToppingsSuccess(this.toppingsModel);
+  final Set<int> selectedIndexes;
+  const ToppingsSuccess(this.toppingsModel, {this.selectedIndexes = const {}});
 
   @override
-  List<Object?> get props => [toppingsModel];
+  List<Object?> get props => [toppingsModel, selectedIndexes];
 }
 
 final class ToppingsFailure extends ToppingsState {

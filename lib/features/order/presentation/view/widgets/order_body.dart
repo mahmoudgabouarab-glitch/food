@@ -10,9 +10,7 @@ class OrderBody extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: CustomBtnNavBar(
         text: "Pay Now",
-        ontap: () {
-          
-        },
+        ontap: () {},
         title: "\$18.2",
       ),
       appBar: AppBar(

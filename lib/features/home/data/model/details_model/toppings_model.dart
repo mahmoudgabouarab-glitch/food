@@ -31,6 +31,8 @@ class ToppingsModel extends Equatable {
 
   @override
   List<Object?> get props => [code, message, data];
+
+  void operator [](int other) {}
 }
 
 class ListOfToppings extends Equatable {

@@ -22,6 +22,7 @@ final class SignupFailure extends SignupState {
 
   const SignupFailure(this.err);
 }
+
 final class ImageSuccess extends SignupState {
   final XFile picImage;
 
