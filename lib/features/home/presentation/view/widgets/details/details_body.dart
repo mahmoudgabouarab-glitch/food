@@ -20,7 +20,7 @@ class DetailsBody extends StatelessWidget {
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+          padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -30,11 +30,11 @@ class DetailsBody extends StatelessWidget {
                   spicy = value;
                 },
               ),
-              spaceH(50),
+              spaceH(20),
               const Text("Toppings"),
               spaceH(10),
               const ToppingListView(),
-              spaceH(50),
+              spaceH(20),
               const Text("SideOptions"),
               spaceH(10),
               const SideOptionsListView(),

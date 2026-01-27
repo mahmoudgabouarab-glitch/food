@@ -22,4 +22,20 @@ class CartRepoImpl extends CartRepo {
       return Left(ServiseFailure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, GetCartResponse>> deleteCart({
+    required String id,
+  }) async {
+    try {
+      var data = await _api.delete(endpoint: "cart/remove/$id");
+      final user = GetCartResponse.fromJson(data);
+      return Right(user);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServiseFailure.fromdioException(e));
+      }
+      return Left(ServiseFailure(e.toString()));
+    }
+  }
 }

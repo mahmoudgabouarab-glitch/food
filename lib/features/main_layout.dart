@@ -6,7 +6,10 @@ import 'package:food/core/widgets/custom_nav_bar.dart';
 import 'package:food/features/auth/data/repo/auth_repo_impl.dart';
 import 'package:food/features/auth/presentation/view_model/profile/profile_cubit.dart';
 import 'package:food/features/cart/presentation/view/cart_view.dart';
+import 'package:food/features/home/data/repo/home_repo_impl.dart';
 import 'package:food/features/home/presentation/view/home_view.dart';
+import 'package:food/features/home/presentation/view_model/category_cubit/category_cubit.dart';
+import 'package:food/features/home/presentation/view_model/products_cubit/products_cubit.dart';
 import 'package:food/features/order_history/presentation/view/order_history_view.dart';
 import 'package:food/features/auth/presentation/view/profile_view.dart';
 
@@ -15,8 +18,20 @@ class MainLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => ProfileCubit(getIt<AuthRepoImpl>())..getProfile(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => ProfileCubit(getIt<AuthRepoImpl>())..getProfile(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              CategoryCubit(getIt<HomeRepoImpl>())..getCategory(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              ProductsCubit(getIt<HomeRepoImpl>())..getProducts(),
+        ),
+      ],
       child: const _MainLayoutView(),
     );
   }
@@ -40,7 +55,7 @@ class _MainLayoutViewState extends State<_MainLayoutView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(index: currentIndex, children: screens),
+      body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         selectedFontSize: 13.0,
         unselectedFontSize: 13.0,

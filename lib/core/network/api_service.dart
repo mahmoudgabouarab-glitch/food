@@ -56,4 +56,19 @@ class ApiServise {
     );
     return response.data;
   }
+
+  Future<Map<String, dynamic>> delete({
+    required String endpoint,
+    Object? data,
+  }) async {
+    dynamic postData = data;
+    if (data is Map<String, dynamic>) {
+      bool hasFile = data.values.any((v) => v is MultipartFile);
+      if (hasFile) {
+        postData = FormData.fromMap(data);
+      }
+    }
+    final response = await _dio.delete("$_baseurl$endpoint", data: postData);
+    return response.data;
+  }
 }

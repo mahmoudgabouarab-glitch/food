@@ -20,6 +20,7 @@ class DetailsActions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(spicy);
     return CustomBtnNavBar(
       ontap: () {
         context.read<AddToCartCubit>().addToCart(
@@ -33,6 +34,7 @@ class DetailsActions extends StatelessWidget {
                 .selectedsideOptionsIds,
           ),
         );
+        
       },
       title: '\$54.1',
       child: Text(

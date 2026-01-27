@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/core/utils/extension.dart';
 import 'package:food/core/widgets/custom_loading.dart';
 import 'package:food/core/widgets/custom_snakbar.dart';
+import 'package:food/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:food/features/home/presentation/view_model/add_to_cart_cubit/add_to_cart_cubit.dart';
 
 class AddToCartListener extends StatelessWidget {
@@ -26,6 +27,7 @@ class AddToCartListener extends StatelessWidget {
             message: state.addToCartModel,
             type: SnackBarType.success,
           );
+           context.read<CartCubit>().getCart();
         }
         if (state is AddToCartFailure) {
           CustomSnackBar.show(
