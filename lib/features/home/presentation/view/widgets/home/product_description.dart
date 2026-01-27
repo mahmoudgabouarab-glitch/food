@@ -16,7 +16,7 @@ class ProductDescription extends StatelessWidget {
         children: [
           Text(
             oneProduct.name,
-            maxLines: 2,
+            maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
               fontSize: 14.sp,

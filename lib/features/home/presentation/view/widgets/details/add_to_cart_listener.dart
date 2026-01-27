@@ -13,7 +13,7 @@ class AddToCartListener extends StatelessWidget {
         if (state is AddToCartSuccess) {
           CustomSnackBar.show(
             context,
-            message: state.addToCartModel.message,
+            message: state.addToCartModel,
             type: SnackBarType.success,
           );
         }

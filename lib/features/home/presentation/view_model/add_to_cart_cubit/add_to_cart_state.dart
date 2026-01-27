@@ -11,9 +11,8 @@ final class AddToCartInitial extends AddToCartState {}
 
 final class AddToCartLoading extends AddToCartState {}
 
-final class AddToCartSuccess extends AddToCartState 
-{
-  final AddToCartModel addToCartModel;
+final class AddToCartSuccess extends AddToCartState {
+  final String addToCartModel;
   const AddToCartSuccess(this.addToCartModel);
 }
 

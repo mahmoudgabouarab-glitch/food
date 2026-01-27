@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/spacing.dart';
 import 'package:food/core/widgets/custom_btn_nav_bar.dart';
+import 'package:food/features/home/data/model/cart/add_to_cart_request.dart';
 import 'package:food/features/home/data/model/products_model/products_model.dart';
 import 'package:food/features/home/presentation/view/widgets/details/add_to_cart_listener.dart';
 import 'package:food/features/home/presentation/view/widgets/details/details_slider.dart';
@@ -24,13 +25,15 @@ class DetailsBody extends StatelessWidget {
         text: 'Add To Cart',
         ontap: () {
           context.read<AddToCartCubit>().addToCart(
-            productid: products.id,
-            quantity: 1,
-            spicy: spicy,
-            toppings: context.read<ToppingsCubit>().selectedToppingIds,
-            sideoptions: context
-                .read<SideOptionsCubit>()
-                .selectedsideOptionsIds,
+            AddToCartItem(
+              productId: products.id,
+              quantity: 1,
+              spicy: spicy,
+              toppings: context.read<ToppingsCubit>().selectedToppingIds,
+              sideOptions: context
+                  .read<SideOptionsCubit>()
+                  .selectedsideOptionsIds,
+            ),
           );
         },
         title: '\$54.1',

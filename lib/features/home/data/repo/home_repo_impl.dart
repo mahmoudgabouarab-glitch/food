@@ -2,7 +2,9 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:food/core/errors/failure.dart';
 import 'package:food/core/network/api_service.dart';
-import 'package:food/features/home/data/model/add_to_cart_model.dart';
+import 'package:food/features/home/data/model/cart/add_to_cart_request.dart';
+import 'package:food/features/home/data/model/cart/add_to_cart_response.dart';
+import 'package:food/features/cart/data/model/get_cart_model/get_cart_response.dart';
 import 'package:food/features/home/data/model/category_model/category_model.dart';
 import 'package:food/features/home/data/model/details_model/side_options_model.dart';
 import 'package:food/features/home/data/model/details_model/toppings_model.dart';
@@ -73,31 +75,33 @@ class HomeRepoImpl implements HomeRepo {
     }
   }
 
+  //getCart
   @override
-  Future<Either<Failure, AddToCartModel>> postAddToCart({
-    required int productid,
-    required int quantity,
-    required num spicy,
-    required List<int> toppings,
-    required List<int> sideoptions,
-  }) async {
+  Future<Either<Failure, GetCartResponse>> getCart() async {
     try {
-      var data = await _api.post(
-        endpoint: "cart/add",
-        data: {
-          "items": [
-            {
-              "product_id": productid,
-              "quantity": quantity,
-              "spicy": spicy,
-              "toppings": toppings,
-              "side_options": sideoptions,
-            },
-          ],
-        },
-      );
-      final user = AddToCartModel.fromJson(data);
+      var data = await _api.get(endpoint: "cart");
+      final user = GetCartResponse.fromJson(data);
       return Right(user);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServiseFailure.fromdioException(e));
+      }
+      return Left(ServiseFailure(e.toString()));
+    }
+  }
+
+  //postAddToCart
+  @override
+  Future<Either<Failure, AddToCartResponse>> postAddToCart(
+    AddToCartRequest request,
+  ) async {
+    try {
+      final data = await _api.post(
+        endpoint: "cart/add",
+        data: request.toJson(),
+      );
+
+      return Right(AddToCartResponse.fromJson(data));
     } catch (e) {
       if (e is DioException) {
         return Left(ServiseFailure.fromdioException(e));

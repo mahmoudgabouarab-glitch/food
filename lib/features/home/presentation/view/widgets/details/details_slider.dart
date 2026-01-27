@@ -8,7 +8,11 @@ import 'package:food/features/home/data/model/products_model/products_model.dart
 class DetailsSlider extends StatefulWidget {
   final ListOfProducts products;
   final ValueChanged<double> onChanged;
-  const DetailsSlider({super.key, required this.products, required this.onChanged});
+  const DetailsSlider({
+    super.key,
+    required this.products,
+    required this.onChanged,
+  });
 
   @override
   State<DetailsSlider> createState() => _DetailsSliderState();
