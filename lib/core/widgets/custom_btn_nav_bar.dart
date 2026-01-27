@@ -4,14 +4,16 @@ import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/styles.dart';
 
 class CustomBtnNavBar extends StatelessWidget {
-  final String text;
-  final void Function() ontap;
+  final Widget? child;
+  final String? text;
+  final void Function()? ontap;
   final String title;
   const CustomBtnNavBar({
     super.key,
-    required this.text,
+    this.text,
     required this.ontap,
     required this.title,
+    this.child,
   });
 
   @override
@@ -35,10 +37,12 @@ class CustomBtnNavBar extends StatelessWidget {
             ),
             onPressed: ontap,
             color: AppColor.btn,
-            child: Text(
-              text,
-              style: Styles.s16_500.copyWith(color: Colors.white),
-            ),
+            child:
+                child ??
+                Text(
+                  text ?? "",
+                  style: Styles.s16_500.copyWith(color: Colors.white),
+                ),
           ),
         ],
       ),
