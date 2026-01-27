@@ -5,7 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/spacing.dart';
 import 'package:food/features/home/data/model/products_model/products_model.dart';
-import 'package:food/features/home/presentation/view_model/details_cubit/slider_cubit.dart';
+import 'package:food/features/home/presentation/view_model/details_cubit/detsils_cubit/details_cubit.dart';
+import 'package:food/features/home/presentation/view_model/details_cubit/detsils_cubit/details_state.dart';
 
 class DetailsSlider extends StatelessWidget {
   final ListOfProducts products;
@@ -68,8 +69,7 @@ class DetailsSlider extends StatelessWidget {
 }
 
 Widget _slider() {
-  return BlocBuilder<SpicyCubit, double>(
-    buildWhen: (p, c) => p != c,
+  return BlocBuilder<DetailsCubit, DetailsState>(
     builder: (context, state) {
       return Slider(
         activeColor: AppColor.primary,
@@ -79,9 +79,9 @@ Widget _slider() {
         max: 1.0,
         divisions: 9,
         padding: EdgeInsets.zero,
-        value: state,
+        value: state.spicy,
         onChanged: (val) {
-          context.read<SpicyCubit>().changeSpicy(val);
+          context.read<DetailsCubit>().changeSpicy(val);
         },
       );
     },

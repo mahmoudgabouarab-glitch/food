@@ -4,43 +4,43 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/widgets/custom_loading.dart';
-import 'package:food/features/home/presentation/view_model/details_cubit/toppings_cubit/toppings_cubit.dart';
+import 'package:food/features/home/presentation/view_model/details_cubit/detsils_cubit/details_cubit.dart';
+import 'package:food/features/home/presentation/view_model/details_cubit/detsils_cubit/details_state.dart';
 
 class ToppingListView extends StatelessWidget {
   const ToppingListView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ToppingsCubit, ToppingsState>(
+    return BlocBuilder<DetailsCubit, DetailsState>(
       builder: (context, state) {
-        switch (state) {
-          case ToppingsInitial():
-            break;
-          case ToppingsLoading():
-            return const CustomLoading();
-          case ToppingsSuccess():
-            return _toppingList(state, context);
-          case ToppingsFailure():
-            break;
+        if (state.isLoading == true) {
+          return const CustomLoading();
         }
-        return const SizedBox.shrink();
+        if (state.toppingsModel == null) {
+          return const SizedBox.shrink();
+        }
+        return _toppingList(state, context);
       },
     );
   }
 }
 
-Widget _toppingList(ToppingsSuccess state, BuildContext context) {
+Widget _toppingList(DetailsState state, BuildContext context) {
+  final toppings = state.toppingsModel!.data;
+
   return SingleChildScrollView(
     scrollDirection: Axis.horizontal,
     child: Row(
-      children: List.generate(state.toppingsModel.data.length, (index) {
-        final cubit = state.toppingsModel.data[index];
-        final isSelected = state.selectedIndexes.contains(index);
+      children: List.generate(toppings.length, (index) {
+        final topping = toppings[index];
+        final isSelected = state.selectedtoppings.contains(index);
+
         return Padding(
           padding: const EdgeInsets.only(right: 8),
           child: GestureDetector(
             onTap: () {
-              context.read<ToppingsCubit>().selectToppings(index);
+              context.read<DetailsCubit>().selectTopping(index);
             },
             child: Container(
               padding: const EdgeInsets.all(5),
@@ -50,21 +50,21 @@ Widget _toppingList(ToppingsSuccess state, BuildContext context) {
                 gradient: isSelected
                     ? const LinearGradient(
                         colors: AppColor.linearCATE2,
-                        begin: AlignmentGeometry.topCenter,
-                        end: AlignmentGeometry.bottomCenter,
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
                       )
                     : const LinearGradient(
                         colors: AppColor.linearCATE,
-                        begin: AlignmentGeometry.topCenter,
-                        end: AlignmentGeometry.bottomCenter,
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
                       ),
                 borderRadius: BorderRadius.circular(20.r),
               ),
               child: Column(
                 children: [
-                  CachedNetworkImage(imageUrl: cubit.image, height: 55.h),
+                  CachedNetworkImage(imageUrl: topping.image, height: 55.h),
                   const Spacer(),
-                  Text(cubit.name),
+                  Text(topping.name),
                 ],
               ),
             ),

@@ -5,9 +5,7 @@ import 'package:food/core/widgets/custom_btn_nav_bar.dart';
 import 'package:food/features/home/data/model/cart/add_to_cart_request.dart';
 import 'package:food/features/home/data/model/products_model/products_model.dart';
 import 'package:food/features/home/presentation/view_model/add_to_cart_cubit/add_to_cart_cubit.dart';
-import 'package:food/features/home/presentation/view_model/details_cubit/side_options_cubit/side_options_cubit.dart';
-import 'package:food/features/home/presentation/view_model/details_cubit/slider_cubit.dart';
-import 'package:food/features/home/presentation/view_model/details_cubit/toppings_cubit/toppings_cubit.dart';
+import 'package:food/features/home/presentation/view_model/details_cubit/detsils_cubit/details_cubit.dart';
 
 class DetailsActions extends StatelessWidget {
   final ListOfProducts products;
@@ -21,11 +19,9 @@ class DetailsActions extends StatelessWidget {
           AddToCartItem(
             productId: products.id,
             quantity: 1,
-            spicy: context.read<SpicyCubit>().state,
-            toppings: context.read<ToppingsCubit>().selectedToppingIds,
-            sideOptions: context
-                .read<SideOptionsCubit>()
-                .selectedsideOptionsIds,
+            spicy: context.read<DetailsCubit>().state.spicy,
+            toppings: context.read<DetailsCubit>().selectedToppingIds,
+            sideOptions: context.read<DetailsCubit>().selectedSideOptionIds,
           ),
         );
       },

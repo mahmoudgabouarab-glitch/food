@@ -4,43 +4,43 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/core/widgets/custom_loading.dart';
-import 'package:food/features/home/presentation/view_model/details_cubit/side_options_cubit/side_options_cubit.dart';
+import 'package:food/features/home/presentation/view_model/details_cubit/detsils_cubit/details_cubit.dart';
+import 'package:food/features/home/presentation/view_model/details_cubit/detsils_cubit/details_state.dart';
 
 class SideOptionsListView extends StatelessWidget {
   const SideOptionsListView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SideOptionsCubit, SideOptionsState>(
+    return BlocBuilder<DetailsCubit, DetailsState>(
       builder: (context, state) {
-        switch (state) {
-          case SideOptionsInitial():
-            break;
-          case SideOptionsLoading():
-            return const CustomLoading();
-          case SideOptionsSuccess():
-            return _sideOptionsList(state, context);
-          case SideOptionsFailure():
-            break;
+        if (state.isLoading) {
+          return const CustomLoading();
         }
-        return const SizedBox.shrink();
+        if (state.sideOptionsModel == null) {
+          return const SizedBox.shrink();
+        }
+        return _sideOptionsList(state, context);
       },
     );
   }
 }
 
-Widget _sideOptionsList(SideOptionsSuccess state, BuildContext context) {
+Widget _sideOptionsList(DetailsState state, BuildContext context) {
+  final sideOptions = state.sideOptionsModel!.data;
+
   return SingleChildScrollView(
     scrollDirection: Axis.horizontal,
     child: Row(
-      children: List.generate(state.sideOptionsModel.data.length, (index) {
-        final cubit = state.sideOptionsModel.data[index];
-        final isSelected = state.selectedIndexes.contains(index);
+      children: List.generate(sideOptions.length, (index) {
+        final option = sideOptions[index];
+        final isSelected = state.selectedsideOptions.contains(index);
+
         return Padding(
           padding: const EdgeInsets.only(right: 8),
           child: GestureDetector(
             onTap: () {
-              context.read<SideOptionsCubit>().selectSideOptions(index);
+              context.read<DetailsCubit>().selectSideOption(index);
             },
             child: Container(
               padding: const EdgeInsets.all(5),
@@ -50,21 +50,21 @@ Widget _sideOptionsList(SideOptionsSuccess state, BuildContext context) {
                 gradient: isSelected
                     ? const LinearGradient(
                         colors: AppColor.linearCATE2,
-                        begin: AlignmentGeometry.topCenter,
-                        end: AlignmentGeometry.bottomCenter,
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
                       )
                     : const LinearGradient(
                         colors: AppColor.linearCATE,
-                        begin: AlignmentGeometry.topCenter,
-                        end: AlignmentGeometry.bottomCenter,
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
                       ),
                 borderRadius: BorderRadius.circular(20.r),
               ),
               child: Column(
                 children: [
-                  CachedNetworkImage(imageUrl: cubit.image, height: 55.h),
+                  CachedNetworkImage(imageUrl: option.image, height: 55.h),
                   const Spacer(),
-                  Text(cubit.name),
+                  Text(option.name),
                 ],
               ),
             ),

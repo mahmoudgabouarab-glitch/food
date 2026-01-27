@@ -5,9 +5,7 @@ import 'package:food/features/home/data/model/products_model/products_model.dart
 import 'package:food/features/home/data/repo/home_repo_impl.dart';
 import 'package:food/features/home/presentation/view/widgets/details/details_body.dart';
 import 'package:food/features/home/presentation/view_model/add_to_cart_cubit/add_to_cart_cubit.dart';
-import 'package:food/features/home/presentation/view_model/details_cubit/side_options_cubit/side_options_cubit.dart';
-import 'package:food/features/home/presentation/view_model/details_cubit/slider_cubit.dart';
-import 'package:food/features/home/presentation/view_model/details_cubit/toppings_cubit/toppings_cubit.dart';
+import 'package:food/features/home/presentation/view_model/details_cubit/detsils_cubit/details_cubit.dart';
 
 class DetailsView extends StatelessWidget {
   final ListOfProducts products;
@@ -18,17 +16,12 @@ class DetailsView extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) =>
-              ToppingsCubit(getIt<HomeRepoImpl>())..getToppings(),
-        ),
-        BlocProvider(
-          create: (context) =>
-              SideOptionsCubit(getIt<HomeRepoImpl>())..getSideOptions(),
-        ),
-        BlocProvider(
           create: (context) => AddToCartCubit(getIt<HomeRepoImpl>()),
         ),
-        BlocProvider(create: (context) => SpicyCubit()),
+        BlocProvider(
+          create: (context) =>
+              DetailsCubit(getIt<HomeRepoImpl>())..getDetails(),
+        ),
       ],
       child: DetailsBody(products: products),
     );
