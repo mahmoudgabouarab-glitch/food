@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:food/core/errors/failure.dart';
 import 'package:food/core/network/api_service.dart';
 import 'package:food/features/home/data/model/category_model/category_model.dart';
+import 'package:food/features/home/data/model/details_model/side_options_model.dart';
 import 'package:food/features/home/data/model/details_model/toppings_model.dart';
 import 'package:food/features/home/data/model/products_model/products_model.dart';
 import 'package:food/features/home/data/repo/home_repo.dart';
@@ -57,10 +58,10 @@ class HomeRepoImpl implements HomeRepo {
   }
   //getSideOptions
   @override
-  Future<Either<Failure, ToppingsModel>> getSideOptions() async {
+  Future<Either<Failure, SideOptionsModel>> getSideOptions() async {
     try {
       var data = await _api.get(endpoint: "side-options");
-      final user = ToppingsModel.fromJson(data);
+      final user = SideOptionsModel.fromJson(data);
       return Right(user);
     } catch (e) {
       if (e is DioException) {

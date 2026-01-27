@@ -1,24 +1,27 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food/features/home/presentation/view_model/details_cubit/details_cubit.dart';
+import 'package:food/core/widgets/custom_loading.dart';
+import 'package:food/features/home/presentation/view_model/details_cubit/side_options_cubit/side_options_cubit.dart';
 
 class SideOptionsListView extends StatelessWidget {
   const SideOptionsListView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DetailsCubit, DetailsState>(
+    return BlocBuilder<SideOptionsCubit, SideOptionsState>(
       builder: (context, state) {
-        if (state.isLoading) {
-          return Center(
-            child: CupertinoActivityIndicator(color: AppColor.btn, radius: 6.r),
-          );
-        } else if (state.sideOptions != null) {
-          return _sideOptionsList(state);
+        switch (state) {
+          case SideOptionsInitial():
+            break;
+          case SideOptionsLoading():
+            return const CustomLoading();
+          case SideOptionsSuccess():
+            return _sideOptionsList(state);
+          case SideOptionsFailure():
+            break;
         }
         return const SizedBox.shrink();
       },
@@ -26,12 +29,12 @@ class SideOptionsListView extends StatelessWidget {
   }
 }
 
-Widget _sideOptionsList(DetailsState state) {
+Widget _sideOptionsList(SideOptionsSuccess state) {
   return SingleChildScrollView(
     scrollDirection: Axis.horizontal,
     child: Row(
-      children: List.generate(state.sideOptions!.data.length, (index) {
-        final cubit = state.sideOptions!.data[index];
+      children: List.generate(state.sideOptionsModel.data.length, (index) {
+        final cubit = state.sideOptionsModel.data[index];
         return Padding(
           padding: const EdgeInsets.only(right: 8),
           child: InkWell(

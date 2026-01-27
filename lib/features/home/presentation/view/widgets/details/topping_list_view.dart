@@ -1,38 +1,40 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
-import 'package:food/features/home/presentation/view_model/details_cubit/details_cubit.dart';
+import 'package:food/core/widgets/custom_loading.dart';
+import 'package:food/features/home/presentation/view_model/details_cubit/toppings_cubit/toppings_cubit.dart';
 
 class ToppingListView extends StatelessWidget {
   const ToppingListView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DetailsCubit, DetailsState>(
+    return BlocBuilder<ToppingsCubit, ToppingsState>(
       builder: (context, state) {
-        if (state.isLoading) {
-          return Center(
-            child: CupertinoActivityIndicator(color: AppColor.btn, radius: 6.r),
-          );
-        } else if (state.toppings != null) {
-          return _toppingList(state);
-        } else {
-          return const SizedBox.shrink();
+        switch (state) {
+          case ToppingsInitial():
+            break;
+          case ToppingsLoading():
+            return const CustomLoading();
+          case ToppingsSuccess():
+            return _toppingList(state);
+          case ToppingsFailure():
+            break;
         }
+        return const SizedBox.shrink();
       },
     );
   }
 }
 
-Widget _toppingList(DetailsState state) {
+Widget _toppingList(ToppingsSuccess state) {
   return SingleChildScrollView(
     scrollDirection: Axis.horizontal,
     child: Row(
-      children: List.generate(state.toppings!.data.length, (index) {
-        final cubit = state.toppings!.data[index];
+      children: List.generate(state.toppingsModel.data.length, (index) {
+        final cubit = state.toppingsModel.data[index];
         return Padding(
           padding: const EdgeInsets.only(right: 8),
           child: InkWell(
