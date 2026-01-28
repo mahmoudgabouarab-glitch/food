@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/core/utils/extension.dart';
 import 'package:food/core/widgets/custom_loading.dart';
 import 'package:food/core/widgets/custom_snakbar.dart';
+import 'package:food/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:food/features/cart/presentation/view_model/remove_cart_cubit/remove_cart_cubit.dart';
 
 class RemoveListener extends StatelessWidget {
@@ -22,6 +23,7 @@ class RemoveListener extends StatelessWidget {
             );
             break;
           case RemoveCartSuccess():
+            context.read<CartCubit>().getCart();
             context.popPage();
             CustomSnackBar.show(
               context,

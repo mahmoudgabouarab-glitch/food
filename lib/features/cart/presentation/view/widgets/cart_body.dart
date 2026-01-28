@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/widgets/custom_loading.dart';
 import 'package:food/features/cart/presentation/view/widgets/cart_appbar.dart';
 import 'package:food/features/cart/presentation/view/widgets/cart_navgations_bar.dart';
@@ -25,13 +26,18 @@ class CartBody extends StatelessWidget {
             ),
             body: Padding(
               padding: EdgeInsets.only(right: 12.w, left: 12.w, top: 12.h),
-              child: ListView.builder(
-                itemCount: state.getCartResponse.data.items.length,
-                itemBuilder: (context, index) {
-                  return OneItemOfCart(
-                    item: state.getCartResponse.data.items[index],
-                  );
-                },
+              child: RefreshIndicator(
+                color: AppColor.btn,
+                displacement: 60,
+                onRefresh: () => context.read<CartCubit>().getCart(),
+                child: ListView.builder(
+                  itemCount: state.getCartResponse.data.items.length,
+                  itemBuilder: (context, index) {
+                    return OneItemOfCart(
+                      item: state.getCartResponse.data.items[index],
+                    );
+                  },
+                ),
               ),
             ),
           );

@@ -11,7 +11,7 @@ class CustomLoading extends StatelessWidget {
     return Center(
       child: CupertinoActivityIndicator(
         color: AppColor.btn,
-        radius: size ?? 6.r,
+        radius: size ?? 10.r,
       ),
     );
   }
