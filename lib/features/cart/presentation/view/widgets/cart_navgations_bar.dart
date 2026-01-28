@@ -10,10 +10,14 @@ class CartNavgationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double total = 0;
+    for (var item in item.items) {
+      total += item.price * item.quantity;
+    }
     return CustomBtnNavBar(
       text: 'Checkout',
       ontap: () => context.push(const OrderView()),
-      title: '\$${item.totalPrice}',
+      title: '\$${total.toStringAsFixed(2)}',
     );
   }
 }
