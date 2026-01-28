@@ -16,7 +16,7 @@ class DetailsState extends Equatable {
     this.selectedtoppings = const {},
     this.selectedsideOptions = const {},
     this.isLoading = false,
-    this.spicy = 0.1,
+    this.spicy = 0.5,
     this.err,
   });
   DetailsState copyWith({

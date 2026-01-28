@@ -15,24 +15,25 @@ class AddToCartListener extends StatelessWidget {
         if (state is AddToCartLoading) {
           showDialog(
             context: context,
-            builder: (context) => Center(child: CustomLoading(size: 20)),
+            barrierDismissible: false,
+            builder: (context) => const Center(child: CustomLoading(size: 20)),
           );
-        }
-
-        if (state is AddToCartSuccess) {
+        } else {
           context.popPage();
-          CustomSnackBar.show(
-            context,
-            message: state.addToCartModel,
-            type: SnackBarType.success,
-          );
-        }
-        if (state is AddToCartFailure) {
-          CustomSnackBar.show(
-            context,
-            message: state.err,
-            type: SnackBarType.error,
-          );
+          if (state is AddToCartSuccess) {
+            CustomSnackBar.show(
+              context,
+              message: state.addToCartModel,
+              type: SnackBarType.success,
+            );
+          }
+          if (state is AddToCartFailure) {
+            CustomSnackBar.show(
+              context,
+              message: state.err,
+              type: SnackBarType.error,
+            );
+          }
         }
       },
       child: const SizedBox.shrink(),

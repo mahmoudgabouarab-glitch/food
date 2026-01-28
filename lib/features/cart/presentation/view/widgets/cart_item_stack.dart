@@ -9,8 +9,8 @@ class CartItemStack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 120.h,
-      width: 120.w,
+      height: 160.h,
+      width: 160.w,
       child: Stack(
         children: [
           Positioned(
@@ -22,8 +22,8 @@ class CartItemStack extends StatelessWidget {
           Positioned(
             right: 0,
             left: 0,
-            bottom: 8.h,
-            child: CachedNetworkImage(imageUrl: imageUrl, height: 100.h),
+            bottom: 0,
+            child: CachedNetworkImage(imageUrl: imageUrl, height: 140.h),
           ),
         ],
       ),
