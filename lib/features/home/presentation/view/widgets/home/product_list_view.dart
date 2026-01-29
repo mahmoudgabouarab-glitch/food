@@ -9,6 +9,7 @@ import 'package:food/features/home/data/model/products_model/products_model.dart
 import 'package:food/features/home/presentation/view/details_view.dart';
 import 'package:food/features/home/presentation/view/widgets/home/product_description.dart';
 import 'package:food/features/home/presentation/view/widgets/home/product_item_stack.dart';
+import 'package:food/features/home/presentation/view/widgets/home/shimmer_home.dart';
 import 'package:food/features/home/presentation/view_model/cubit/search_products_cubit.dart';
 import 'package:food/features/home/presentation/view_model/products_cubit/products_cubit.dart';
 
@@ -16,14 +17,12 @@ class ProductListView extends StatelessWidget {
   const ProductListView({super.key});
 
   @override
-  @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProductsCubit, ProductsState>(
       builder: (context, productsState) {
         if (productsState is ProductsLoading) {
-          return const _LoadingSliver();
+          return const ShimmerHome();
         }
-
         if (productsState is ProductsSuccess) {
           return BlocBuilder<SearchProductsCubit, SearchProductsState>(
             builder: (context, searchState) {
@@ -31,12 +30,13 @@ class ProductListView extends StatelessWidget {
                 productsState.productsModel.data,
                 searchState,
               );
-
+              if (searchState is SearchProductsLoading) {
+                return const _LoadingSliver();
+              }
               return _ProductsGrid(products: products);
             },
           );
         }
-
         return const SliverToBoxAdapter(child: SizedBox.shrink());
       },
     );
