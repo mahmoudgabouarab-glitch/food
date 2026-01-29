@@ -64,7 +64,7 @@ class _ProductCategoryNameState extends State<ProductCategoryName> {
               ),
             );
           case CategoryFailure():
-            return Center(child: Text(state.err));
+            return SliverToBoxAdapter(child: Center(child: Text(state.err)));
         }
         return const SizedBox.shrink();
       },

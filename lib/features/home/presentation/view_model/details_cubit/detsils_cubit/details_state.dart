@@ -35,7 +35,7 @@ class DetailsState extends Equatable {
       selectedsideOptions: selectedsideOptions ?? this.selectedsideOptions,
       isLoading: isLoading ?? this.isLoading,
       spicy: spicy ?? this.spicy,
-      err: err,
+      err: err ?? this.err,
     );
   }
 

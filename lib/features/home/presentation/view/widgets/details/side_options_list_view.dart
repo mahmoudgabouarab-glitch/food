@@ -18,7 +18,7 @@ class SideOptionsListView extends StatelessWidget {
           return const DetailsShimmer();
         }
         if (state.sideOptionsModel == null) {
-          return const SizedBox.shrink();
+          return Center(child: Text(state.err!));
         }
         return _sideOptionsList(state, context);
       },

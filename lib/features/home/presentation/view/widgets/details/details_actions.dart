@@ -25,7 +25,7 @@ class DetailsActions extends StatelessWidget {
           ),
         );
       },
-      title: '\$54.1',
+      title: '\$${products.price}',
       child: Text(
         "Add to cart",
         style: Styles.s16_500.copyWith(color: Colors.white),

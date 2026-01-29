@@ -18,7 +18,7 @@ class ToppingListView extends StatelessWidget {
           return const DetailsShimmer();
         }
         if (state.toppingsModel == null) {
-          return const SizedBox.shrink();
+          return Center(child: Text(state.err!));
         }
         return _toppingList(state, context);
       },

@@ -37,6 +37,11 @@ class ProductListView extends StatelessWidget {
             },
           );
         }
+        if (productsState is ProductsFailure) {
+          return SliverToBoxAdapter(
+            child: Center(child: Text(productsState.err)),
+          );
+        }
         return const SliverToBoxAdapter(child: SizedBox.shrink());
       },
     );
