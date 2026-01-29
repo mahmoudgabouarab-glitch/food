@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food/core/widgets/custom_loading.dart';
+import 'package:food/features/home/presentation/view/widgets/details/details_shimmer.dart';
 import 'package:food/features/home/presentation/view_model/details_cubit/detsils_cubit/details_cubit.dart';
 import 'package:food/features/home/presentation/view_model/details_cubit/detsils_cubit/details_state.dart';
 
@@ -15,7 +15,7 @@ class SideOptionsListView extends StatelessWidget {
     return BlocBuilder<DetailsCubit, DetailsState>(
       builder: (context, state) {
         if (state.isLoading) {
-          return const CustomLoading();
+          return const DetailsShimmer();
         }
         if (state.sideOptionsModel == null) {
           return const SizedBox.shrink();
