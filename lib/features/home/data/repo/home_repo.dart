@@ -17,4 +17,5 @@ abstract class HomeRepo {
   Future<Either<Failure, AddToCartResponse>> postAddToCart(
     AddToCartRequest request,
   );
+  Future<Either<Failure, ProductsModel>> searchHome({required String query});
 }

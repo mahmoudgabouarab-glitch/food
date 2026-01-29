@@ -9,29 +9,49 @@ import 'package:food/features/home/data/model/products_model/products_model.dart
 import 'package:food/features/home/presentation/view/details_view.dart';
 import 'package:food/features/home/presentation/view/widgets/home/product_description.dart';
 import 'package:food/features/home/presentation/view/widgets/home/product_item_stack.dart';
+import 'package:food/features/home/presentation/view_model/cubit/search_products_cubit.dart';
 import 'package:food/features/home/presentation/view_model/products_cubit/products_cubit.dart';
 
 class ProductListView extends StatelessWidget {
   const ProductListView({super.key});
 
   @override
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProductsCubit, ProductsState>(
-      builder: (context, state) {
-        switch (state) {
-          case ProductsInitial():
-            break;
-          case ProductsLoading():
-            return const _LoadingSliver();
-          case ProductsSuccess():
-            return _ProductsGrid(products: state.productsModel.data);
-          case ProductsFailure():
-            break;
+      builder: (context, productsState) {
+        if (productsState is ProductsLoading) {
+          return const _LoadingSliver();
         }
+
+        if (productsState is ProductsSuccess) {
+          return BlocBuilder<SearchProductsCubit, SearchProductsState>(
+            builder: (context, searchState) {
+              final products = _resolveProducts(
+                productsState.productsModel.data,
+                searchState,
+              );
+
+              return _ProductsGrid(products: products);
+            },
+          );
+        }
+
         return const SliverToBoxAdapter(child: SizedBox.shrink());
       },
     );
   }
+}
+
+List<ListOfProducts> _resolveProducts(
+  List<ListOfProducts> allProducts,
+  SearchProductsState searchState,
+) {
+  if (searchState is SearchProductsSuccess) {
+    return searchState.listOfProducts.data;
+  }
+
+  return allProducts;
 }
 
 class _LoadingSliver extends StatelessWidget {

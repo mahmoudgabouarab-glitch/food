@@ -109,4 +109,24 @@ class HomeRepoImpl implements HomeRepo {
       return Left(ServiseFailure(e.toString()));
     }
   }
+
+  //search home
+  @override
+  Future<Either<Failure, ProductsModel>> searchHome({
+    required String query,
+  }) async {
+    try {
+      final data = await _api.get(
+        endpoint: "products",
+        queryParameters: {"name": query},
+      );
+
+      return Right(ProductsModel.fromJson(data));
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServiseFailure.fromdioException(e));
+      }
+      return Left(ServiseFailure(e.toString()));
+    }
+  }
 }
