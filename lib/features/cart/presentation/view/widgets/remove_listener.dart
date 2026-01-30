@@ -32,6 +32,7 @@ class RemoveListener extends StatelessWidget {
             );
             break;
           case RemoveCartFailure():
+            context.popPage();
             CustomSnackBar.show(
               context,
               message: state.errormessage,
@@ -39,6 +40,7 @@ class RemoveListener extends StatelessWidget {
             );
             break;
           default:
+            break;
         }
       },
       child: const SizedBox.shrink(),

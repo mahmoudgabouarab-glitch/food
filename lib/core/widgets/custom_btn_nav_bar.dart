@@ -8,18 +8,23 @@ class CustomBtnNavBar extends StatelessWidget {
   final String? text;
   final void Function()? ontap;
   final String title;
+  final double? horizontal;
   const CustomBtnNavBar({
     super.key,
     this.text,
     required this.ontap,
     required this.title,
     this.child,
+    this.horizontal,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 26.w, vertical: 28.h),
+      padding: EdgeInsets.symmetric(
+        horizontal: horizontal ?? 26.w,
+        vertical: 28.h,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

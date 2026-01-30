@@ -82,8 +82,8 @@ class _ProductsGrid extends StatelessWidget {
       sliver: SliverGrid(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          mainAxisSpacing: 15.h,
-          crossAxisSpacing: 10.w,
+          mainAxisSpacing: 8.h,
+          crossAxisSpacing: 8.w,
           childAspectRatio: 1.w / 1.2.h,
         ),
         delegate: SliverChildBuilderDelegate(
@@ -107,7 +107,7 @@ class _ProductItem extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: AppColor.primary,
-          borderRadius: BorderRadius.circular(20.r),
+          borderRadius: BorderRadius.circular(10.r),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
