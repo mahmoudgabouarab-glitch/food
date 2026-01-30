@@ -32,25 +32,25 @@ class ProfileForm extends StatelessWidget {
       ],
     );
   }
+}
 
-  Widget _buildField(
-    String label,
-    TextEditingController controller, {
-    List<TextInputFormatter>? inputFormatters,
-  }) {
-    return CustomTextFormFiled(
-      inputFormatters: inputFormatters,
-      controller: controller,
-      textstyle: const TextStyle(color: Colors.white),
-      fillcolor: AppColor.surface,
-      labelText: label,
-      labelStyle: const TextStyle(
-        color: AppColor.primary,
-        fontWeight: FontWeight.bold,
-        fontSize: 15,
-      ),
-    );
-  }
+Widget _buildField(
+  String label,
+  TextEditingController controller, {
+  List<TextInputFormatter>? inputFormatters,
+}) {
+  return CustomTextFormFiled(
+    inputFormatters: inputFormatters,
+    controller: controller,
+    textstyle: const TextStyle(color: Colors.white),
+    fillcolor: AppColor.surface,
+    labelText: label,
+    labelStyle: const TextStyle(
+      color: AppColor.primary,
+      fontWeight: FontWeight.bold,
+      fontSize: 15,
+    ),
+  );
 }
 
 // format card number

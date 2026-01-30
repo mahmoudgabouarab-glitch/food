@@ -84,11 +84,10 @@ class _ProductsGrid extends StatelessWidget {
           crossAxisCount: 2,
           mainAxisSpacing: 8.h,
           crossAxisSpacing: 8.w,
-          childAspectRatio: 1.w / 1.25.h,
+          childAspectRatio: 0.8.h,
         ),
         delegate: SliverChildBuilderDelegate(
-          (context, index) =>
-              _ProductItem(product: products[index]),
+          (context, index) => _ProductItem(product: products[index]),
           childCount: products.length,
         ),
       ),
@@ -97,7 +96,6 @@ class _ProductsGrid extends StatelessWidget {
 }
 
 class _ProductItem extends StatelessWidget {
-
   final dynamic product;
 
   const _ProductItem({required this.product});
@@ -106,18 +104,20 @@ class _ProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => context.push(DetailsView(products: product)),
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppColor.primary,
-          borderRadius: BorderRadius.circular(10.r),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            spaceH(5),
-            ProductItemStack(oneProduct: product),
-            ProductDescription(oneProduct: product),
-          ],
+      child: Center(
+        child: Container(
+          decoration: BoxDecoration(
+            color: AppColor.primary,
+            borderRadius: BorderRadius.circular(10.r),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              spaceH(5),
+              ProductItemStack(oneProduct: product),
+              ProductDescription(oneProduct: product),
+            ],
+          ),
         ),
       ),
     );

@@ -39,8 +39,15 @@ class ProductDescription extends StatelessWidget {
           SizedBox(height: 9.h),
           Row(
             children: [
-              Icon(Icons.star_rate_rounded, color: Colors.yellow[800]),
-              Text(oneProduct.rating),
+              Icon(Icons.star_rate_rounded, color: Colors.yellow),
+              Text(
+                oneProduct.rating,
+                style: TextStyle(
+                  fontSize: 12.sp,
+                  color: Colors.grey[200],
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               const Spacer(),
               _favProducts(oneProduct),
             ],
@@ -78,10 +85,20 @@ Widget _favProducts(ListOfProducts product) {
         onTap: () => cubit.postFavProducts(product.id),
         child: state is FavProductsLoading && state.productId == product.id
             ? const CustomLoading(color: Colors.white)
-            : Icon(
-                isFav ? Icons.favorite : Icons.favorite_border,
-                color: isFav ? AppColor.error : Colors.black.withOpacity(0.6),
-                size: 30.sp,
+            : Container(
+                width: 30.w,
+                height: 30.h,
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.3),
+                  shape: BoxShape.circle,
+                ),
+                child: Center(
+                  child: Icon(
+                    isFav ? Icons.favorite : Icons.favorite_border,
+                    color: AppColor.textPrimary,
+                    size: 20.sp,
+                  ),
+                ),
               ),
       );
     },
