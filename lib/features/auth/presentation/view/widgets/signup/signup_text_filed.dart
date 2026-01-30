@@ -16,6 +16,7 @@ class SignupTextFiled extends StatelessWidget {
         children: [
           spaceH(15),
           CustomTextFormFiled(
+            prefixIcon: const Icon(Icons.person, color: Colors.grey),
             hint: 'Name',
             controller: cubit.nameController,
             validator: (val) {
@@ -27,6 +28,7 @@ class SignupTextFiled extends StatelessWidget {
           ),
           spaceH(16),
           CustomTextFormFiled(
+            prefixIcon: const Icon(Icons.email_outlined, color: Colors.grey),
             hint: 'Email',
             controller: cubit.emailController,
             validator: (val) {
@@ -38,6 +40,7 @@ class SignupTextFiled extends StatelessWidget {
           ),
           spaceH(16),
           CustomTextFormFiled(
+            prefixIcon: const Icon(Icons.phone, color: Colors.grey),
             hint: 'phone',
             controller: cubit.phoneController,
             validator: (val) {
@@ -49,6 +52,7 @@ class SignupTextFiled extends StatelessWidget {
           ),
           spaceH(16),
           CustomTextFormFiled(
+            prefixIcon: const Icon(Icons.lock, color: Colors.grey),
             hint: 'Password',
             controller: context.read<SignupCubit>().passwordController,
             obscureText: true,

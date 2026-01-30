@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food/core/utils/assets.dart';
 import 'package:food/core/utils/function.dart';
 import 'package:food/features/auth/presentation/view/login_view.dart';
 import 'package:food/features/main_layout.dart';
@@ -59,7 +60,7 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
           opacity: _logoAnimation,
           child: ScaleTransition(
             scale: _logoAnimation,
-            child: Image.asset("assets/image/logoapp.png", height: 200.h),
+            child: Image.asset(Assets.logo, height: 200.h),
           ),
         ),
       ),

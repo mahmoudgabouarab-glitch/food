@@ -69,6 +69,7 @@ class _CustomTextFormFiledState extends State<CustomTextFormFiled> {
         hintStyle: const TextStyle(color: Colors.grey),
         suffixIcon: widget.obscureText
             ? IconButton(
+                color: AppColor.primary.withOpacity(0.7),
                 icon: Icon(_obscure ? Icons.visibility_off : Icons.visibility),
                 onPressed: () => setState(() => _obscure = !_obscure),
               )

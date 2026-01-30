@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/extension.dart';
 import 'package:food/core/utils/spacing.dart';
@@ -33,8 +31,6 @@ class LoginTextButtonSingup extends StatelessWidget {
             ),
           ],
         ),
-        spaceH(40),
-        Center(child: SvgPicture.asset("assets/svg/Hungry_.svg", height: 20.h)),
       ],
     );
   }

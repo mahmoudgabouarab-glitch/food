@@ -4,7 +4,6 @@ import 'package:food/features/auth/presentation/view/widgets/signup/signup_actio
 import 'package:food/features/auth/presentation/view/widgets/signup/signup_bloc.dart';
 import 'package:food/features/auth/presentation/view/widgets/signup/signup_text_botton_login.dart';
 import 'package:food/features/auth/presentation/view/widgets/signup/signup_text_filed.dart';
-import 'package:food/features/auth/presentation/view/widgets/signup/signup_title.dart';
 import 'package:food/features/auth/presentation/view/widgets/signup/upload_pic_profile.dart';
 
 class SignupBody extends StatelessWidget {
@@ -20,7 +19,6 @@ class SignupBody extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SignupTitle(),
               const UploadPicProfile(),
               const SignupTextFiled(),
               const SignupActions(),

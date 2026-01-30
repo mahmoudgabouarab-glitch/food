@@ -14,8 +14,9 @@ class LoginTextFiled extends StatelessWidget {
       key: cubit.loginKey,
       child: Column(
         children: [
-          spaceH(100),
+          spaceH(30),
           CustomTextFormFiled(
+            prefixIcon: const Icon(Icons.email_outlined, color: Colors.grey),
             hint: 'Email',
             keybordtype: TextInputType.emailAddress,
             controller: cubit.emailController,
@@ -28,6 +29,7 @@ class LoginTextFiled extends StatelessWidget {
           ),
           spaceH(16),
           CustomTextFormFiled(
+            prefixIcon: const Icon(Icons.lock, color: Colors.grey),
             keybordtype: TextInputType.visiblePassword,
             controller: cubit.passwordController,
             hint: 'Password',
