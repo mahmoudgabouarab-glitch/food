@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:food/features/order/presentation/view/widgets/order_body.dart';
 
 class OrderView extends StatelessWidget {
-  const OrderView({super.key});
+  final double totalPrice;
+  const OrderView({super.key, required this.totalPrice});
 
   @override
   Widget build(BuildContext context) {
-    return const OrderBody();
+    return OrderBody(totalPrice: totalPrice);
   }
 }

@@ -17,10 +17,10 @@ class OneItemOfCart extends StatelessWidget {
     final cartCubit = context.read<RemoveCartCubit>();
     final topppings = item.toppings.isEmpty
         ? ""
-        : item.toppings.map((e) => e.name).join(', ');
+        : item.toppings.map((e) => e.name).join(' | ');
     final sideOptions = item.sideOptions.isEmpty
         ? ""
-        : item.sideOptions.map((e) => e.name).join(', ');
+        : item.sideOptions.map((e) => e.name).join(' | ');
     return Card(
       child: Padding(
         padding: EdgeInsets.all(10),

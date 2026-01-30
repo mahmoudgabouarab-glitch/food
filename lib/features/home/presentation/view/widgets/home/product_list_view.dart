@@ -84,10 +84,11 @@ class _ProductsGrid extends StatelessWidget {
           crossAxisCount: 2,
           mainAxisSpacing: 8.h,
           crossAxisSpacing: 8.w,
-          childAspectRatio: 1.w / 1.2.h,
+          childAspectRatio: 1.w / 1.25.h,
         ),
         delegate: SliverChildBuilderDelegate(
-          (context, index) => _ProductItem(product: products[index]),
+          (context, index) =>
+              _ProductItem(product: products[index], index: index),
           childCount: products.length,
         ),
       ),
@@ -96,9 +97,10 @@ class _ProductsGrid extends StatelessWidget {
 }
 
 class _ProductItem extends StatelessWidget {
+  final int index;
   final dynamic product;
 
-  const _ProductItem({required this.product});
+  const _ProductItem({required this.product, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -114,7 +116,7 @@ class _ProductItem extends StatelessWidget {
           children: [
             spaceH(5),
             ProductItemStack(oneProduct: product),
-            ProductDescription(oneProduct: product),
+            ProductDescription(oneProduct: product, index: index),
           ],
         ),
       ),

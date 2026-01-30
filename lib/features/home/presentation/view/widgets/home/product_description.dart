@@ -3,10 +3,21 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/spacing.dart';
 import 'package:food/features/home/data/model/products_model/products_model.dart';
 
-class ProductDescription extends StatelessWidget {
+class ProductDescription extends StatefulWidget {
+  final int index;
   final ListOfProducts oneProduct;
-  const ProductDescription({super.key, required this.oneProduct});
+  const ProductDescription({
+    super.key,
+    required this.oneProduct,
+    required this.index,
+  });
 
+  @override
+  State<ProductDescription> createState() => _ProductDescriptionState();
+}
+
+class _ProductDescriptionState extends State<ProductDescription> {
+  int? counter;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -15,8 +26,8 @@ class ProductDescription extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            oneProduct.name,
-            maxLines: 1,
+            widget.oneProduct.name,
+            maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
               fontSize: 14.sp,
@@ -26,25 +37,46 @@ class ProductDescription extends StatelessWidget {
           ),
           spaceH(4),
           Text(
-            oneProduct.description,
+            widget.oneProduct.description,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontSize: 12.sp, color: Colors.grey[50]),
+            style: TextStyle(fontSize: 12.sp, color: Colors.grey[200]),
           ),
           SizedBox(height: 9.h),
           Row(
             children: [
               Icon(Icons.star_rate_rounded, color: Colors.yellow[800]),
-              Text(oneProduct.rating),
+              Text(widget.oneProduct.rating),
               const Spacer(),
-              Text(
-                "\$${oneProduct.price}",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 12.sp,
-                  color: Colors.black,
-                ),
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    if (counter == widget.index) {
+                      counter = null;
+                      print("not vaf");
+                    } else {
+                      counter = widget.index;
+
+                      print(' vaf');
+                    }
+                  });
+                },
+                child: counter == widget.index
+                    ? Icon(Icons.favorite, color: Colors.red, size: 30.sp)
+                    : Icon(
+                        Icons.favorite_border,
+                        color: Colors.black.withOpacity(0.7),
+                        size: 30.sp,
+                      ),
               ),
+              // Text(
+              //   "\$${oneProduct.price}",
+              //   style: TextStyle(
+              //     fontWeight: FontWeight.bold,
+              //     fontSize: 12.sp,
+              //     color: Colors.black,
+              //   ),
+              // ),
             ],
           ),
         ],

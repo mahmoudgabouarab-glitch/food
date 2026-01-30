@@ -18,7 +18,7 @@ class CartAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: CustomBtnNavBar(
         horizontal: 0,
         text: 'Checkout',
-        ontap: () => context.push(const OrderView()),
+        ontap: () => context.push(OrderView(totalPrice: total)),
         title: '  \$$total',
       ),
       centerTitle: false,

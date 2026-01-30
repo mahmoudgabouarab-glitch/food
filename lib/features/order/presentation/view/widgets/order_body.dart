@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food/core/utils/spacing.dart';
 import 'package:food/core/widgets/custom_btn_nav_bar.dart';
 
 class OrderBody extends StatelessWidget {
-  const OrderBody({super.key});
+  final double totalPrice;
+  const OrderBody({super.key, required this.totalPrice});
 
   @override
   Widget build(BuildContext context) {
@@ -24,38 +26,20 @@ class OrderBody extends StatelessWidget {
           child: Column(
             crossAxisAlignment: .start,
             children: [
-              SizedBox(height: 18.h),
+              spaceH(18),
               const Text("Order summary"),
-              SizedBox(height: 20.h),
-              const Row(
-                mainAxisAlignment: .spaceBetween,
-                children: [Text("data"), Text("data")],
-              ),
-              SizedBox(height: 10.h),
-              const Row(
-                mainAxisAlignment: .spaceBetween,
-                children: [Text("data"), Text("data")],
-              ),
-              SizedBox(height: 10.h),
-              const Row(
-                mainAxisAlignment: .spaceBetween,
-                children: [Text("data"), Text("data")],
-              ),
-              SizedBox(height: 10.h),
+              spaceH(15),
+              _buildRowOrder("Order", "\$$totalPrice"),
+              _buildRowOrder("Tax", "\$15"),
+              _buildRowOrder("Delivery", "\$5"),
               const Divider(),
-              SizedBox(height: 33.h),
-              const Row(
-                mainAxisAlignment: .spaceBetween,
-                children: [Text("data"), Text("data")],
-              ),
-              SizedBox(height: 10.h),
-              const Row(
-                mainAxisAlignment: .spaceBetween,
-                children: [Text("data"), Text("data")],
-              ),
-              SizedBox(height: 67.h),
+              spaceH(20),
+              _buildRowOrder("Total", "\$165"),
+              spaceH(10),
+              _buildRowOrder("Estimated delivery time", "15 - 30 mins"),
+              spaceH(40),
               const Text("Payment methods"),
-              SizedBox(height: 22.h),
+              spaceH(20),
               Card(
                 child: ListTile(
                   leading: Image.asset(
@@ -86,4 +70,14 @@ class OrderBody extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget _buildRowOrder(String title, String value) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 5.h),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [Text(title), Text(value)],
+    ),
+  );
 }
