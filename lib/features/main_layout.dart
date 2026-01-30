@@ -9,7 +9,7 @@ import 'package:food/features/cart/presentation/view/cart_view.dart';
 import 'package:food/features/home/data/repo/home_repo_impl.dart';
 import 'package:food/features/home/presentation/view/home_view.dart';
 import 'package:food/features/home/presentation/view_model/category_cubit/category_cubit.dart';
-import 'package:food/features/home/presentation/view_model/cubit/search_products_cubit.dart';
+import 'package:food/features/home/presentation/view_model/search_cubit/search_products_cubit.dart';
 import 'package:food/features/home/presentation/view_model/products_cubit/products_cubit.dart';
 import 'package:food/features/order_history/presentation/view/order_history_view.dart';
 import 'package:food/features/auth/presentation/view/profile_view.dart';

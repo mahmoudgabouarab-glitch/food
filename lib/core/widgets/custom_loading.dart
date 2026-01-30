@@ -4,13 +4,14 @@ import 'package:food/core/utils/app_color.dart';
 
 class CustomLoading extends StatelessWidget {
   final double? size;
-  const CustomLoading({super.key, this.size});
+  final Color? color;
+  const CustomLoading({super.key, this.size, this.color});
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: CupertinoActivityIndicator(
-        color: AppColor.btn,
+        color: color ?? AppColor.btn,
         radius: size ?? 10.r,
       ),
     );

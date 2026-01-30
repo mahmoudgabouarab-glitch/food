@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/widgets/custom_text_filed.dart';
-import 'package:food/features/home/presentation/view_model/cubit/search_products_cubit.dart';
+import 'package:food/features/home/presentation/view_model/search_cubit/search_products_cubit.dart';
 
 class HomeSearch extends StatelessWidget {
   const HomeSearch({super.key});

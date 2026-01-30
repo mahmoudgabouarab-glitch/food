@@ -10,7 +10,7 @@ import 'package:food/features/home/presentation/view/details_view.dart';
 import 'package:food/features/home/presentation/view/widgets/home/product_description.dart';
 import 'package:food/features/home/presentation/view/widgets/home/product_item_stack.dart';
 import 'package:food/features/home/presentation/view/widgets/home/shimmer_home.dart';
-import 'package:food/features/home/presentation/view_model/cubit/search_products_cubit.dart';
+import 'package:food/features/home/presentation/view_model/search_cubit/search_products_cubit.dart';
 import 'package:food/features/home/presentation/view_model/products_cubit/products_cubit.dart';
 
 class ProductListView extends StatelessWidget {
@@ -88,7 +88,7 @@ class _ProductsGrid extends StatelessWidget {
         ),
         delegate: SliverChildBuilderDelegate(
           (context, index) =>
-              _ProductItem(product: products[index], index: index),
+              _ProductItem(product: products[index]),
           childCount: products.length,
         ),
       ),
@@ -97,10 +97,10 @@ class _ProductsGrid extends StatelessWidget {
 }
 
 class _ProductItem extends StatelessWidget {
-  final int index;
+
   final dynamic product;
 
-  const _ProductItem({required this.product, required this.index});
+  const _ProductItem({required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +116,7 @@ class _ProductItem extends StatelessWidget {
           children: [
             spaceH(5),
             ProductItemStack(oneProduct: product),
-            ProductDescription(oneProduct: product, index: index),
+            ProductDescription(oneProduct: product),
           ],
         ),
       ),

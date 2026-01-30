@@ -129,4 +129,21 @@ class HomeRepoImpl implements HomeRepo {
       return Left(ServiseFailure(e.toString()));
     }
   }
+
+  //favProducts
+  @override
+  Future<Either<Failure, ProductsModel>> postFavProducts({required int id}) async {
+    try {
+      final data = await _api.post(
+        endpoint: "toggle-favorite",
+        data: {"product_id": id},
+      );
+      return Right(ProductsModel.fromJson(data));
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServiseFailure.fromdioException(e));
+      }
+      return Left(ServiseFailure(e.toString()));
+    }
+  }
 }

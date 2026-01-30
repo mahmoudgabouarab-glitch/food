@@ -1,23 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/spacing.dart';
+import 'package:food/core/widgets/custom_loading.dart';
+import 'package:food/core/widgets/custom_snakbar.dart';
 import 'package:food/features/home/data/model/products_model/products_model.dart';
+import 'package:food/features/home/presentation/view_model/vaf_products_cubit/fav_products_cubit.dart';
 
-class ProductDescription extends StatefulWidget {
-  final int index;
+class ProductDescription extends StatelessWidget {
   final ListOfProducts oneProduct;
-  const ProductDescription({
-    super.key,
-    required this.oneProduct,
-    required this.index,
-  });
+  const ProductDescription({super.key, required this.oneProduct});
 
-  @override
-  State<ProductDescription> createState() => _ProductDescriptionState();
-}
-
-class _ProductDescriptionState extends State<ProductDescription> {
-  int? counter;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -26,7 +20,7 @@ class _ProductDescriptionState extends State<ProductDescription> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            widget.oneProduct.name,
+            oneProduct.name,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
@@ -37,7 +31,7 @@ class _ProductDescriptionState extends State<ProductDescription> {
           ),
           spaceH(4),
           Text(
-            widget.oneProduct.description,
+            oneProduct.description,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(fontSize: 12.sp, color: Colors.grey[200]),
@@ -46,41 +40,50 @@ class _ProductDescriptionState extends State<ProductDescription> {
           Row(
             children: [
               Icon(Icons.star_rate_rounded, color: Colors.yellow[800]),
-              Text(widget.oneProduct.rating),
+              Text(oneProduct.rating),
               const Spacer(),
-              InkWell(
-                onTap: () {
-                  setState(() {
-                    if (counter == widget.index) {
-                      counter = null;
-                      print("not vaf");
-                    } else {
-                      counter = widget.index;
-
-                      print(' vaf');
-                    }
-                  });
-                },
-                child: counter == widget.index
-                    ? Icon(Icons.favorite, color: Colors.red, size: 30.sp)
-                    : Icon(
-                        Icons.favorite_border,
-                        color: Colors.black.withOpacity(0.7),
-                        size: 30.sp,
-                      ),
-              ),
-              // Text(
-              //   "\$${oneProduct.price}",
-              //   style: TextStyle(
-              //     fontWeight: FontWeight.bold,
-              //     fontSize: 12.sp,
-              //     color: Colors.black,
-              //   ),
-              // ),
+              _favProducts(oneProduct),
             ],
           ),
         ],
       ),
     );
   }
+}
+
+Widget _favProducts(ListOfProducts product) {
+  return BlocConsumer<FavProductsCubit, FavProductsState>(
+    listener: (context, state) {
+      if (state is FavProductsSuccess && state.productId == product.id) {
+        CustomSnackBar.show(
+          context,
+          message: state.message,
+          type: SnackBarType.success,
+        );
+      }
+
+      if (state is FavProductsFailure && state.productId == product.id) {
+        CustomSnackBar.show(
+          context,
+          message: state.err,
+          type: SnackBarType.error,
+        );
+      }
+    },
+    builder: (context, state) {
+      final cubit = context.read<FavProductsCubit>();
+      final isFav = cubit.isFavorite(product.id);
+
+      return InkWell(
+        onTap: () => cubit.postFavProducts(product.id),
+        child: state is FavProductsLoading && state.productId == product.id
+            ? const CustomLoading(color: Colors.white)
+            : Icon(
+                isFav ? Icons.favorite : Icons.favorite_border,
+                color: isFav ? AppColor.error : Colors.black.withOpacity(0.6),
+                size: 30.sp,
+              ),
+      );
+    },
+  );
 }

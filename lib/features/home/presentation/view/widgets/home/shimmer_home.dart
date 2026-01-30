@@ -15,13 +15,13 @@ class ShimmerHome extends StatelessWidget {
           crossAxisCount: 2,
           mainAxisSpacing: 15.h,
           crossAxisSpacing: 10.w,
-          childAspectRatio: 1.w / 1.2.h,
+          childAspectRatio: 1.w / 1.25.h,
         ),
         delegate: SliverChildBuilderDelegate(
           (context, index) => Container(
             decoration: BoxDecoration(
               color: Colors.grey.shade800,
-              borderRadius: BorderRadius.circular(20.r),
+              borderRadius: BorderRadius.circular(10.r),
             ),
             child: Shimmer.fromColors(
               baseColor: Colors.grey.shade600,
@@ -57,7 +57,7 @@ class ShimmerHome extends StatelessWidget {
                           width: 120.w,
                           color: Colors.white,
                         ),
-                        spaceH(12),
+                        spaceH(25),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -66,12 +66,10 @@ class ShimmerHome extends StatelessWidget {
                               width: 70.w,
                               color: Colors.white,
                             ),
-                            Container(
-                              height: 15.h,
-                              width: 40.w,
-                              decoration: const BoxDecoration(
-                                color: Colors.white,
-                              ),
+                            Icon(
+                              Icons.favorite,
+                              color: Colors.white,
+                              size: 30.sp,
                             ),
                           ],
                         ),
