@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/core/utils/extension.dart';
 import 'package:food/core/widgets/custom_btn_nav_bar.dart';
+import 'package:food/features/auth/presentation/view_model/profile/profile_cubit.dart';
 import 'package:food/features/cart/data/model/get_cart_model/get_cart_response.dart';
 import 'package:food/features/order/presentation/view/order_view.dart';
 
@@ -18,7 +20,12 @@ class CartAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: CustomBtnNavBar(
         horizontal: 0,
         text: 'Checkout',
-        ontap: () => context.push(OrderView(totalPrice: total)),
+        ontap: () => context.push(
+          BlocProvider.value(
+            value: context.read<ProfileCubit>(),
+            child: OrderView(totalPrice: total),
+          ),
+        ),
         title: '  \$$total',
       ),
       centerTitle: false,

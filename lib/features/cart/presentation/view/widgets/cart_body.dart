@@ -31,7 +31,6 @@ class CartBody extends StatelessWidget {
 Widget _buildCarBody(CartSuccess state, BuildContext context) {
   return Scaffold(
     appBar: CartAppBar(item: state.getCartResponse.data),
-    //bottomNavigationBar: CartNavgationBar(item: state.getCartResponse.data),
     body: Padding(
       padding: EdgeInsets.only(right: 12.w, left: 12.w, top: 12.h),
       child: RefreshIndicator(
