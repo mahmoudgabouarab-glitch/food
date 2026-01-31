@@ -61,15 +61,14 @@ class ProductDescription extends StatelessWidget {
 Widget _favProducts(ListOfProducts product) {
   return BlocConsumer<FavProductsCubit, FavProductsState>(
     listener: (context, state) {
-      if (state is FavProductsSuccess && state.productId == product.id) {
+      if (state is FavProductsSuccess) {
         CustomSnackBar.show(
           context,
           message: state.message,
           type: SnackBarType.success,
         );
       }
-
-      if (state is FavProductsFailure && state.productId == product.id) {
+      if (state is FavProductsFailure) {
         CustomSnackBar.show(
           context,
           message: state.err,
@@ -78,28 +77,28 @@ Widget _favProducts(ListOfProducts product) {
       }
     },
     builder: (context, state) {
-      final cubit = context.read<FavProductsCubit>();
+      final cubit = context.watch<FavProductsCubit>();
       final isFav = cubit.isFavorite(product.id);
-
+      if (state is FavProductsLoading && state.productId == product.id) {
+        return const CustomLoading(color: Colors.white);
+      }
       return InkWell(
         onTap: () => cubit.postFavProducts(product.id),
-        child: state is FavProductsLoading && state.productId == product.id
-            ? const CustomLoading(color: Colors.white)
-            : Container(
-                width: 30.w,
-                height: 30.h,
-                decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.3),
-                  shape: BoxShape.circle,
-                ),
-                child: Center(
-                  child: Icon(
-                    isFav ? Icons.favorite : Icons.favorite_border,
-                    color: AppColor.textPrimary,
-                    size: 20.sp,
-                  ),
-                ),
-              ),
+        child: Container(
+          width: 30.w,
+          height: 30.h,
+          decoration: BoxDecoration(
+            color: Colors.black.withOpacity(0.3),
+            shape: BoxShape.circle,
+          ),
+          child: Center(
+            child: Icon(
+              isFav ? Icons.favorite : Icons.favorite_border,
+              color: AppColor.textPrimary,
+              size: 20.sp,
+            ),
+          ),
+        ),
       );
     },
   );

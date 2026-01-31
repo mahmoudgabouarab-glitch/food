@@ -6,6 +6,7 @@ import 'package:food/features/cart/data/model/get_cart_model/get_cart_response.d
 import 'package:food/features/home/data/model/category_model/category_model.dart';
 import 'package:food/features/home/data/model/details_model/side_options_model.dart';
 import 'package:food/features/home/data/model/details_model/toppings_model.dart';
+import 'package:food/features/home/data/model/fav_products/fav_products_response.dart';
 import 'package:food/features/home/data/model/products_model/products_model.dart';
 
 abstract class HomeRepo {
@@ -18,5 +19,6 @@ abstract class HomeRepo {
     AddToCartRequest request,
   );
   Future<Either<Failure, ProductsModel>> searchHome({required String query});
-  Future<Either<Failure, ProductsModel>> postFavProducts({required int id});
+  Future<Either<Failure, FavProductsResponse>> postFavProducts({required int id});
+  Future<Either<Failure, FavProductsResponse>> getFavProducts();
 }

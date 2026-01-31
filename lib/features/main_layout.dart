@@ -5,12 +5,10 @@ import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/widgets/custom_nav_bar.dart';
 import 'package:food/features/auth/data/repo/auth_repo_impl.dart';
 import 'package:food/features/auth/presentation/view_model/profile/profile_cubit.dart';
+import 'package:food/features/cart/data/repo/cart_repo_impl.dart';
 import 'package:food/features/cart/presentation/view/cart_view.dart';
-import 'package:food/features/home/data/repo/home_repo_impl.dart';
+import 'package:food/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:food/features/home/presentation/view/home_view.dart';
-import 'package:food/features/home/presentation/view_model/category_cubit/category_cubit.dart';
-import 'package:food/features/home/presentation/view_model/search_cubit/search_products_cubit.dart';
-import 'package:food/features/home/presentation/view_model/products_cubit/products_cubit.dart';
 import 'package:food/features/order_history/presentation/view/order_history_view.dart';
 import 'package:food/features/auth/presentation/view/profile_view.dart';
 
@@ -25,15 +23,7 @@ class MainLayout extends StatelessWidget {
           create: (_) => ProfileCubit(getIt<AuthRepoImpl>())..getProfile(),
         ),
         BlocProvider(
-          create: (context) =>
-              CategoryCubit(getIt<HomeRepoImpl>())..getCategory(),
-        ),
-        BlocProvider(
-          create: (context) =>
-              ProductsCubit(getIt<HomeRepoImpl>())..getProducts(),
-        ),
-        BlocProvider(
-          create: (context) => SearchProductsCubit(getIt<HomeRepoImpl>()),
+          create: (context) => CartCubit(getIt<CartRepoImpl>())..getCart(),
         ),
       ],
       child: const _MainLayoutView(),
@@ -59,7 +49,7 @@ class _MainLayoutViewState extends State<_MainLayoutView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[currentIndex],
+      body: IndexedStack(index: currentIndex, children: screens),
       bottomNavigationBar: BottomNavigationBar(
         selectedFontSize: 13.0,
         unselectedFontSize: 13.0,

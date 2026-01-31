@@ -3,6 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/core/network/servise_locator.dart';
 import 'package:food/features/home/data/repo/home_repo_impl.dart';
 import 'package:food/features/home/presentation/view/widgets/home/home_body.dart';
+import 'package:food/features/home/presentation/view_model/category_cubit/category_cubit.dart';
+import 'package:food/features/home/presentation/view_model/products_cubit/products_cubit.dart';
+import 'package:food/features/home/presentation/view_model/search_cubit/search_products_cubit.dart';
 import 'package:food/features/home/presentation/view_model/vaf_products_cubit/fav_products_cubit.dart';
 
 class HomeView extends StatelessWidget {
@@ -10,9 +13,24 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          FavProductsCubit(getIt<HomeRepoImpl>())..cacheFavorites(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              CategoryCubit(getIt<HomeRepoImpl>())..getCategory(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              ProductsCubit(getIt<HomeRepoImpl>())..getProducts(),
+        ),
+        BlocProvider(
+          create: (context) => SearchProductsCubit(getIt<HomeRepoImpl>()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              FavProductsCubit(getIt<HomeRepoImpl>())..getFavProducts(),
+        ),
+      ],
       child: const HomeBody(),
     );
   }

@@ -8,6 +8,7 @@ import 'package:food/features/cart/data/model/get_cart_model/get_cart_response.d
 import 'package:food/features/home/data/model/category_model/category_model.dart';
 import 'package:food/features/home/data/model/details_model/side_options_model.dart';
 import 'package:food/features/home/data/model/details_model/toppings_model.dart';
+import 'package:food/features/home/data/model/fav_products/fav_products_response.dart';
 import 'package:food/features/home/data/model/products_model/products_model.dart';
 import 'package:food/features/home/data/repo/home_repo.dart';
 
@@ -132,7 +133,7 @@ class HomeRepoImpl implements HomeRepo {
 
   //favProducts
   @override
-  Future<Either<Failure, ProductsModel>> postFavProducts({
+  Future<Either<Failure, FavProductsResponse>> postFavProducts({
     required int id,
   }) async {
     try {
@@ -140,7 +141,22 @@ class HomeRepoImpl implements HomeRepo {
         endpoint: "toggle-favorite",
         data: {"product_id": id},
       );
-      return Right(ProductsModel.fromJson(data));
+      return Right(FavProductsResponse.fromJson(data));
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServiseFailure.fromdioException(e));
+      }
+      return Left(ServiseFailure(e.toString()));
+    }
+  }
+
+  // getFavProducts
+  @override
+  Future<Either<Failure, FavProductsResponse>> getFavProducts() async {
+    try {
+      var data = await _api.get(endpoint: "favorites");
+      final user = FavProductsResponse.fromJson(data);
+      return Right(user);
     } catch (e) {
       if (e is DioException) {
         return Left(ServiseFailure.fromdioException(e));
