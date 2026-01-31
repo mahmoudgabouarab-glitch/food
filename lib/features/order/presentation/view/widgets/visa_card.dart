@@ -3,16 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:food/features/auth/presentation/view_model/profile/profile_cubit.dart';
+import 'package:food/features/order/presentation/view_model/payment_cubit/payment_cubit.dart';
 
-class VisaCard extends StatefulWidget {
+class VisaCard extends StatelessWidget {
   const VisaCard({super.key});
 
-  @override
-  State<VisaCard> createState() => _VisaCardState();
-}
-
-class _VisaCardState extends State<VisaCard> {
-  bool isSelectedVisa = false;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileCubit, ProfileState>(
@@ -28,13 +23,17 @@ class _VisaCardState extends State<VisaCard> {
               title: const Text("Debit card"),
               subtitle: Text(visa),
               trailing: Checkbox(
-                value: isSelectedVisa,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(6.r),
+                ),
+                value:
+                    context.watch<PaymentCubit>().state == PaymentMethod.visa,
                 checkColor: AppColor.textPrimary,
                 activeColor: AppColor.primary,
                 onChanged: (val) {
-                  setState(() {
-                    isSelectedVisa = val!;
-                  });
+                  if (val == true) {
+                    context.read<PaymentCubit>().selectVisa();
+                  }
                 },
               ),
             ),
