@@ -97,7 +97,7 @@ Widget _buildAppBarShimmer(BuildContext context) {
       baseColor: Colors.grey.shade600,
       highlightColor: Colors.grey.shade500,
       child: Row(
-        children:  [
+        children: [
           Container(
             width: 80.w,
             height: 20.h,
@@ -111,8 +111,8 @@ Widget _buildAppBarShimmer(BuildContext context) {
             width: 30.w,
             height: 30.h,
             decoration: BoxDecoration(
-              color:  Colors.white,
-              shape:  BoxShape.circle,
+              color: Colors.white,
+              shape: BoxShape.circle,
             ),
           ),
         ],

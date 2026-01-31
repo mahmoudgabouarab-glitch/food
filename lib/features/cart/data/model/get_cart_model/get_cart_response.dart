@@ -28,11 +28,7 @@ class Data extends Equatable {
   final double totalPrice;
   final List<CartItem> items;
 
-  const Data({
-    required this.id,
-    required this.totalPrice,
-    required this.items,
-  });
+  const Data({required this.id, required this.totalPrice, required this.items});
 
   factory Data.fromJson(Map<String, dynamic> json) {
     return Data(

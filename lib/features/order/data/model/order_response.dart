@@ -26,14 +26,10 @@ class OrderResponse extends Equatable {
 class OrderData extends Equatable {
   final int orderId;
 
-  const OrderData({
-    required this.orderId,
-  });
+  const OrderData({required this.orderId});
 
   factory OrderData.fromJson(Map<String, dynamic> json) {
-    return OrderData(
-      orderId: json['order_id'] as int,
-    );
+    return OrderData(orderId: json['order_id'] as int);
   }
 
   @override

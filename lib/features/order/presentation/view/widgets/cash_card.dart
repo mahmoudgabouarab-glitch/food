@@ -9,25 +9,28 @@ class CashCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        leading: Image.asset(
-          "assets/image/dollarbackgroundremoved.png",
-          width: 100.w,
-        ),
-        title: const Text("Cash on Delivery"),
-        trailing: Checkbox(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(6.r),
+    return GestureDetector(
+      onTap: () => context.read<PaymentCubit>().selectCash(),
+      child: Card(
+        child: ListTile(
+          leading: Image.asset(
+            "assets/image/dollarbackgroundremoved.png",
+            width: 100.w,
           ),
-          value: context.watch<PaymentCubit>().state == PaymentMethod.cash,
-          checkColor: AppColor.textPrimary,
-          activeColor: AppColor.primary,
-          onChanged: (val) {
-            if (val == true) {
-              context.read<PaymentCubit>().selectCash();
-            }
-          },
+          title: const Text("Cash on Delivery"),
+          trailing: Checkbox(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(6.r),
+            ),
+            value: context.watch<PaymentCubit>().state == PaymentMethod.cash,
+            checkColor: AppColor.textPrimary,
+            activeColor: AppColor.primary,
+            onChanged: (val) {
+              if (val == true) {
+                context.read<PaymentCubit>().selectCash();
+              }
+            },
+          ),
         ),
       ),
     );

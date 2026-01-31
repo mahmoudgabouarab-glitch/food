@@ -4,7 +4,5 @@ import 'package:food/features/cart/data/model/get_cart_model/get_cart_response.d
 
 abstract class CartRepo {
   Future<Either<Failure, GetCartResponse>> getCart();
-  Future<Either<Failure, GetCartResponse>> deleteCart(
-      {required String id}
-  );
+  Future<Either<Failure, GetCartResponse>> deleteCart({required String id});
 }

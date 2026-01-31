@@ -17,24 +17,27 @@ class VisaCard extends StatelessWidget {
           if (visa == null || visa.isEmpty) {
             return const SizedBox.shrink();
           }
-          return Card(
-            child: ListTile(
-              leading: Image.asset("assets/image/visa.png", width: 100.w),
-              title: const Text("Debit card"),
-              subtitle: Text(visa),
-              trailing: Checkbox(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(6.r),
+          return GestureDetector(
+            onTap: () => context.read<PaymentCubit>().selectVisa(),
+            child: Card(
+              child: ListTile(
+                leading: Image.asset("assets/image/visa.png", width: 100.w),
+                title: const Text("Debit card"),
+                subtitle: Text(visa),
+                trailing: Checkbox(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6.r),
+                  ),
+                  value:
+                      context.watch<PaymentCubit>().state == PaymentMethod.visa,
+                  checkColor: AppColor.textPrimary,
+                  activeColor: AppColor.primary,
+                  onChanged: (val) {
+                    if (val == true) {
+                      context.read<PaymentCubit>().selectVisa();
+                    }
+                  },
                 ),
-                value:
-                    context.watch<PaymentCubit>().state == PaymentMethod.visa,
-                checkColor: AppColor.textPrimary,
-                activeColor: AppColor.primary,
-                onChanged: (val) {
-                  if (val == true) {
-                    context.read<PaymentCubit>().selectVisa();
-                  }
-                },
               ),
             ),
           );

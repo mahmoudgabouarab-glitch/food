@@ -7,7 +7,6 @@ import 'package:food/features/cart/data/model/get_cart_model/get_cart_response.d
 import 'package:food/features/order/presentation/view/order_view.dart';
 
 class CartAppBar extends StatelessWidget implements PreferredSizeWidget {
-
   final Data item;
   const CartAppBar({super.key, required this.item});
 
@@ -24,7 +23,7 @@ class CartAppBar extends StatelessWidget implements PreferredSizeWidget {
         ontap: () => context.push(
           BlocProvider.value(
             value: context.read<ProfileCubit>(),
-            child: OrderView(totalPrice: total, cartItems: item.items,),
+            child: OrderView(totalPrice: total, cartItems: item.items),
           ),
         ),
         title: '  \$$total',

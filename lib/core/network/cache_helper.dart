@@ -14,7 +14,8 @@ class CacheHelper {
     debugPrint("---------getDataString----------$key");
     return sharedPreferences.getString(key);
   }
-//! this method to put data in local database using key List<String>
+
+  //! this method to put data in local database using key List<String>
   static List<String> getStringList(String key) {
     return sharedPreferences.getStringList(key) ?? [];
   }

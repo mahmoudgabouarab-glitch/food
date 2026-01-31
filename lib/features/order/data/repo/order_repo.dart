@@ -4,7 +4,5 @@ import 'package:food/features/order/data/model/order_request.dart';
 import 'package:food/features/order/data/model/order_response.dart';
 
 abstract class OrderRepo {
-  Future<Either<Failure, OrderResponse>> postOrder(
-     OrderRequest request,
-  );
+  Future<Either<Failure, OrderResponse>> postOrder(OrderRequest request);
 }
