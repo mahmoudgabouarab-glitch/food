@@ -1,28 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/spacing.dart';
-import 'package:food/core/widgets/custom_btn_nav_bar.dart';
-import 'package:food/features/auth/presentation/view_model/profile/profile_cubit.dart';
+import 'package:food/features/cart/data/model/get_cart_model/get_cart_response.dart';
+import 'package:food/features/order/presentation/view/widgets/cash_card.dart';
+import 'package:food/features/order/presentation/view/widgets/order_action.dart';
+import 'package:food/features/order/presentation/view/widgets/order_bloc.dart';
+import 'package:food/features/order/presentation/view/widgets/visa_card.dart';
 
-class OrderBody extends StatefulWidget {
+class OrderBody extends StatelessWidget {
   final double totalPrice;
-  const OrderBody({super.key, required this.totalPrice});
+  final List<CartItem> cartItems;
+  const OrderBody({
+    super.key,
+    required this.totalPrice,
+    required this.cartItems,
+  });
 
-  @override
-  State<OrderBody> createState() => _OrderBodyState();
-}
-
-class _OrderBodyState extends State<OrderBody> {
-  bool isSelected = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: CustomBtnNavBar(
-        text: "Pay Now",
-        ontap: () {},
-        title: "\$${widget.totalPrice + 15 + 5}",
+      bottomNavigationBar: OrderAction(
+        totalPrice: totalPrice,
+        cartItems: cartItems,
       ),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -37,38 +36,21 @@ class _OrderBodyState extends State<OrderBody> {
             crossAxisAlignment: .start,
             children: [
               spaceH(15),
-              _buildRowOrder("Order", "\$${widget.totalPrice}"),
+              _buildRowOrder("Order", "\$$totalPrice"),
               _buildRowOrder("Tax", "\$15"),
               _buildRowOrder("Delivery", "\$5"),
               const Divider(),
               spaceH(20),
-              _buildRowOrder("Total", "\$${widget.totalPrice + 15 + 5}"),
+              _buildRowOrder("Total", "\$${totalPrice + 15 + 5}"),
               spaceH(10),
               _buildRowOrder("Estimated delivery time", "15 - 30 mins"),
               spaceH(40),
               const Text("Payment methods"),
               spaceH(20),
-              Card(
-                child: ListTile(
-                  leading: Image.asset(
-                    "assets/image/dollarbackgroundremoved.png",
-                    width: 100.w,
-                  ),
-                  title: const Text("Cash on Delivery"),
-                  trailing: Checkbox(
-                    value: isSelected,
-                    checkColor: AppColor.textPrimary,
-                    activeColor: AppColor.primary,
-                    onChanged: (val) {
-                      setState(() {
-                        isSelected = val!;
-                      });
-                    },
-                  ),
-                ),
-              ),
-              SizedBox(height: 27.h),
-              _buildVisaCard(),
+              const CashCard(),
+              spaceH(20),
+              const VisaCard(),
+              const OrderBloc(),
             ],
           ),
         ),
@@ -84,27 +66,5 @@ Widget _buildRowOrder(String title, String value) {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [Text(title), Text(value)],
     ),
-  );
-}
-
-Widget _buildVisaCard() {
-  return BlocBuilder<ProfileCubit, ProfileState>(
-    builder: (context, state) {
-      if (state is ProfileSuccess) {
-        final visa = state.profilemodel.data.visa;
-        if (visa == null || visa.isEmpty) {
-          return const SizedBox.shrink();
-        }
-        return Card(
-          child: ListTile(
-            leading: Image.asset("assets/image/visa.png", width: 100.w),
-            title: const Text("Debit card"),
-            subtitle: Text(visa),
-          ),
-        );
-      }
-
-      return const SizedBox.shrink();
-    },
   );
 }

@@ -131,7 +131,7 @@ class OneItemOfCart extends StatelessWidget {
                     spaceH(8),
                     Row(
                       children: List.generate(
-                        item.toppings.length,
+                        item.sideOptions.length,
                         (index) => Container(
                           margin: EdgeInsets.only(right: 8.w),
                           height: 20.h,

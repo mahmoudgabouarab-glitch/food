@@ -132,7 +132,9 @@ class HomeRepoImpl implements HomeRepo {
 
   //favProducts
   @override
-  Future<Either<Failure, ProductsModel>> postFavProducts({required int id}) async {
+  Future<Either<Failure, ProductsModel>> postFavProducts({
+    required int id,
+  }) async {
     try {
       final data = await _api.post(
         endpoint: "toggle-favorite",
