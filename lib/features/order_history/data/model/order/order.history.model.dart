@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:food/features/order_history/data/model/order/datum.history.model.dart';
+import 'package:food/features/order_history/data/model/order/list_of_order_history.dart';
 
 class OrderHistoryModel extends Equatable {
   final int? code;
