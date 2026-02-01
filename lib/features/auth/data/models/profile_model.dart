@@ -1,20 +1,20 @@
 import 'package:equatable/equatable.dart';
 
-class AuthModel extends Equatable {
-  final dynamic code;
+class ProfileModel extends Equatable {
+  final int code;
   final String message;
-  final UserAuthData data;
+  final UserProfileData data;
 
-  const AuthModel({
+  const ProfileModel({
     required this.code,
     required this.message,
     required this.data,
   });
-  factory AuthModel.fromJson(Map<String, dynamic> json) {
-    return AuthModel(
-      code: json["code"] as dynamic,
+  factory ProfileModel.fromJson(Map<String, dynamic> json) {
+    return ProfileModel(
+      code: json["code"] as int,
       message: json["message"] as String? ?? "",
-      data: UserAuthData.fromJson(json['data'] as Map<String, dynamic>? ?? {}),
+      data: UserProfileData.fromJson(json['data'] as Map<String, dynamic>? ?? {}),
     );
   }
 
@@ -22,24 +22,30 @@ class AuthModel extends Equatable {
   List<Object?> get props => [code, message, data];
 }
 
-class UserAuthData extends Equatable {
+class UserProfileData extends Equatable {
   final String token;
   final String name;
   final String email;
   final String image;
+  final String? visa;
+  final String address;
 
-  const UserAuthData({
+  const UserProfileData({
     required this.token,
     required this.name,
     required this.email,
     required this.image,
+    required this.visa,
+    required this.address,
   });
-  factory UserAuthData.fromJson(Map<String, dynamic> json) {
-    return UserAuthData(
+  factory UserProfileData.fromJson(Map<String, dynamic> json) {
+    return UserProfileData(
       token: json["token"] as String? ?? "",
       name: json["name"] as String? ?? "",
       email: json["email"] as String? ?? "",
       image: json["image"] as String? ?? "",
+      visa: json['Visa'] as String? ?? "",
+      address: json['address'] as String? ?? "",
     );
   }
   Map<String, dynamic> toJson() => {
@@ -47,7 +53,9 @@ class UserAuthData extends Equatable {
     'name': name,
     'email': email,
     'image': image,
+    "Visa": visa,
+    "address": address,
   };
   @override
-  List<Object?> get props => [token, name, email, image];
+  List<Object?> get props => [token, name, email, image, address, visa];
 }

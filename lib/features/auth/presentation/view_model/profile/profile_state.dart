@@ -12,7 +12,7 @@ final class ProfileInitial extends ProfileState {}
 final class ProfileLoading extends ProfileState {}
 
 final class ProfileSuccess extends ProfileState {
-  final AuthModel profilemodel;
+  final ProfileModel profilemodel;
 
   const ProfileSuccess(this.profilemodel);
 }
@@ -32,7 +32,7 @@ final class ProfileFailure extends ProfileState {
 final class UpdataLoading extends ProfileState {}
 
 final class UpdataSuccess extends ProfileState {
-  final AuthModel updatamodel;
+  final ProfileModel updatamodel;
 
   const UpdataSuccess(this.updatamodel);
 }

@@ -27,7 +27,10 @@ class ItemOrderHistory extends StatelessWidget {
                 height: 100.h,
               ),
             ),
-            const Text("Confirmed"),
+            const Text(
+              "Confirmed",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
             const Divider(),
             _buildOrderHistoryItem("Date", date),
             const Divider(),

@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:food/core/errors/failure.dart';
 import 'package:food/features/auth/data/models/auth_model.dart';
+import 'package:food/features/auth/data/models/profile_model.dart';
 import 'package:image_picker/image_picker.dart';
 
 abstract class AuthRepo {
@@ -15,8 +16,8 @@ abstract class AuthRepo {
     required String phone,
     required XFile? image,
   });
-  Future<Either<Failure, AuthModel>> getProfile();
-  Future<Either<Failure, AuthModel>> postUpdataProfile({
+  Future<Either<Failure, ProfileModel>> getProfile();
+  Future<Either<Failure, ProfileModel>> postUpdataProfile({
     required String name,
     required String email,
     required String address,

@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:food/core/errors/failure.dart';
 import 'package:food/core/network/api_service.dart';
 import 'package:food/features/auth/data/models/auth_model.dart';
+import 'package:food/features/auth/data/models/profile_model.dart';
 import 'package:food/features/auth/data/repo/auth_repo.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -10,6 +11,7 @@ class AuthRepoImpl extends AuthRepo {
   final ApiServise _api;
 
   AuthRepoImpl(this._api);
+  // Login
   @override
   Future<Either<Failure, AuthModel>> postLogin({
     required String email,
@@ -30,6 +32,7 @@ class AuthRepoImpl extends AuthRepo {
     }
   }
 
+  // Register
   @override
   Future<Either<Failure, AuthModel>> postSignup({
     required String name,
@@ -63,11 +66,12 @@ class AuthRepoImpl extends AuthRepo {
     }
   }
 
+  // Profile
   @override
-  Future<Either<Failure, AuthModel>> getProfile() async {
+  Future<Either<Failure, ProfileModel>> getProfile() async {
     try {
       var data = await _api.get(endpoint: "profile");
-      final user = AuthModel.fromJson(data);
+      final user = ProfileModel.fromJson(data);
       return Right(user);
     } catch (e) {
       if (e is DioException) {
@@ -77,8 +81,9 @@ class AuthRepoImpl extends AuthRepo {
     }
   }
 
+  // Update Profile
   @override
-  Future<Either<Failure, AuthModel>> postUpdataProfile({
+  Future<Either<Failure, ProfileModel>> postUpdataProfile({
     required String name,
     required String email,
     required String address,
@@ -100,7 +105,7 @@ class AuthRepoImpl extends AuthRepo {
           "image": file,
         },
       );
-      final user = AuthModel.fromJson(data);
+      final user = ProfileModel.fromJson(data);
       return Right(user);
     } catch (e) {
       if (e is DioException) {
@@ -110,6 +115,7 @@ class AuthRepoImpl extends AuthRepo {
     }
   }
 
+  // Logout
   @override
   Future<Either<Failure, AuthModel>> postlogout() async {
     try {
