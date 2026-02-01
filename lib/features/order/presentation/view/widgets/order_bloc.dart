@@ -4,6 +4,7 @@ import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/extension.dart';
 import 'package:food/core/widgets/custom_snakbar.dart';
 import 'package:food/features/order/presentation/view_model/order_cubit/order_cubit.dart';
+import 'package:food/features/order_history/presentation/view_model/cubit/order_history_cubit.dart';
 
 class OrderBloc extends StatelessWidget {
   const OrderBloc({super.key});
@@ -28,6 +29,7 @@ class OrderBloc extends StatelessWidget {
               message: state.orderResponse.message,
               type: SnackBarType.success,
             );
+            context.read<OrderHistoryCubit>().getOrderHistory();
           }
           if (state is OrderFailure) {
             CustomSnackBar.show(

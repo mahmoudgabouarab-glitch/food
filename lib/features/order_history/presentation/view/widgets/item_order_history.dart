@@ -26,19 +26,21 @@ class ItemOrderHistory extends StatelessWidget {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [Text("Confirmed"), Text(date)],
+              children: [const Text("Confirmed"), Text(date)],
             ),
             const Divider(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [Text("Created At"), Text(time)],
+              children: [const Text("Created At"), Text(time)],
             ),
             const Divider(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Total Price"),
-                Text(listOfOrderHistory.totalPrice.toString()),
+                const Text("Total Price"),
+                Text(
+                  "${double.parse(listOfOrderHistory.totalPrice) + 15 + 5}\$",
+                ),
               ],
             ),
             const Divider(),

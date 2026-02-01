@@ -16,7 +16,7 @@ class CartView extends StatelessWidget {
           create: (context) => RemoveCartCubit(getIt<CartRepoImpl>()),
         ),
       ],
-      child: CartBody(),
+      child: const CartBody(),
     );
   }
 }

@@ -19,7 +19,7 @@ class OrderAction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomBtnNavBar(
-      ontap: () {
+      ontap: ()  {
         final payment = context.read<PaymentCubit>().state;
         if (payment == PaymentMethod.none) {
           return CustomSnackBar.show(
@@ -31,7 +31,8 @@ class OrderAction extends StatelessWidget {
         final items = cartItems
             .map((item) => OrderItem.fromCartItem(item))
             .toList();
-        context.read<OrderCubit>().postOrder(items);
+         context.read<OrderCubit>().postOrder(items);
+       
       },
       title: "\$${totalPrice + 15 + 5}",
       text: "Checkout",

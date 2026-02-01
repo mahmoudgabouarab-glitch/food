@@ -77,7 +77,7 @@ class _CustomTextFormFiledState extends State<CustomTextFormFiled> {
         fillColor: widget.fillcolor ?? const Color(0xffEDEDED),
         filled: true,
         focusedBorder: _border(AppColor.primary),
-        enabledBorder: _border(Color(0xffEDEDED)),
+        enabledBorder: _border(const Color(0xffEDEDED)),
         errorBorder: _border(AppColor.error),
         focusedErrorBorder: _border(AppColor.error),
       ),

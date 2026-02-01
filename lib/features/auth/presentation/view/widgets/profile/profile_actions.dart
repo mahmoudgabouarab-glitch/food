@@ -34,10 +34,10 @@ class ProfileActions extends StatelessWidget {
                       await cubit.postUpdataProfile();
                     },
               child: state is UpdataLoading
-                  ? Center(
+                  ? const Center(
                       child: CupertinoActivityIndicator(color: AppColor.btn),
                     )
-                  : Text("Edit Profile"),
+                  : const Text("Edit Profile"),
             );
           },
         ),

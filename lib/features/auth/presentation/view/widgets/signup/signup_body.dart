@@ -16,14 +16,14 @@ class SignupBody extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: Column(
+          child: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const UploadPicProfile(),
-              const SignupTextFiled(),
-              const SignupActions(),
-              const SignupTextBottonLogin(),
-              const SignupBloc(),
+              UploadPicProfile(),
+              SignupTextFiled(),
+              SignupActions(),
+              SignupTextBottonLogin(),
+              SignupBloc(),
             ],
           ),
         ),

@@ -9,8 +9,10 @@ import 'package:food/features/cart/data/repo/cart_repo_impl.dart';
 import 'package:food/features/cart/presentation/view/cart_view.dart';
 import 'package:food/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:food/features/home/presentation/view/home_view.dart';
+import 'package:food/features/order_history/data/repo/order_history_repo_impl.dart';
 import 'package:food/features/order_history/presentation/view/order_history_view.dart';
 import 'package:food/features/auth/presentation/view/profile_view.dart';
+import 'package:food/features/order_history/presentation/view_model/cubit/order_history_cubit.dart';
 
 class MainLayout extends StatelessWidget {
   const MainLayout({super.key});
@@ -24,6 +26,11 @@ class MainLayout extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => CartCubit(getIt<CartRepoImpl>())..getCart(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              OrderHistoryCubit(getIt<OrderHistoryRepoImpl>())
+                ..getOrderHistory(),
         ),
       ],
       child: const _MainLayoutView(),

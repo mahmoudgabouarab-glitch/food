@@ -23,7 +23,7 @@ class OneItemOfCart extends StatelessWidget {
         : item.sideOptions.map((e) => e.name).join(' | ');
     return Card(
       child: Padding(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -49,7 +49,7 @@ class OneItemOfCart extends StatelessWidget {
                           );
                         }
                       },
-                      child: Icon(Icons.close, color: AppColor.error),
+                      child: const Icon(Icons.close, color: AppColor.error),
                     ),
                   ),
                   spaceH(8),
@@ -160,7 +160,7 @@ class OneItemOfCart extends StatelessWidget {
                       color: Colors.green[400],
                     ),
                   ),
-                  RemoveListener(),
+                  const RemoveListener(),
                 ],
               ),
             ),

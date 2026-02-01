@@ -5,6 +5,7 @@ import 'package:food/core/widgets/custom_btn_nav_bar.dart';
 import 'package:food/features/auth/presentation/view_model/profile/profile_cubit.dart';
 import 'package:food/features/cart/data/model/get_cart_model/get_cart_response.dart';
 import 'package:food/features/order/presentation/view/order_view.dart';
+import 'package:food/features/order_history/presentation/view_model/cubit/order_history_cubit.dart';
 
 class CartAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Data item;
@@ -21,8 +22,11 @@ class CartAppBar extends StatelessWidget implements PreferredSizeWidget {
         horizontal: 0,
         text: 'Checkout',
         ontap: () => context.push(
-          BlocProvider.value(
-            value: context.read<ProfileCubit>(),
+          MultiBlocProvider(
+            providers: [
+              BlocProvider.value(value: context.read<ProfileCubit>()),
+              BlocProvider.value(value: context.read<OrderHistoryCubit>()),
+            ],
             child: OrderView(totalPrice: total, cartItems: item.items),
           ),
         ),

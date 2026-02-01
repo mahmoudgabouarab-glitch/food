@@ -413,8 +413,8 @@ Future showCustomDialog(
           color: Colors.transparent,
           child: Container(
             width: double.infinity,
-            margin: margin ?? EdgeInsets.symmetric(horizontal: 20),
-            padding: padding ?? EdgeInsets.all(20),
+            margin: margin ?? const EdgeInsets.symmetric(horizontal: 20),
+            padding: padding ?? const EdgeInsets.all(20),
             decoration: BoxDecoration(
               color: color ?? Colors.white,
               borderRadius: borderRadius ?? BorderRadius.circular(25),

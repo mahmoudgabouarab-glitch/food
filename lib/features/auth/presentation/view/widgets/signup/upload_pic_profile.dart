@@ -27,7 +27,7 @@ class UploadPicProfile extends StatelessWidget {
                       children: [
                         ListTile(
                           leading: const Icon(Icons.photo),
-                          title: Text("gallery"),
+                          title: const Text("gallery"),
                           onTap: () async {
                             var image = await picker.pickImage(
                               source: ImageSource.gallery,
@@ -39,7 +39,7 @@ class UploadPicProfile extends StatelessWidget {
                         ),
                         ListTile(
                           leading: const Icon(Icons.camera_alt),
-                          title: Text("camera"),
+                          title: const Text("camera"),
                           onTap: () async {
                             var image = await picker.pickImage(
                               source: ImageSource.camera,

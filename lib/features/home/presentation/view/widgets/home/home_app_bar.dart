@@ -110,7 +110,7 @@ Widget _buildAppBarShimmer(BuildContext context) {
           Container(
             width: 30.w,
             height: 30.h,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
               shape: BoxShape.circle,
             ),

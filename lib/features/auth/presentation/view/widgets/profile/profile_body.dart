@@ -21,12 +21,12 @@ class ProfileBody extends StatelessWidget {
         onRefresh: () async {
           await context.read<ProfileCubit>().getProfile(refresh: true);
         },
-        child: SingleChildScrollView(
-          physics: const AlwaysScrollableScrollPhysics(),
+        child: const SingleChildScrollView(
+          physics: AlwaysScrollableScrollPhysics(),
           child: Padding(
-            padding: const EdgeInsets.all(12),
+            padding: EdgeInsets.all(12),
             child: Column(
-              children: const [
+              children: [
                 ProfileAvatar(),
                 ProfileForm(),
                 ProfileActions(),

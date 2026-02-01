@@ -9,10 +9,10 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
-        slivers: const [
+        physics: BouncingScrollPhysics(),
+        slivers: [
           HomeAppBar(),
           HomeSearch(),
           ProductCategoryName(),

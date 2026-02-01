@@ -39,7 +39,7 @@ class ProductDescription extends StatelessWidget {
           SizedBox(height: 9.h),
           Row(
             children: [
-              Icon(Icons.star_rate_rounded, color: Colors.yellow),
+              const Icon(Icons.star_rate_rounded, color: Colors.yellow),
               Text(
                 oneProduct.rating,
                 style: TextStyle(

@@ -25,7 +25,10 @@ class HomeSearch extends StatelessWidget {
               onchange: (value) => context
                   .read<SearchProductsCubit>()
                   .searchProducts(query: value.toLowerCase()),
-              prefixIcon: Icon(Icons.search, color: AppColor.textSecondary),
+              prefixIcon: const Icon(
+                Icons.search,
+                color: AppColor.textSecondary,
+              ),
             ),
           ),
         );

@@ -16,14 +16,14 @@ class LoginBody extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: Column(
+          child: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const LoginTitle(),
-              const LoginTextFiled(),
-              const LoginActions(),
-              const LoginTextButtonSingup(),
-              const LogInBloc(),
+              LoginTitle(),
+              LoginTextFiled(),
+              LoginActions(),
+              LoginTextButtonSingup(),
+              LogInBloc(),
             ],
           ),
         ),
