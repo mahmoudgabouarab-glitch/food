@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/spacing.dart';
 import 'package:food/features/cart/data/model/get_cart_model/get_cart_response.dart';
-import 'package:food/features/order/presentation/view/widgets/cash_card.dart';
-import 'package:food/features/order/presentation/view/widgets/order_action.dart';
-import 'package:food/features/order/presentation/view/widgets/order_bloc.dart';
-import 'package:food/features/order/presentation/view/widgets/visa_card.dart';
+import 'package:food/features/cart/presentation/view/widgets/order/cash_card.dart';
+import 'package:food/features/cart/presentation/view/widgets/order/order_action.dart';
+import 'package:food/features/cart/presentation/view/widgets/order/order_bloc.dart';
+import 'package:food/features/cart/presentation/view/widgets/order/visa_card.dart';
 
 class OrderBody extends StatelessWidget {
   final double totalPrice;

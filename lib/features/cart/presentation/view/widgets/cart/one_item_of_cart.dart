@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/spacing.dart';
 import 'package:food/features/cart/data/model/get_cart_model/get_cart_response.dart';
-import 'package:food/features/cart/presentation/view/widgets/remove_listener.dart';
+import 'package:food/features/cart/presentation/view/widgets/cart/remove_listener.dart';
 import 'package:food/features/cart/presentation/view_model/remove_cart_cubit/remove_cart_cubit.dart';
 
 class OneItemOfCart extends StatelessWidget {

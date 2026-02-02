@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/widgets/custom_loading.dart';
-import 'package:food/features/cart/presentation/view/widgets/cart_appbar.dart';
-import 'package:food/features/cart/presentation/view/widgets/one_item_of_cart.dart';
+import 'package:food/features/cart/presentation/view/widgets/cart/cart_appbar.dart';
+import 'package:food/features/cart/presentation/view/widgets/cart/one_item_of_cart.dart';
 import 'package:food/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 
 class CartBody extends StatelessWidget {

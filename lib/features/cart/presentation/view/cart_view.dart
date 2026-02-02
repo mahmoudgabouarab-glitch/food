@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/core/network/servise_locator.dart';
 import 'package:food/features/cart/data/repo/cart_repo_impl.dart';
-import 'package:food/features/cart/presentation/view/widgets/cart_body.dart';
+import 'package:food/features/cart/presentation/view/widgets/cart/cart_body.dart';
 import 'package:food/features/cart/presentation/view_model/remove_cart_cubit/remove_cart_cubit.dart';
 
 class CartView extends StatelessWidget {

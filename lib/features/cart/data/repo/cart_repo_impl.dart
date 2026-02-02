@@ -3,6 +3,8 @@ import 'package:dio/dio.dart';
 import 'package:food/core/errors/failure.dart';
 import 'package:food/core/network/api_service.dart';
 import 'package:food/features/cart/data/model/get_cart_model/get_cart_response.dart';
+import 'package:food/features/cart/data/model/order_model/order_request.dart';
+import 'package:food/features/cart/data/model/order_model/order_response.dart';
 import 'package:food/features/cart/data/repo/cart_repo.dart';
 
 class CartRepoImpl extends CartRepo {
@@ -31,6 +33,20 @@ class CartRepoImpl extends CartRepo {
       var data = await _api.delete(endpoint: "cart/remove/$id");
       final user = GetCartResponse.fromJson(data);
       return Right(user);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServiseFailure.fromdioException(e));
+      }
+      return Left(ServiseFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, OrderResponse>> postOrder(OrderRequest request) async {
+    try {
+      final data = await _api.post(endpoint: "orders", data: request.toJson());
+
+      return Right(OrderResponse.fromJson(data));
     } catch (e) {
       if (e is DioException) {
         return Left(ServiseFailure.fromdioException(e));
