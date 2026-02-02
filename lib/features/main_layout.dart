@@ -3,15 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/core/network/servise_locator.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/widgets/custom_nav_bar.dart';
-import 'package:food/features/auth/data/repo/auth_repo_impl.dart';
-import 'package:food/features/auth/presentation/view_model/profile/profile_cubit.dart';
+import 'package:food/features/profile/data/repo/profile_repo_impl.dart';
+import 'package:food/features/profile/presentation/view_model/profile/profile_cubit.dart';
 import 'package:food/features/cart/data/repo/cart_repo_impl.dart';
 import 'package:food/features/cart/presentation/view/cart_view.dart';
 import 'package:food/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:food/features/home/presentation/view/home_view.dart';
 import 'package:food/features/order_history/data/repo/order_history_repo_impl.dart';
 import 'package:food/features/order_history/presentation/view/order_history_view.dart';
-import 'package:food/features/auth/presentation/view/profile_view.dart';
+import 'package:food/features/profile/presentation/view/profile_view.dart';
 import 'package:food/features/order_history/presentation/view_model/cubit/order_history_cubit.dart';
 
 class MainLayout extends StatelessWidget {
@@ -22,7 +22,7 @@ class MainLayout extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_) => ProfileCubit(getIt<AuthRepoImpl>())..getProfile(),
+          create: (_) => ProfileCubit(getIt<ProfileRepoImpl>())..getProfile(),
         ),
         BlocProvider(
           create: (context) => CartCubit(getIt<CartRepoImpl>())..getCart(),

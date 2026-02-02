@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:food/features/auth/presentation/view_model/profile/profile_cubit.dart';
+import 'package:food/features/profile/presentation/view_model/profile/profile_cubit.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ProfileAvatar extends StatelessWidget {

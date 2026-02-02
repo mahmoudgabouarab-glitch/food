@@ -7,8 +7,8 @@ import 'package:food/core/utils/extension.dart';
 import 'package:food/core/utils/spacing.dart';
 import 'package:food/core/widgets/custom_button.dart';
 import 'package:food/core/widgets/custom_text_filed.dart';
-import 'package:food/features/auth/presentation/view_model/profile/profile_cubit.dart';
-import 'package:food/features/auth/presentation/view_model/updata_profile/updata_profile_cubit.dart';
+import 'package:food/features/profile/presentation/view_model/profile/profile_cubit.dart';
+import 'package:food/features/profile/presentation/view_model/updata_profile/updata_profile_cubit.dart';
 
 class ProfileActions extends StatelessWidget {
   const ProfileActions({super.key});
@@ -17,15 +17,6 @@ class ProfileActions extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Card(
-          child: ListTile(
-            leading: Image.asset("assets/image/visa.png", width: 100.w),
-            title: const Text("Debit card"),
-            subtitle: const Text("3566 **** **** 0505"),
-            trailing: Checkbox(value: true, onChanged: (_) {}),
-          ),
-        ),
-        spaceH(25),
         SizedBox(
           width: 150.w,
           child: Btn(
@@ -69,7 +60,11 @@ Future<T?> _buildBottomSheet<T>(BuildContext context) {
             spaceH(20),
             _buildField("Address", cubitprofile.addresscontrollar),
             spaceH(20),
-            _buildField("Visa", cubitprofile.visacontrollar),
+            _buildField(
+              "Visa",
+              cubitprofile.visacontrollar,
+              inputFormatters: [CardNumberFormatter()],
+            ),
             Spacer(),
             SizedBox(
               width: 150.w,
@@ -107,4 +102,28 @@ Widget _buildField(
     textstyle: const TextStyle(color: Colors.white),
     fillcolor: AppColor.surface,
   );
+}
+
+//format card number
+class CardNumberFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
+    var text = newValue.text.replaceAll(' ', '');
+
+    if (text.length > 16) return oldValue;
+
+    final buffer = StringBuffer();
+    for (int i = 0; i < text.length; i++) {
+      if (i % 4 == 0 && i != 0) buffer.write(' ');
+      buffer.write(text[i]);
+    }
+
+    return TextEditingValue(
+      text: buffer.toString(),
+      selection: TextSelection.collapsed(offset: buffer.length),
+    );
+  }
 }

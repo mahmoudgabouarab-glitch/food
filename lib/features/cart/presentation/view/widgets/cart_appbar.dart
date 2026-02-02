@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/core/utils/extension.dart';
 import 'package:food/core/widgets/custom_btn_nav_bar.dart';
-import 'package:food/features/auth/presentation/view_model/profile/profile_cubit.dart';
+import 'package:food/features/profile/presentation/view_model/profile/profile_cubit.dart';
 import 'package:food/features/cart/data/model/get_cart_model/get_cart_response.dart';
 import 'package:food/features/order/presentation/view/order_view.dart';
 import 'package:food/features/order_history/presentation/view_model/cubit/order_history_cubit.dart';

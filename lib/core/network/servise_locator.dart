@@ -5,6 +5,7 @@ import 'package:food/features/cart/data/repo/cart_repo_impl.dart';
 import 'package:food/features/home/data/repo/home_repo_impl.dart';
 import 'package:food/features/order/data/repo/order_repo_impl.dart';
 import 'package:food/features/order_history/data/repo/order_history_repo_impl.dart';
+import 'package:food/features/profile/data/repo/profile_repo_impl.dart';
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
@@ -20,5 +21,8 @@ void setupServiceLocator() {
   );
   getIt.registerSingleton<OrderHistoryRepoImpl>(
     OrderHistoryRepoImpl(getIt.get<ApiServise>()),
+  );
+  getIt.registerSingleton<ProfileRepoImpl>(
+    ProfileRepoImpl(getIt.get<ApiServise>()),
   );
 }

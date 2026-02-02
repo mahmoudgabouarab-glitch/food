@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food/features/auth/data/models/profile_model.dart';
-import 'package:food/features/auth/data/repo/auth_repo.dart';
+import 'package:food/features/profile/data/model/profile_model.dart';
+import 'package:food/features/profile/data/repo/profile_repo.dart';
 
 part 'profile_state.dart';
 
@@ -12,7 +12,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   final TextEditingController emailcontrollar = .new();
   final TextEditingController addresscontrollar = .new();
   final TextEditingController visacontrollar = .new();
-  final AuthRepo _repo;
+  final ProfileRepo _repo;
   
   //get profile
   Future<void> getProfile() async {

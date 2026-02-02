@@ -4,8 +4,8 @@ import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/extension.dart';
 import 'package:food/core/widgets/custom_loading.dart';
 import 'package:food/core/widgets/custom_snakbar.dart';
-import 'package:food/features/auth/presentation/view_model/profile/profile_cubit.dart';
-import 'package:food/features/auth/presentation/view_model/updata_profile/updata_profile_cubit.dart';
+import 'package:food/features/profile/presentation/view_model/profile/profile_cubit.dart';
+import 'package:food/features/profile/presentation/view_model/updata_profile/updata_profile_cubit.dart';
 
 class ProfileListener extends StatelessWidget {
   const ProfileListener({super.key});
