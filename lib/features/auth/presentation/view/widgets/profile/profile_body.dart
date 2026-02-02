@@ -5,6 +5,7 @@ import 'package:food/features/auth/presentation/view/widgets/profile/profile_act
 import 'package:food/features/auth/presentation/view/widgets/profile/profile_app_bar.dart';
 import 'package:food/features/auth/presentation/view/widgets/profile/profile_avatar.dart';
 import 'package:food/features/auth/presentation/view/widgets/profile/profile_form.dart';
+import 'package:food/features/auth/presentation/view/widgets/profile/profile_listener.dart';
 import 'package:food/features/auth/presentation/view/widgets/profile/updata_avatar.dart';
 import 'package:food/features/auth/presentation/view_model/profile/profile_cubit.dart';
 
@@ -31,7 +32,7 @@ class ProfileBody extends StatelessWidget {
                 UpdataAvatar(),
                 ProfileForm(),
                 ProfileActions(),
-                //ProfileBlocListener(),
+                ProfileListener(),
               ],
             ),
           ),

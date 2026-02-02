@@ -26,12 +26,15 @@ class ProfileActions extends StatelessWidget {
           ),
         ),
         spaceH(25),
-        Btn(
-          radius: 15,
-          ontap: () {
-            _buildBottomSheet(context);
-          },
-          child: const Center(child: Text("Edit Profile")),
+        SizedBox(
+          width: 150.w,
+          child: Btn(
+            radius: 15,
+            ontap: () {
+              _buildBottomSheet(context);
+            },
+            child: const Center(child: Text("Edit Profile")),
+          ),
         ),
       ],
     );
