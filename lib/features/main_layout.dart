@@ -21,16 +21,11 @@ class MainLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (_) => ProfileCubit(getIt<ProfileRepoImpl>())..getProfile(),
+        BlocProvider(create: (_) => ProfileCubit(getIt<ProfileRepoImpl>())..getProfile(),
         ),
-        BlocProvider(
-          create: (context) => CartCubit(getIt<CartRepoImpl>())..getCart(),
+        BlocProvider(create: (_) => CartCubit(getIt<CartRepoImpl>())..getCart(),
         ),
-        BlocProvider(
-          create: (context) =>
-              OrderHistoryCubit(getIt<OrderHistoryRepoImpl>())
-                ..getOrderHistory(),
+        BlocProvider(create: (_) => OrderHistoryCubit(getIt<OrderHistoryRepoImpl>())..getOrderHistory(),  
         ),
       ],
       child: const _MainLayoutView(),
@@ -46,64 +41,68 @@ class _MainLayoutView extends StatefulWidget {
 }
 
 class _MainLayoutViewState extends State<_MainLayoutView> {
-  int currentIndex = 0;
-  final List<Widget> screens = const [
-    HomeView(),
-    CartView(),
-    OrderHistoryView(),
-    ProfileView(),
+  int _currentIndex = 0;
+
+  final List<MainTabItem> _tabs = const [
+    MainTabItem(label: 'Home', icon: Icons.home, screen: HomeView()),
+    MainTabItem(
+      label: 'Cart',
+      icon: Icons.add_shopping_cart,
+      screen: CartView(),
+    ),
+    MainTabItem(
+      label: 'History',
+      icon: Icons.fastfood_outlined,
+      screen: OrderHistoryView(),
+    ),
+    MainTabItem(
+      label: 'Profile',
+      icon: Icons.person_outlined,
+      screen: ProfileView(),
+    ),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(index: currentIndex, children: screens),
+      body: IndexedStack(
+        index: _currentIndex,
+        children: _tabs.map((e) => e.screen).toList(),
+      ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedFontSize: 13.0,
-        unselectedFontSize: 13.0,
+        currentIndex: _currentIndex,
+        selectedFontSize: 13,
+        unselectedFontSize: 13,
         selectedItemColor: AppColor.primary,
         unselectedItemColor: AppColor.textSecondary,
         backgroundColor: Colors.white,
-        currentIndex: currentIndex,
         onTap: (index) {
-          setState(() {
-            currentIndex = index;
-          });
+          setState(() => _currentIndex = index);
         },
-        items: [
-          BottomNavigationBarItem(
+        items: List.generate(
+          _tabs.length,
+          (index) => BottomNavigationBarItem(
+            label: _tabs[index].label,
             icon: CustomBtnNavigation(
-              currentIndex: currentIndex,
-              index: 0,
-              icon: Icons.home,
+              currentIndex: _currentIndex,
+              index: index,
+              icon: _tabs[index].icon,
             ),
-            label: "Home",
           ),
-          BottomNavigationBarItem(
-            icon: CustomBtnNavigation(
-              currentIndex: currentIndex,
-              index: 1,
-              icon: Icons.add_shopping_cart,
-            ),
-            label: "Cart",
-          ),
-          BottomNavigationBarItem(
-            icon: CustomBtnNavigation(
-              currentIndex: currentIndex,
-              index: 2,
-              icon: Icons.fastfood_outlined,
-            ),
-            label: "History",
-          ),
-          BottomNavigationBarItem(
-            icon: CustomBtnNavigation(
-              currentIndex: currentIndex,
-              index: 3,
-              icon: Icons.person_outlined,
-            ),
-            label: "Profile",
-          ),
-        ],
+        ),
       ),
     );
   }
+}
+
+class MainTabItem {
+  final String label;
+  final IconData icon;
+  final Widget screen;
+
+  const MainTabItem({
+    required this.label,
+    required this.icon,
+    required this.screen,
+  });
 }
