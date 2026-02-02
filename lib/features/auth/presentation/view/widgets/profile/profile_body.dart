@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/core/utils/app_color.dart';
-import 'package:food/core/utils/spacing.dart';
 import 'package:food/features/auth/presentation/view/widgets/profile/profile_actions.dart';
 import 'package:food/features/auth/presentation/view/widgets/profile/profile_app_bar.dart';
 import 'package:food/features/auth/presentation/view/widgets/profile/profile_avatar.dart';
@@ -22,17 +21,16 @@ class ProfileBody extends StatelessWidget {
         onRefresh: () async {
           await context.read<ProfileCubit>().getProfile();
         },
-        child: SingleChildScrollView(
-          physics: const AlwaysScrollableScrollPhysics(),
+        child: const SingleChildScrollView(
+          physics: AlwaysScrollableScrollPhysics(),
           child: Padding(
-            padding: const EdgeInsets.all(12),
+            padding: EdgeInsets.all(12),
             child: Column(
               children: [
-                const ProfileAvatar(),
-                spaceH(20),
-                const UpdataAvatar(),
-                const ProfileForm(),
-                const ProfileActions(),
+                ProfileAvatar(),
+                UpdataAvatar(),
+                ProfileForm(),
+                ProfileActions(),
                 //ProfileBlocListener(),
               ],
             ),
