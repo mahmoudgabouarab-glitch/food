@@ -2,14 +2,14 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/features/auth/data/models/profile_model.dart';
 import 'package:food/features/auth/data/repo/auth_repo.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:image_cropper/image_cropper.dart';
 
 part 'updata_profile_state.dart';
 
 class UpdataProfileCubit extends Cubit<UpdataProfileState> {
   UpdataProfileCubit(this._repo) : super(UpdataProfileInitial());
   final AuthRepo _repo;
-  
+
   // updateProfile
   Future<void> updateProfileData({
     required String name,
@@ -33,7 +33,7 @@ class UpdataProfileCubit extends Cubit<UpdataProfileState> {
   }
 
   // updateAvatar
-  Future<void> updateAvatar(XFile? image) async {
+  Future<void> updateAvatar(CroppedFile? image) async {
     emit(UpdataProfileLoading());
 
     final data = await _repo.postUpdataProfile(image: image);

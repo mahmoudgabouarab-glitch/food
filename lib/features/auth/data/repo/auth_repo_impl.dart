@@ -5,6 +5,7 @@ import 'package:food/core/network/api_service.dart';
 import 'package:food/features/auth/data/models/auth_model.dart';
 import 'package:food/features/auth/data/models/profile_model.dart';
 import 'package:food/features/auth/data/repo/auth_repo.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AuthRepoImpl extends AuthRepo {
@@ -103,12 +104,12 @@ class AuthRepoImpl extends AuthRepo {
     String? email,
     String? address,
     String? visa,
-    XFile? image,
+    CroppedFile? image,
   }) async {
     try {
       MultipartFile? file;
       if (image != null) {
-        file = await MultipartFile.fromFile(image.path, filename: image.name);
+        file = await MultipartFile.fromFile(image.path);
       }
       var data = await _api.post(
         endpoint: "update-profile",

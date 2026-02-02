@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:food/core/errors/failure.dart';
 import 'package:food/features/auth/data/models/auth_model.dart';
 import 'package:food/features/auth/data/models/profile_model.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
 abstract class AuthRepo {
@@ -23,6 +24,6 @@ abstract class AuthRepo {
     String? email,
     String? address,
     String? visa,
-    XFile? image,
+    CroppedFile? image,
   });
 }

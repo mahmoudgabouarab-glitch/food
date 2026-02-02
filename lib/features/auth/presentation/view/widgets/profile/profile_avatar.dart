@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/features/auth/presentation/view_model/profile/profile_cubit.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ProfileAvatar extends StatelessWidget {
   const ProfileAvatar({super.key});
@@ -28,6 +29,20 @@ class ProfileAvatar extends StatelessWidget {
           errorWidget: (context, url, error) =>
               const Icon(Icons.person, size: 80),
           fit: BoxFit.cover,
+          progressIndicatorBuilder: (context, url, downloadProgress) => Center(
+            child: Shimmer.fromColors(
+              baseColor: Colors.grey.shade700,
+              highlightColor: Colors.grey.shade600,
+              child: Container(
+                height: 140.h,
+                width: 140.w,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
         ),
       );
     }
