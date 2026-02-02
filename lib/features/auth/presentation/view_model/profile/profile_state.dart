@@ -17,28 +17,8 @@ final class ProfileSuccess extends ProfileState {
   const ProfileSuccess(this.profilemodel);
 }
 
-final class ImageSuccess extends ProfileState {
-  final XFile picImage;
-
-  const ImageSuccess(this.picImage);
-}
-
 final class ProfileFailure extends ProfileState {
   final String err;
 
   const ProfileFailure(this.err);
-}
-
-final class UpdataLoading extends ProfileState {}
-
-final class UpdataSuccess extends ProfileState {
-  final ProfileModel updatamodel;
-
-  const UpdataSuccess(this.updatamodel);
-}
-
-final class UpdataFailure extends ProfileState {
-  final String err;
-
-  const UpdataFailure(this.err);
 }

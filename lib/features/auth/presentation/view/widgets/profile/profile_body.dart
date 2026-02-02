@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/core/utils/app_color.dart';
-import 'package:food/features/auth/presentation/view/widgets/profile/profile_bloc_listener.dart';
+import 'package:food/core/utils/spacing.dart';
 import 'package:food/features/auth/presentation/view/widgets/profile/profile_actions.dart';
 import 'package:food/features/auth/presentation/view/widgets/profile/profile_app_bar.dart';
 import 'package:food/features/auth/presentation/view/widgets/profile/profile_avatar.dart';
 import 'package:food/features/auth/presentation/view/widgets/profile/profile_form.dart';
+import 'package:food/features/auth/presentation/view/widgets/profile/updata_avatar.dart';
 import 'package:food/features/auth/presentation/view_model/profile/profile_cubit.dart';
 
 class ProfileBody extends StatelessWidget {
@@ -19,18 +20,20 @@ class ProfileBody extends StatelessWidget {
         color: AppColor.btn,
         displacement: 60,
         onRefresh: () async {
-          await context.read<ProfileCubit>().getProfile(refresh: true);
+          await context.read<ProfileCubit>().getProfile();
         },
-        child: const SingleChildScrollView(
-          physics: AlwaysScrollableScrollPhysics(),
+        child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
           child: Padding(
-            padding: EdgeInsets.all(12),
+            padding: const EdgeInsets.all(12),
             child: Column(
               children: [
-                ProfileAvatar(),
-                ProfileForm(),
-                ProfileActions(),
-                ProfileBlocListener(),
+                const ProfileAvatar(),
+                spaceH(20),
+                const UpdataAvatar(),
+                const ProfileForm(),
+                const ProfileActions(),
+                //ProfileBlocListener(),
               ],
             ),
           ),

@@ -16,13 +16,13 @@ abstract class AuthRepo {
     required String phone,
     required XFile? image,
   });
+  Future<Either<Failure, AuthModel>> postlogout();
   Future<Either<Failure, ProfileModel>> getProfile();
   Future<Either<Failure, ProfileModel>> postUpdataProfile({
-    required String name,
-    required String email,
-    required String address,
-    required String visa,
-    required XFile? image,
+    String? name,
+    String? email,
+    String? address,
+    String? visa,
+    XFile? image,
   });
-  Future<Either<Failure, AuthModel>> postlogout();
 }

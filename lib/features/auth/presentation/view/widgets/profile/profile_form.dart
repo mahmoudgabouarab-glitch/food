@@ -25,7 +25,7 @@ class ProfileForm extends StatelessWidget {
         _buildField(
           "Visa",
           cubit.visacontrollar,
-          inputFormatters: [CardNumberFormatter()],
+          //inputFormatters: [CardNumberFormatter()],
         ),
         SizedBox(height: 20.h),
         const Divider(),
@@ -40,6 +40,7 @@ Widget _buildField(
   List<TextInputFormatter>? inputFormatters,
 }) {
   return CustomTextFormFiled(
+    readOnly: true,
     inputFormatters: inputFormatters,
     controller: controller,
     textstyle: const TextStyle(color: Colors.white),
@@ -54,25 +55,25 @@ Widget _buildField(
 }
 
 // format card number
-class CardNumberFormatter extends TextInputFormatter {
-  @override
-  TextEditingValue formatEditUpdate(
-    TextEditingValue oldValue,
-    TextEditingValue newValue,
-  ) {
-    var text = newValue.text.replaceAll(' ', '');
+// class CardNumberFormatter extends TextInputFormatter {
+//   @override
+//   TextEditingValue formatEditUpdate(
+//     TextEditingValue oldValue,
+//     TextEditingValue newValue,
+//   ) {
+//     var text = newValue.text.replaceAll(' ', '');
 
-    if (text.length > 16) return oldValue;
+//     if (text.length > 16) return oldValue;
 
-    final buffer = StringBuffer();
-    for (int i = 0; i < text.length; i++) {
-      if (i % 4 == 0 && i != 0) buffer.write(' ');
-      buffer.write(text[i]);
-    }
+//     final buffer = StringBuffer();
+//     for (int i = 0; i < text.length; i++) {
+//       if (i % 4 == 0 && i != 0) buffer.write(' ');
+//       buffer.write(text[i]);
+//     }
 
-    return TextEditingValue(
-      text: buffer.toString(),
-      selection: TextSelection.collapsed(offset: buffer.length),
-    );
-  }
-}
+//     return TextEditingValue(
+//       text: buffer.toString(),
+//       selection: TextSelection.collapsed(offset: buffer.length),
+//     );
+//   }
+// }

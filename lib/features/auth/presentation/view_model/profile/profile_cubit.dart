@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/features/auth/data/models/profile_model.dart';
 import 'package:food/features/auth/data/repo/auth_repo.dart';
-import 'package:image_picker/image_picker.dart';
 
 part 'profile_state.dart';
 
@@ -13,12 +12,10 @@ class ProfileCubit extends Cubit<ProfileState> {
   final TextEditingController emailcontrollar = .new();
   final TextEditingController addresscontrollar = .new();
   final TextEditingController visacontrollar = .new();
-  XFile? selectedImage;
   final AuthRepo _repo;
-  bool isRefresh = false;
+  
   //get profile
-  Future<void> getProfile({bool refresh = false}) async {
-    isRefresh = refresh;
+  Future<void> getProfile() async {
     emit(ProfileLoading());
     var data = await _repo.getProfile();
     data.fold(
@@ -31,34 +28,6 @@ class ProfileCubit extends Cubit<ProfileState> {
         addresscontrollar.text = success.data.address;
         visacontrollar.text = success.data.visa ?? "";
         emit(ProfileSuccess(success));
-      },
-    );
-  }
-
-  //pick image
-  void pickImage(XFile? file) {
-    if (file == null) return;
-    selectedImage = file;
-    emit(ImageSuccess(file));
-  }
-
-  //update profile
-  Future<void> postUpdataProfile() async {
-    emit(UpdataLoading());
-    var data = await _repo.postUpdataProfile(
-      name: namecontrollar.text,
-      email: emailcontrollar.text,
-      address: addresscontrollar.text,
-      visa: visacontrollar.text.replaceAll(' ', ''),
-      image: selectedImage,
-    );
-    data.fold(
-      (failure) {
-        emit(UpdataFailure(failure.errormessage));
-      },
-      (success) async {
-        emit(UpdataSuccess(success));
-        await getProfile();
       },
     );
   }

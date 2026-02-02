@@ -66,6 +66,21 @@ class AuthRepoImpl extends AuthRepo {
     }
   }
 
+  // Logout
+  @override
+  Future<Either<Failure, AuthModel>> postlogout() async {
+    try {
+      var data = await _api.post(endpoint: "logout");
+      final user = AuthModel.fromJson(data);
+      return Right(user);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServiseFailure.fromdioException(e));
+      }
+      return Left(ServiseFailure(e.toString()));
+    }
+  }
+
   // Profile
   @override
   Future<Either<Failure, ProfileModel>> getProfile() async {
@@ -84,11 +99,11 @@ class AuthRepoImpl extends AuthRepo {
   // Update Profile
   @override
   Future<Either<Failure, ProfileModel>> postUpdataProfile({
-    required String name,
-    required String email,
-    required String address,
-    required String visa,
-    required XFile? image,
+    String? name,
+    String? email,
+    String? address,
+    String? visa,
+    XFile? image,
   }) async {
     try {
       MultipartFile? file;
@@ -98,29 +113,14 @@ class AuthRepoImpl extends AuthRepo {
       var data = await _api.post(
         endpoint: "update-profile",
         data: {
-          "name": name,
-          "email": email,
-          "address": address,
-          "Visa": visa,
-          "image": file,
+          "name": ?name,
+          "email": ?email,
+          "address": ?address,
+          "Visa": ?visa,
+          "image": ?file,
         },
       );
       final user = ProfileModel.fromJson(data);
-      return Right(user);
-    } catch (e) {
-      if (e is DioException) {
-        return Left(ServiseFailure.fromdioException(e));
-      }
-      return Left(ServiseFailure(e.toString()));
-    }
-  }
-
-  // Logout
-  @override
-  Future<Either<Failure, AuthModel>> postlogout() async {
-    try {
-      var data = await _api.post(endpoint: "logout");
-      final user = AuthModel.fromJson(data);
       return Right(user);
     } catch (e) {
       if (e is DioException) {

@@ -17,6 +17,7 @@ class CustomTextFormFiled extends StatefulWidget {
   final TextInputType? keybordtype;
   final int? maxLength;
   final List<TextInputFormatter>? inputFormatters;
+  final bool? readOnly;
 
   const CustomTextFormFiled({
     super.key,
@@ -34,6 +35,7 @@ class CustomTextFormFiled extends StatefulWidget {
     this.keybordtype,
     this.maxLength,
     this.inputFormatters,
+    this.readOnly,
   });
 
   @override
@@ -51,6 +53,7 @@ class _CustomTextFormFiledState extends State<CustomTextFormFiled> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      readOnly: widget.readOnly ?? false,
       inputFormatters: widget.inputFormatters,
       maxLength: widget.maxLength,
       autovalidateMode: AutovalidateMode.onUserInteraction,
