@@ -1,12 +1,14 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 abstract class Failure {
   final String errormessage;
-  Failure(this.errormessage);
+  final Widget? widget;
+  Failure(this.errormessage, {this.widget});
 }
 
 class ServiseFailure extends Failure {
-  ServiseFailure(super.errormessage);
+  ServiseFailure(super.errormessage, {super.widget});
   factory ServiseFailure.fromdioException(DioException dioException) {
     switch (dioException.type) {
       case DioExceptionType.connectionTimeout:
@@ -39,7 +41,7 @@ class ServiseFailure extends Failure {
         return ServiseFailure(response['message'] ?? 'Bad request');
 
       case 401:
-        return ServiseFailure(response['message'] ?? 'Unauthorized');
+        return ServiseFailure('You must be logged in to use this feature');
 
       case 403:
         return ServiseFailure(response['message'] ?? 'Forbidden');
