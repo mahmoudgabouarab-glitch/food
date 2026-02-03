@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/core/network/servise_locator.dart';
+import 'package:food/core/utils/function.dart';
+import 'package:food/core/widgets/custom_widget_err.dart';
 import 'package:food/features/auth/data/repo/auth_repo_impl.dart';
 import 'package:food/features/profile/data/repo/profile_repo_impl.dart';
 import 'package:food/features/profile/presentation/view/widgets/profile_body.dart';
@@ -19,7 +21,9 @@ class ProfileView extends StatelessWidget {
           create: (context) => UpdataProfileCubit(getIt<ProfileRepoImpl>()),
         ),
       ],
-      child: const ProfileBody(),
+      child: isloggedInUser
+          ? const ProfileBody()
+          : CustomWidgetErr(text: "You are not logged in"),
     );
   }
 }

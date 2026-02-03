@@ -13,14 +13,16 @@ class ProfileCubit extends Cubit<ProfileState> {
   final TextEditingController addresscontrollar = .new();
   final TextEditingController visacontrollar = .new();
   final ProfileRepo _repo;
-  
+
   //get profile
   Future<void> getProfile() async {
     emit(ProfileLoading());
     var data = await _repo.getProfile();
     data.fold(
       (failure) {
-        emit(ProfileFailure(failure.errormessage));
+        emit(
+          ProfileFailure(failure.errormessage, statusCode: failure.statusCode),
+        );
       },
       (success) {
         namecontrollar.text = success.data.name;

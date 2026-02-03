@@ -19,6 +19,6 @@ final class ProfileSuccess extends ProfileState {
 
 final class ProfileFailure extends ProfileState {
   final String err;
-
-  const ProfileFailure(this.err);
+  final int? statusCode;
+  const ProfileFailure(this.err, {this.statusCode});
 }
