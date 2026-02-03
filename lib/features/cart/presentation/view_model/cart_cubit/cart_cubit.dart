@@ -13,8 +13,9 @@ class CartCubit extends Cubit<CartState> {
     emit(CartLoading());
     final result = await _repo.getCart();
     result.fold(
-      (failure) => emit(CartFailure(failure.errormessage)),
+      (failure) => emit(CartFailure(failure.errormessage,statusCode: failure.statusCode)),
       (success) => emit(CartSuccess(success)),
     );
+    
   }
 }

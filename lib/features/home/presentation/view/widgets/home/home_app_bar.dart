@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food/core/utils/app_color.dart';
 import 'package:food/features/profile/presentation/view_model/profile/profile_cubit.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -28,7 +29,7 @@ class HomeAppBar extends StatelessWidget {
                     MediaQuery.of(context).padding.top + kToolbarHeight
                 ? _buildImageGif()
                 : null,
-            title: _buildAppBarContent(),
+            title: _buildAppBarBloc(),
           );
         },
       ),
@@ -40,47 +41,37 @@ Widget _buildImageGif() {
   return Image.asset("assets/image/burger.gif", fit: BoxFit.cover);
 }
 
-Widget _buildAppBarContent() {
+Widget _buildAppBarBloc() {
   return BlocBuilder<ProfileCubit, ProfileState>(
     builder: (context, state) {
-      if (state is ProfileLoading) {
-        return _buildAppBarShimmer(context);
-      } else if (state is ProfileSuccess) {
-        return Container(
-          width: double.infinity,
-          height: kToolbarHeight,
-          color: Theme.of(context).scaffoldBackgroundColor,
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Text(
-                  "Hello ${state.profilemodel.data.name}",
-                  style: Theme.of(
-                    context,
-                  ).textTheme.titleMedium?.copyWith(fontSize: 16.sp),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
+      switch (state) {
+        case ProfileInitial():
+          break;
+        case ProfileLoading():
+          return _buildAppBarShimmer(context);
+        case ProfileSuccess():
+          return _buildAppBarContent(
+            context: context,
+            title: "Hello ${state.profilemodel.data.name}",
+            childCircleAvatar: ClipOval(
+              child: CachedNetworkImage(
+                imageUrl: state.profilemodel.data.image,
+                errorWidget: (context, url, error) =>
+                    const Icon(Icons.person, size: 18),
+                width: 36.w,
+                height: 36.h,
+                fit: BoxFit.cover,
               ),
-              CircleAvatar(
-                backgroundColor: Colors.transparent,
-                radius: 18.r,
-                child: ClipOval(
-                  child: CachedNetworkImage(
-                    imageUrl: state.profilemodel.data.image,
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.person, size: 18),
-                    width: 36.w,
-                    height: 36.h,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
+            ),
+          );
+        case ProfileFailure():
+          return _buildAppBarContent(
+            context: context,
+            title: "welcome We hope you are well",
+            childCircleAvatar: ClipOval(
+              child: const Icon(Icons.person, size: 18),
+            ),
+          );
       }
       return const SizedBox.shrink();
     },
@@ -117,6 +108,39 @@ Widget _buildAppBarShimmer(BuildContext context) {
           ),
         ],
       ),
+    ),
+  );
+}
+
+Widget _buildAppBarContent({
+  required BuildContext context,
+  required String title,
+  required Widget childCircleAvatar,
+}) {
+  return Container(
+    width: double.infinity,
+    height: kToolbarHeight,
+    color: Theme.of(context).scaffoldBackgroundColor,
+    padding: EdgeInsets.symmetric(horizontal: 16.w),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Expanded(
+          child: Text(
+            title,
+            style: Theme.of(
+              context,
+            ).textTheme.titleMedium?.copyWith(fontSize: 14.sp),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+        CircleAvatar(
+          backgroundColor: AppColor.textthirth,
+          radius: 13.r,
+          child: childCircleAvatar,
+        ),
+      ],
     ),
   );
 }

@@ -22,7 +22,11 @@ class CartBody extends StatelessWidget {
           case CartSuccess():
             return _buildCarBody(state, context);
           case CartFailure():
-            return CustomWidgetErr(text: state.err);
+            if (state.statusCode == 401) {
+              return CustomWidgetErr(text: state.err);
+            } else {
+              return Center(child: Text(state.err));
+            }
         }
       },
     );

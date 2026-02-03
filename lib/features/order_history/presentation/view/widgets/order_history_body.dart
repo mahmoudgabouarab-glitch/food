@@ -24,7 +24,11 @@ class OrderHistoryBody extends StatelessWidget {
               body: _buildItemOrderHistory(state),
             );
           case OrderHistoryError():
-            return CustomWidgetErr(text: state.err);
+            if (state.statusCode == 401) {
+              return CustomWidgetErr(text: state.err);
+            } else {
+              return Center(child: Text(state.err));
+            }
         }
         return const SizedBox.shrink();
       },

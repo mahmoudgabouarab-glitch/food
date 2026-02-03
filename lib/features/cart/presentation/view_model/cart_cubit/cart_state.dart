@@ -20,7 +20,8 @@ final class CartSuccess extends CartState {
 
 final class CartFailure extends CartState {
   final String err;
-  const CartFailure(this.err);
+  final int? statusCode;
+  const CartFailure(this.err, {this.statusCode});
   @override
-  List<Object> get props => [err];
+  List<Object> get props => [err, statusCode ?? 0];
 }
