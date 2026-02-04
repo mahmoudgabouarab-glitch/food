@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
+import 'package:food/core/utils/spacing.dart';
+import 'package:food/core/utils/styles.dart';
 
 class CustomSnackBar {
   static void show(
@@ -14,20 +16,20 @@ class CustomSnackBar {
 
     switch (type) {
       case SnackBarType.success:
-        backgroundColor = Colors.green.shade600;
-        icon = const Icon(Icons.check_circle, color: Colors.white);
+        backgroundColor = AppColor.success;
+        icon = const Icon(Icons.check_circle, color: AppColor.textPrimary);
         break;
       case SnackBarType.error:
-        backgroundColor = Colors.red.shade600;
-        icon = const Icon(Icons.error, color: Colors.white);
+        backgroundColor = AppColor.error;
+        icon = const Icon(Icons.error, color: AppColor.textPrimary);
         break;
       case SnackBarType.warning:
-        backgroundColor = Colors.orange.shade700;
-        icon = const Icon(Icons.warning, color: Colors.white);
+        backgroundColor = AppColor.primary;
+        icon = const Icon(Icons.warning, color: AppColor.textPrimary);
         break;
       default:
         backgroundColor = AppColor.textthirth;
-        icon = const Icon(Icons.info, color: Colors.white);
+        icon = const Icon(Icons.info, color: AppColor.textPrimary);
     }
 
     final snackBar = SnackBar(
@@ -39,14 +41,11 @@ class CustomSnackBar {
       content: Row(
         children: [
           icon,
-          SizedBox(width: 12.w),
+          spaceW(12),
           Expanded(
             child: Text(
               message,
-              style: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w500,
-              ),
+              style: Styles.s16_500.copyWith(color: AppColor.textPrimary),
             ),
           ),
         ],

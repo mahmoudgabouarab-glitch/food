@@ -33,7 +33,7 @@ class CustomBtnNavBar extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text("Total"),
-              Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
+              Text(title, style: Styles.s16_600),
             ],
           ),
           MaterialButton(

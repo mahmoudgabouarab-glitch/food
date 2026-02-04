@@ -10,7 +10,10 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(430, 932),
       child: MaterialApp(
-        theme: ThemeData.dark().copyWith(
+        theme: ThemeData(
+          useMaterial3: true,
+          brightness: Brightness.dark,
+          fontFamily: 'din',
           highlightColor: Colors.transparent,
           appBarTheme: const AppBarTheme(
             backgroundColor: Colors.transparent,

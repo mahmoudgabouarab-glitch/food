@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/spacing.dart';
+import 'package:food/core/utils/styles.dart';
 import 'package:food/core/widgets/custom_loading.dart';
 import 'package:food/core/widgets/custom_snakbar.dart';
 import 'package:food/features/home/data/model/products_model/products_model.dart';
@@ -23,18 +24,14 @@ class ProductDescription extends StatelessWidget {
             oneProduct.name,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              fontSize: 14.sp,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
+            style: Styles.s14_500.copyWith(color: Colors.black),
           ),
           spaceH(4),
           Text(
             oneProduct.description,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontSize: 12.sp, color: Colors.grey[200]),
+            style: Styles.s12_500.copyWith(color: AppColor.textPrimary),
           ),
           SizedBox(height: 9.h),
           Row(
@@ -42,11 +39,7 @@ class ProductDescription extends StatelessWidget {
               const Icon(Icons.star_rate_rounded, color: Colors.yellow),
               Text(
                 oneProduct.rating,
-                style: TextStyle(
-                  fontSize: 12.sp,
-                  color: Colors.grey[200],
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Styles.s12_500.copyWith(color: AppColor.textPrimary),
               ),
               const Spacer(),
               _favProducts(oneProduct),

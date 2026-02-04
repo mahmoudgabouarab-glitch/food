@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/spacing.dart';
+import 'package:food/core/utils/styles.dart';
 import 'package:food/features/home/data/model/products_model/products_model.dart';
 import 'package:food/features/home/presentation/view_model/details_cubit/detsils_cubit/details_cubit.dart';
 import 'package:food/features/home/presentation/view_model/details_cubit/detsils_cubit/details_state.dart';
@@ -30,18 +31,12 @@ class DetailsSlider extends StatelessWidget {
                   children: [
                     TextSpan(
                       text: '${products.name}\n\n',
-                      style: TextStyle(
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.bold,
-                        color: AppColor.primary,
-                      ),
+                      style: Styles.s16_500.copyWith(color: AppColor.primary),
                     ),
                     TextSpan(
                       text: products.description,
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.grey,
+                      style: Styles.s14_500.copyWith(
+                        color: AppColor.textSecondary,
                       ),
                     ),
                   ],

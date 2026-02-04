@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
+import 'package:food/core/utils/styles.dart';
 import 'package:food/core/widgets/custom_text_filed.dart';
 import 'package:food/features/home/presentation/view_model/search_cubit/search_products_cubit.dart';
 
@@ -48,10 +49,6 @@ Widget _buildField({
     textstyle: const TextStyle(color: Colors.white),
     fillcolor: AppColor.surface,
     labelText: label,
-    labelStyle: const TextStyle(
-      color: AppColor.primary,
-      fontWeight: FontWeight.bold,
-      fontSize: 15,
-    ),
+    labelStyle: Styles.s14_700.copyWith(color: AppColor.primary),
   );
 }

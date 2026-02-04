@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/spacing.dart';
+import 'package:food/core/utils/styles.dart';
 import 'package:food/features/cart/data/model/get_cart_model/get_cart_response.dart';
 import 'package:food/features/cart/presentation/view/widgets/cart/remove_listener.dart';
 import 'package:food/features/cart/presentation/view_model/remove_cart_cubit/remove_cart_cubit.dart';
@@ -57,11 +58,7 @@ class OneItemOfCart extends StatelessWidget {
                     item.name,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.bold,
-                      color: AppColor.primary,
-                    ),
+                    style: Styles.s16_500.copyWith(color: AppColor.btn),
                   ),
                   if (topppings.isNotEmpty) ...[
                     spaceH(4),
@@ -69,9 +66,7 @@ class OneItemOfCart extends StatelessWidget {
                       "Toppings:",
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w700,
+                      style: Styles.s14_700.copyWith(
                         color: AppColor.textPrimary,
                       ),
                     ),
@@ -79,10 +74,8 @@ class OneItemOfCart extends StatelessWidget {
                       topppings,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w500,
-                        color: AppColor.textSecondary,
+                      style: Styles.s14_500.copyWith(
+                        color: AppColor.textPrimary,
                       ),
                     ),
                     spaceH(8),
@@ -112,9 +105,7 @@ class OneItemOfCart extends StatelessWidget {
                       "Side Options:",
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w700,
+                      style: Styles.s14_700.copyWith(
                         color: AppColor.textPrimary,
                       ),
                     ),
@@ -122,10 +113,8 @@ class OneItemOfCart extends StatelessWidget {
                       sideOptions,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w500,
-                        color: AppColor.textSecondary,
+                      style: Styles.s14_500.copyWith(
+                        color: AppColor.textPrimary,
                       ),
                     ),
                     spaceH(8),
@@ -154,11 +143,7 @@ class OneItemOfCart extends StatelessWidget {
                     "\$${item.price.toString()}",
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w800,
-                      color: Colors.green[400],
-                    ),
+                    style: Styles.s14_700.copyWith(color: AppColor.success),
                   ),
                   const RemoveListener(),
                 ],

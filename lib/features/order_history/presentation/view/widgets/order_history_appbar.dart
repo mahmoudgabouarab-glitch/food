@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
+import 'package:food/core/utils/styles.dart';
 import 'package:food/features/order_history/presentation/view_model/cubit/order_history_cubit.dart';
 
 class OrderHistoryAppBar extends StatelessWidget
@@ -34,10 +35,8 @@ class OrderHistoryAppBar extends StatelessWidget
                     child: Center(
                       child: Text(
                         "${state.orderHistoryModel.data?.length ?? 0}",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.bold,
+                        style: Styles.s12_500.copyWith(
+                          color: AppColor.textPrimary,
                         ),
                       ),
                     ),

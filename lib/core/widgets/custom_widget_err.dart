@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food/core/utils/assets.dart';
 import 'package:food/core/utils/extension.dart';
 import 'package:food/core/utils/spacing.dart';
 import 'package:food/core/utils/styles.dart';
@@ -16,7 +17,7 @@ class CustomWidgetErr extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.follow_the_signs_sharp, size: 150.sp),
+          Image.asset(Assets.guest, height: 260.h),
           spaceH(20),
           Text(text, style: Styles.s16_500),
           spaceH(20),
