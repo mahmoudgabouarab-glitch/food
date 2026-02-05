@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food/features/auth/presentation/view/widgets/login/login_actions.dart';
 import 'package:food/features/auth/presentation/view/widgets/login/login_bloc.dart';
+import 'package:food/features/auth/presentation/view/widgets/login/login_text_button_as_guest.dart';
 import 'package:food/features/auth/presentation/view/widgets/login/login_title.dart';
 import 'package:food/features/auth/presentation/view/widgets/login/login_text_button_signup.dart';
 import 'package:food/features/auth/presentation/view/widgets/login/login_text_filed.dart';
@@ -23,6 +24,7 @@ class LoginBody extends StatelessWidget {
               LoginTextFiled(),
               LoginActions(),
               LoginTextButtonSingup(),
+              LoginTextButtonAsGuest(),
               LogInBloc(),
             ],
           ),

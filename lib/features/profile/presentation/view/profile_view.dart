@@ -21,9 +21,9 @@ class ProfileView extends StatelessWidget {
           create: (context) => UpdataProfileCubit(getIt<ProfileRepoImpl>()),
         ),
       ],
-      child: isloggedInUser
-          ? const ProfileBody()
-          : CustomWidgetErr(text: "You are not logged in"),
+      child: isGuest
+          ? CustomWidgetErr(text: "You are not logged in")
+          : const ProfileBody(),
     );
   }
 }

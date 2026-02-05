@@ -65,13 +65,23 @@ Widget _buildAppBarBloc() {
             ),
           );
         case ProfileFailure():
-          return _buildAppBarContent(
-            context: context,
-            title: "welcome We hope you are well",
-            childCircleAvatar: ClipOval(
-              child: const Icon(Icons.person, size: 18),
-            ),
-          );
+          if (state.statusCode == 401) {
+            return _buildAppBarContent(
+              context: context,
+              title: "welcome We hope you are well",
+              childCircleAvatar: ClipOval(
+                child: const Icon(Icons.person, size: 18),
+              ),
+            );
+          } else {
+            return _buildAppBarContent(
+              context: context,
+              title: "",
+              childCircleAvatar: ClipOval(
+                child: const Icon(Icons.person, size: 18),
+              ),
+            );
+          }
       }
       return const SizedBox.shrink();
     },

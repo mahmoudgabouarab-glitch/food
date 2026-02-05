@@ -11,3 +11,13 @@ void checkIsloggedinuser() {
     isloggedInUser = false;
   }
 }
+
+bool isGuest = false;
+void checkIsGuest() {
+  var guestData = CacheHelper.getData(key: CacheKeys.isGuest);
+  if (guestData != null && guestData == true) {
+    isGuest = true;
+  } else {
+    isGuest = false;
+  }
+}

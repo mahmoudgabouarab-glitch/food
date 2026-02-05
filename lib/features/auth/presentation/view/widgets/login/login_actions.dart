@@ -4,6 +4,8 @@ import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/styles.dart';
 import 'package:food/core/widgets/app_text_button.dart';
 import 'package:food/features/auth/presentation/view_model/login/login_cubit.dart';
+import 'package:food/core/network/cache_keys.dart';
+import 'package:food/core/network/cache_helper.dart';
 
 class LoginActions extends StatelessWidget {
   const LoginActions({super.key});
@@ -16,6 +18,7 @@ class LoginActions extends StatelessWidget {
       textStyle: Styles.s16_500.copyWith(color: AppColor.textPrimary),
       onPressed: () async {
         if (cubit.loginKey.currentState!.validate()) {
+          await CacheHelper.removeData(key: CacheKeys.isGuest);
           await cubit.postLogIn();
         }
       },
