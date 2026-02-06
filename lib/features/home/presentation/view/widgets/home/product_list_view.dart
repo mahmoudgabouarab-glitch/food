@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/extension.dart';
+import 'package:food/core/utils/function.dart';
 import 'package:food/core/utils/spacing.dart';
 import 'package:food/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:food/features/home/data/model/products_model/products_model.dart';
@@ -104,12 +105,18 @@ class _ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => context.push(
-        BlocProvider.value(
-          value: context.read<CartCubit>(),
-          child: DetailsView(products: product),
-        ),
-      ),
+      onTap: () {
+        if (isGuest) {
+          context.push(DetailsView(products: product));
+        } else {
+          context.push(
+            BlocProvider.value(
+              value: context.read<CartCubit>(),
+              child: DetailsView(products: product),
+            ),
+          );
+        }
+      },
       child: Center(
         child: Container(
           decoration: BoxDecoration(
