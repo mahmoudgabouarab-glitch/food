@@ -20,8 +20,7 @@ final class OrderHistorySuccess extends OrderHistoryState {
 
 final class OrderHistoryError extends OrderHistoryState {
   final String err;
-  final int? statusCode;
-  const OrderHistoryError(this.err, {this.statusCode});
+  const OrderHistoryError(this.err);
   @override
-  List<Object> get props => [err, statusCode ?? 0];
+  List<Object> get props => [err];
 }

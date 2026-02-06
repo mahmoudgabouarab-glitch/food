@@ -12,9 +12,7 @@ class OrderHistoryCubit extends Cubit<OrderHistoryState> {
     emit(OrderHistoryLoading());
     final result = await _repo.getOrderHistory();
     result.fold(
-      (failure) => emit(
-        OrderHistoryError(failure.errormessage, statusCode: failure.statusCode),
-      ),
+      (failure) => emit(OrderHistoryError(failure.errormessage)),
       (success) => emit(OrderHistorySuccess(success)),
     );
   }

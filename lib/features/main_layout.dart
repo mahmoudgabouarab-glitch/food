@@ -29,11 +29,12 @@ class MainLayout extends StatelessWidget {
           BlocProvider(
             create: (_) => CartCubit(getIt<CartRepoImpl>())..getCart(),
           ),
-        BlocProvider(
-          create: (_) =>
-              OrderHistoryCubit(getIt<OrderHistoryRepoImpl>())
-                ..getOrderHistory(),
-        ),
+        if (!isGuest)
+          BlocProvider(
+            create: (_) =>
+                OrderHistoryCubit(getIt<OrderHistoryRepoImpl>())
+                  ..getOrderHistory(),
+          ),
       ],
       child: const _MainLayoutView(),
     );

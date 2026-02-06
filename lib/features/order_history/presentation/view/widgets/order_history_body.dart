@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/core/widgets/custom_loading.dart';
-import 'package:food/core/widgets/custom_widget_err.dart';
 import 'package:food/features/order_history/presentation/view/widgets/item_order_history.dart';
 import 'package:food/features/order_history/presentation/view/widgets/order_history_appbar.dart';
 import 'package:food/features/order_history/presentation/view_model/cubit/order_history_cubit.dart';
@@ -24,11 +23,7 @@ class OrderHistoryBody extends StatelessWidget {
               body: _buildItemOrderHistory(state),
             );
           case OrderHistoryError():
-            if (state.statusCode == 401) {
-              return CustomWidgetErr();
-            } else {
-              return Center(child: Text(state.err));
-            }
+            return Center(child: Text(state.err));
         }
         return const SizedBox.shrink();
       },
