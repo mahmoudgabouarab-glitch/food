@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/core/network/servise_locator.dart';
 import 'package:food/core/utils/app_color.dart';
-import 'package:food/core/utils/function.dart';
 import 'package:food/core/widgets/custom_nav_bar.dart';
 import 'package:food/features/profile/data/repo/profile_repo_impl.dart';
 import 'package:food/features/profile/presentation/view_model/profile/profile_cubit.dart';
@@ -27,7 +26,7 @@ class MainLayout extends StatelessWidget {
         ),
         BlocProvider(
           create: (_) => CartCubit(getIt<CartRepoImpl>())..getCart(),
-        ),
+        ),       
         BlocProvider(
           create: (_) =>
               OrderHistoryCubit(getIt<OrderHistoryRepoImpl>())
@@ -67,12 +66,6 @@ class _MainLayoutViewState extends State<_MainLayoutView> {
       screen: ProfileView(),
     ),
   ];
-  @override
-  void initState() {
-    super.initState();
-    checkIsGuest();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

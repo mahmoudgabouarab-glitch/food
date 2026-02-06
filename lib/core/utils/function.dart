@@ -12,12 +12,15 @@ void checkIsloggedinuser() {
   }
 }
 
-bool isGuest = false;
-void checkIsGuest() {
-  var guestData = CacheHelper.getData(key: CacheKeys.isGuest);
-  if (guestData != null && guestData == true) {
-    isGuest = true;
-  } else {
-    isGuest = false;
-  }
-}
+//----------------Guest Check--------------------\\
+// bool isGuest = false;
+// void checkIsGuest() {
+//   var guestData = CacheHelper.getData(key: CacheKeys.isGuest);
+//   if (guestData != null && guestData == true) {
+//     isGuest = true;
+//   } else {
+//     isGuest = false;
+//   }
+// }
+
+bool get isGuest => CacheHelper.getData(key: CacheKeys.isGuest) == true;

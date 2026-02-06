@@ -10,12 +10,8 @@ class CartView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => RemoveCartCubit(getIt<CartRepoImpl>()),
-        ),
-      ],
+    return BlocProvider(
+      create: (context) => RemoveCartCubit(getIt<CartRepoImpl>()),
       child: const CartBody(),
     );
   }

@@ -18,6 +18,7 @@ class CustomTextFormFiled extends StatefulWidget {
   final int? maxLength;
   final List<TextInputFormatter>? inputFormatters;
   final bool? readOnly;
+  final void Function(PointerDownEvent)? onTap;
 
   const CustomTextFormFiled({
     super.key,
@@ -36,6 +37,7 @@ class CustomTextFormFiled extends StatefulWidget {
     this.maxLength,
     this.inputFormatters,
     this.readOnly,
+    this.onTap,
   });
 
   @override
@@ -57,7 +59,8 @@ class _CustomTextFormFiledState extends State<CustomTextFormFiled> {
       inputFormatters: widget.inputFormatters,
       maxLength: widget.maxLength,
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
+      onTapOutside: (_) =>
+          widget.onTap ?? FocusManager.instance.primaryFocus?.unfocus(),
       keyboardType: widget.keybordtype,
       onChanged: widget.onchange,
       validator: widget.validator,

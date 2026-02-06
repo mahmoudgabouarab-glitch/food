@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/extension.dart';
 import 'package:food/core/utils/spacing.dart';
+import 'package:food/core/utils/styles.dart';
 import 'package:food/core/widgets/custom_button.dart';
 import 'package:food/core/widgets/custom_text_filed.dart';
 import 'package:food/features/profile/presentation/view_model/profile/profile_cubit.dart';
@@ -15,19 +16,15 @@ class ProfileActions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          width: 150.w,
-          child: Btn(
-            radius: 15,
-            ontap: () {
-              _buildBottomSheet(context);
-            },
-            child: const Center(child: Text("Edit Profile")),
-          ),
-        ),
-      ],
+    return SizedBox(
+      width: 150.w,
+      child: Btn(
+        radius: 15,
+        ontap: () {
+          _buildBottomSheet(context);
+        },
+        child: const Center(child: Text("Edit Profile")),
+      ),
     );
   }
 }
@@ -36,53 +33,76 @@ Future<T?> _buildBottomSheet<T>(BuildContext context) {
   final cubitprofile = context.read<ProfileCubit>();
   final cubitupdate = context.read<UpdataProfileCubit>();
   return showModalBottomSheet(
+    useSafeArea: true,
     isScrollControlled: true,
     context: context,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(24.r)),
     ),
-    builder: (_) => Padding(
-      padding: EdgeInsets.symmetric(horizontal: 12.w),
+    builder: (context) => Padding(
+      padding: EdgeInsets.only(
+        left: 16.w,
+        right: 16.w,
+        bottom: MediaQuery.of(context).viewInsets.bottom,
+      ),
       child: SizedBox(
         width: double.infinity,
-        height: MediaQuery.of(context).size.height * 0.6,
+        height: MediaQuery.of(context).size.height * 0.65,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            spaceH(5),
+            spaceH(8),
             Center(
-              child: Container(width: 75.w, height: 3.h, color: AppColor.btn),
+              child: Container(width: 64.w, height: 4.h, color: AppColor.btn),
             ),
-            spaceH(30),
-            _buildField("Name", cubitprofile.namecontrollar),
             spaceH(20),
-            _buildField("Email", cubitprofile.emailcontrollar),
-            spaceH(20),
-            _buildField("Address", cubitprofile.addresscontrollar),
-            spaceH(20),
-            _buildField(
-              "Visa",
-              cubitprofile.visacontrollar,
-              inputFormatters: [CardNumberFormatter()],
-            ),
-            Spacer(),
-            SizedBox(
-              width: 150.w,
-              child: Btn(
-                ontap: () {
-                  context.popPage();
-                  cubitupdate.updateProfileData(
-                    name: cubitprofile.namecontrollar.text,
-                    email: cubitprofile.emailcontrollar.text,
-                    address: cubitprofile.addresscontrollar.text,
-                    visa: cubitprofile.visacontrollar.text,
-                  );
-                },
-                text: "Confirm",
-                radius: 15,
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Name", style: Styles.s14_500),
+                    spaceH(8),
+                    _buildField("Name", cubitprofile.namecontrollar),
+                    spaceH(20),
+                    Text("Email", style: Styles.s14_500),
+                    spaceH(8),
+                    _buildField("Email", cubitprofile.emailcontrollar),
+                    spaceH(20),
+                    Text("Address", style: Styles.s14_500),
+                    spaceH(8),
+                    _buildField("Address", cubitprofile.addresscontrollar),
+                    spaceH(20),
+                    Text("Visa", style: Styles.s14_500),
+                    spaceH(8),
+                    _buildField(
+                      "Visa",
+                      cubitprofile.visacontrollar,
+                      inputFormatters: [CardNumberFormatter()],
+                    ),
+                    spaceH(30),
+                    Center(
+                      child: SizedBox(
+                        width: 150.w,
+                        child: Btn(
+                          ontap: () {
+                            context.popPage();
+                            cubitupdate.updateProfileData(
+                              name: cubitprofile.namecontrollar.text,
+                              email: cubitprofile.emailcontrollar.text,
+                              address: cubitprofile.addresscontrollar.text,
+                              visa: cubitprofile.visacontrollar.text,
+                            );
+                          },
+                          text: "Confirm",
+                          radius: 15,
+                        ),
+                      ),
+                    ),
+                    spaceH(30),
+                  ],
+                ),
               ),
             ),
-            spaceH(60),
           ],
         ),
       ),
@@ -96,6 +116,7 @@ Widget _buildField(
   List<TextInputFormatter>? inputFormatters,
 }) {
   return CustomTextFormFiled(
+    onTap: (_) => FocusManager,
     hint: hint,
     inputFormatters: inputFormatters,
     controller: controller,

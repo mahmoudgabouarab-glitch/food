@@ -20,7 +20,10 @@ class CartBody extends StatelessWidget {
           case CartLoading():
             return const CustomLoading(size: 20);
           case CartSuccess():
-            return _buildCarBody(state, context);
+            return Scaffold(
+              appBar: CartAppBar(item: state.getCartResponse.data),
+              body: _buildCarBody(state, context),
+            );
           case CartFailure():
             if (state.statusCode == 401) {
               return CustomWidgetErr(text: state.err);
@@ -34,20 +37,17 @@ class CartBody extends StatelessWidget {
 }
 
 Widget _buildCarBody(CartSuccess state, BuildContext context) {
-  return Scaffold(
-    appBar: CartAppBar(item: state.getCartResponse.data),
-    body: Padding(
-      padding: EdgeInsets.only(right: 12.w, left: 12.w, top: 12.h),
-      child: RefreshIndicator(
-        color: AppColor.btn,
-        displacement: 60,
-        onRefresh: () => context.read<CartCubit>().getCart(),
-        child: ListView.builder(
-          itemCount: state.getCartResponse.data.items.length,
-          itemBuilder: (context, index) {
-            return OneItemOfCart(item: state.getCartResponse.data.items[index]);
-          },
-        ),
+  return Padding(
+    padding: EdgeInsets.only(right: 12.w, left: 12.w, top: 12.h),
+    child: RefreshIndicator(
+      color: AppColor.btn,
+      displacement: 60,
+      onRefresh: () => context.read<CartCubit>().getCart(),
+      child: ListView.builder(
+        itemCount: state.getCartResponse.data.items.length,
+        itemBuilder: (context, index) {
+          return OneItemOfCart(item: state.getCartResponse.data.items[index]);
+        },
       ),
     ),
   );
