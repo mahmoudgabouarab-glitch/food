@@ -25,7 +25,7 @@ class OrderHistoryBody extends StatelessWidget {
             );
           case OrderHistoryError():
             if (state.statusCode == 401) {
-              return CustomWidgetErr(text: state.err);
+              return CustomWidgetErr();
             } else {
               return Center(child: Text(state.err));
             }

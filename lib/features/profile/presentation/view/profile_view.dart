@@ -22,7 +22,7 @@ class ProfileView extends StatelessWidget {
         ),
       ],
       child: isGuest
-          ? CustomWidgetErr(text: "You are not logged in")
+          ? CustomWidgetErr()
           : const ProfileBody(),
     );
   }

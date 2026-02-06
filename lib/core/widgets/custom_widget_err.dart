@@ -8,8 +8,7 @@ import 'package:food/core/widgets/custom_button.dart';
 import 'package:food/features/auth/presentation/view/login_view.dart';
 
 class CustomWidgetErr extends StatelessWidget {
-  final String text;
-  const CustomWidgetErr({super.key, required this.text});
+  const CustomWidgetErr({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +18,10 @@ class CustomWidgetErr extends StatelessWidget {
         children: [
           Image.asset(Assets.guest, height: 260.h),
           spaceH(20),
-          Text(text, style: Styles.s16_500),
+          Text(
+            "You must be logged in to use this feature",
+            style: Styles.s16_500,
+          ),
           spaceH(20),
           Btn(
             ontap: () {
