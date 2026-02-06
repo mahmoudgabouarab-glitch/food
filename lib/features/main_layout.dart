@@ -20,21 +20,22 @@ class MainLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (isGuest) {
+      return const _MainLayoutView();
+    }
     return MultiBlocProvider(
       providers: [
         BlocProvider(
           create: (_) => ProfileCubit(getIt<ProfileRepoImpl>())..getProfile(),
         ),
-        if (!isGuest)
-          BlocProvider(
-            create: (_) => CartCubit(getIt<CartRepoImpl>())..getCart(),
-          ),
-        if (!isGuest)
-          BlocProvider(
-            create: (_) =>
-                OrderHistoryCubit(getIt<OrderHistoryRepoImpl>())
-                  ..getOrderHistory(),
-          ),
+        BlocProvider(
+          create: (_) => CartCubit(getIt<CartRepoImpl>())..getCart(),
+        ),
+        BlocProvider(
+          create: (_) =>
+              OrderHistoryCubit(getIt<OrderHistoryRepoImpl>())
+                ..getOrderHistory(),
+        ),
       ],
       child: const _MainLayoutView(),
     );

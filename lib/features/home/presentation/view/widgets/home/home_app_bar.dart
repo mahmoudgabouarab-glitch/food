@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
+import 'package:food/core/utils/function.dart';
 import 'package:food/features/profile/presentation/view_model/profile/profile_cubit.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -29,7 +30,7 @@ class HomeAppBar extends StatelessWidget {
                     MediaQuery.of(context).padding.top + kToolbarHeight
                 ? _buildImageGif()
                 : null,
-            title: _buildAppBarBloc(),
+            title: isGuest ? _buildAppBarForGuest(context) : _buildAppBarBloc(),
           );
         },
       ),
@@ -65,23 +66,13 @@ Widget _buildAppBarBloc() {
             ),
           );
         case ProfileFailure():
-          if (state.statusCode == 401) {
-            return _buildAppBarContent(
-              context: context,
-              title: "welcome We hope you are well",
-              childCircleAvatar: ClipOval(
-                child: const Icon(Icons.person, size: 18),
-              ),
-            );
-          } else {
-            return _buildAppBarContent(
-              context: context,
-              title: "",
-              childCircleAvatar: ClipOval(
-                child: const Icon(Icons.person, size: 18),
-              ),
-            );
-          }
+          return _buildAppBarContent(
+            context: context,
+            title: "",
+            childCircleAvatar: ClipOval(
+              child: const Icon(Icons.person, size: 18),
+            ),
+          );
       }
       return const SizedBox.shrink();
     },
@@ -152,5 +143,13 @@ Widget _buildAppBarContent({
         ),
       ],
     ),
+  );
+}
+
+Widget _buildAppBarForGuest(BuildContext context) {
+  return _buildAppBarContent(
+    context: context,
+    title: "Hello We are waiting for you",
+    childCircleAvatar: ClipOval(child: const Icon(Icons.person, size: 18)),
   );
 }
