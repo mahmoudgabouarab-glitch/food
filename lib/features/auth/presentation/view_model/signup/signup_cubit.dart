@@ -5,7 +5,7 @@ import 'package:food/core/network/cache_helper.dart';
 import 'package:food/core/network/cache_keys.dart';
 import 'package:food/features/auth/data/models/auth_model.dart';
 import 'package:food/features/auth/data/repo/auth_repo.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:image_cropper/image_cropper.dart';
 
 part 'signup_state.dart';
 
@@ -17,9 +17,9 @@ class SignupCubit extends Cubit<SignupState> {
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   GlobalKey<FormState> signupKey = GlobalKey<FormState>();
-  XFile? selectedImage;
+  CroppedFile? selectedImage;
 
-  void pickImage(XFile? file) {
+  void pickImage(CroppedFile? file) {
     if (file == null) return;
     selectedImage = file;
     emit(ImageSuccess(file));

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/spacing.dart';
+import 'package:food/features/auth/presentation/view/widgets/signup/list_title_upload_pic_profile.dart';
 import 'package:food/features/auth/presentation/view_model/signup/signup_cubit.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -11,7 +12,6 @@ class UploadPicProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ImagePicker picker = ImagePicker();
     final uploadimage = context.read<SignupCubit>();
     return BlocBuilder<SignupCubit, SignupState>(
       builder: (context, state) {
@@ -25,29 +25,17 @@ class UploadPicProfile extends StatelessWidget {
                     height: 150.h,
                     child: Column(
                       children: [
-                        ListTile(
-                          leading: const Icon(Icons.photo),
-                          title: const Text("gallery"),
-                          onTap: () async {
-                            var image = await picker.pickImage(
-                              source: ImageSource.gallery,
-                            );
-                            if (image != null) {
-                              uploadimage.pickImage(image);
-                            }
-                          },
+                        ListTitleUploadPicProfile(
+                          uploadimage: uploadimage,
+                          source: ImageSource.gallery,
+                          title: 'Gallery',
+                          icon: Icons.image_outlined,
                         ),
-                        ListTile(
-                          leading: const Icon(Icons.camera_alt),
-                          title: const Text("camera"),
-                          onTap: () async {
-                            var image = await picker.pickImage(
-                              source: ImageSource.camera,
-                            );
-                            if (image != null) {
-                              uploadimage.pickImage(image);
-                            }
-                          },
+                        ListTitleUploadPicProfile(
+                          uploadimage: uploadimage,
+                          source: ImageSource.camera,
+                          title: 'Camera',
+                          icon: Icons.camera_alt_outlined,
                         ),
                       ],
                     ),
@@ -57,8 +45,8 @@ class UploadPicProfile extends StatelessWidget {
               child: Center(
                 child: ClipOval(
                   child: Container(
-                    width: 100,
-                    height: 100,
+                    width: 100.w,
+                    height: 100.h,
                     color: Colors.grey[300],
                     child: uploadimage.selectedImage == null
                         ? Image.asset(

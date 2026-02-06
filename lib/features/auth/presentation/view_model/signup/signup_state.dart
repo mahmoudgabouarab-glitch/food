@@ -24,7 +24,7 @@ final class SignupFailure extends SignupState {
 }
 
 final class ImageSuccess extends SignupState {
-  final XFile picImage;
+  final CroppedFile picImage;
 
   const ImageSuccess(this.picImage);
 }
