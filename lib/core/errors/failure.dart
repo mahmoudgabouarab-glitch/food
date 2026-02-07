@@ -77,14 +77,11 @@ class ServiseFailure extends Failure {
         return ServiseFailure('Validation error', statusCode: statusCode);
       case 500:
         return ServiseFailure(
-          response['message'] ?? 'Internal server error',
+          'You must Add items to cart',
           statusCode: statusCode,
         );
       case 429:
-        return ServiseFailure(
-          response['message'] ?? '429...429...429..429',
-          statusCode: statusCode,
-        );
+        return ServiseFailure(response['message'], statusCode: statusCode);
 
       default:
         return ServiseFailure('Something went wrong', statusCode: statusCode);

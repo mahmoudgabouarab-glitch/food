@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
+import 'package:food/core/utils/extension.dart';
 import 'package:food/core/utils/function.dart';
+import 'package:food/features/profile/presentation/view/profile_view.dart';
 import 'package:food/features/profile/presentation/view_model/profile/profile_cubit.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -51,17 +53,25 @@ Widget _buildAppBarBloc() {
         case ProfileLoading():
           return _buildAppBarShimmer(context);
         case ProfileSuccess():
-          return _buildAppBarContent(
-            context: context,
-            title: "Hello ${state.profilemodel.data.name}",
-            childCircleAvatar: ClipOval(
-              child: CachedNetworkImage(
-                imageUrl: state.profilemodel.data.image,
-                errorWidget: (context, url, error) =>
-                    const Icon(Icons.person, size: 18),
-                width: 36.w,
-                height: 36.h,
-                fit: BoxFit.cover,
+          return GestureDetector(
+            onTap: () => context.push(
+              BlocProvider.value(
+                value: context.read<ProfileCubit>(),
+                child: ProfileView(),
+              ),
+            ),
+            child: _buildAppBarContent(
+              context: context,
+              title: "Hello ${state.profilemodel.data.name}",
+              childCircleAvatar: ClipOval(
+                child: CachedNetworkImage(
+                  imageUrl: state.profilemodel.data.image,
+                  errorWidget: (context, url, error) =>
+                      const Icon(Icons.person, size: 18),
+                  width: 36.w,
+                  height: 36.h,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           );
