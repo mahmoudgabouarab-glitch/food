@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/spacing.dart';
 import 'package:food/core/utils/styles.dart';
+import 'package:food/features/home/data/model/fav_products/fav_products_response.dart';
 
 class FavoritesTitle extends StatelessWidget {
-  const FavoritesTitle({super.key});
+  final FavProductsResponse favProductsResponse;
+  const FavoritesTitle({super.key, required this.favProductsResponse});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,10 @@ class FavoritesTitle extends StatelessWidget {
         spaceH(10),
         Row(
           children: [
-            Text("1 items", style: Styles.s14_500),
+            Text(
+              "${favProductsResponse.data.length} items",
+              style: Styles.s14_500,
+            ),
             Spacer(),
             GestureDetector(
               onTap: () {},

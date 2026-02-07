@@ -5,6 +5,8 @@ import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/function.dart';
 import 'package:food/core/widgets/custom_bar_layout.dart';
 import 'package:food/features/Favorites/presentation/view/favorites_view.dart';
+import 'package:food/features/home/data/repo/home_repo_impl.dart';
+import 'package:food/features/home/presentation/view_model/vaf_products_cubit/fav_products_cubit.dart';
 import 'package:food/features/profile/data/repo/profile_repo_impl.dart';
 import 'package:food/features/profile/presentation/view_model/profile/profile_cubit.dart';
 import 'package:food/features/cart/data/repo/cart_repo_impl.dart';
@@ -36,6 +38,10 @@ class MainLayout extends StatelessWidget {
           create: (_) =>
               OrderHistoryCubit(getIt<OrderHistoryRepoImpl>())
                 ..getOrderHistory(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              FavProductsCubit(getIt<HomeRepoImpl>())..getFavProducts(),
         ),
       ],
       child: const _MainLayoutView(),

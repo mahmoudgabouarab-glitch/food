@@ -6,7 +6,6 @@ import 'package:food/features/home/presentation/view/widgets/home/home_body.dart
 import 'package:food/features/home/presentation/view_model/category_cubit/category_cubit.dart';
 import 'package:food/features/home/presentation/view_model/products_cubit/products_cubit.dart';
 import 'package:food/features/home/presentation/view_model/search_cubit/search_products_cubit.dart';
-import 'package:food/features/home/presentation/view_model/vaf_products_cubit/fav_products_cubit.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -26,10 +25,7 @@ class HomeView extends StatelessWidget {
         BlocProvider(
           create: (context) => SearchProductsCubit(getIt<HomeRepoImpl>()),
         ),
-        BlocProvider(
-          create: (context) =>
-              FavProductsCubit(getIt<HomeRepoImpl>())..getFavProducts(),
-        ),
+       
       ],
       child: const HomeBody(),
     );
