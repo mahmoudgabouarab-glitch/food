@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/core/network/servise_locator.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/function.dart';
-import 'package:food/core/widgets/custom_nav_bar.dart';
+import 'package:food/core/widgets/custom_bar_layout.dart';
 import 'package:food/features/profile/data/repo/profile_repo_impl.dart';
 import 'package:food/features/profile/presentation/view_model/profile/profile_cubit.dart';
 import 'package:food/features/cart/data/repo/cart_repo_impl.dart';
@@ -52,11 +52,12 @@ class _MainLayoutView extends StatefulWidget {
 class _MainLayoutViewState extends State<_MainLayoutView> {
   int _currentIndex = 0;
 
-  final List<MainTabItem> _tabs = const [
+  final List<MainTabItem> _tabs = [
     MainTabItem(label: 'Home', icon: Icons.home, screen: HomeView()),
     MainTabItem(
       label: 'Cart',
-      icon: Icons.add_shopping_cart,
+      stack: true,
+      icon: Icons.shopping_cart_outlined,
       screen: CartView(),
     ),
     MainTabItem(
@@ -78,6 +79,7 @@ class _MainLayoutViewState extends State<_MainLayoutView> {
         children: _tabs.map((e) => e.screen).toList(),
       ),
       bottomNavigationBar: BottomNavigationBar(
+       
         currentIndex: _currentIndex,
         selectedFontSize: 13,
         unselectedFontSize: 13,
@@ -91,10 +93,11 @@ class _MainLayoutViewState extends State<_MainLayoutView> {
           _tabs.length,
           (index) => BottomNavigationBarItem(
             label: _tabs[index].label,
-            icon: CustomBtnNavigation(
+            icon: CustomBarLayout(
               currentIndex: _currentIndex,
               index: index,
               icon: _tabs[index].icon,
+              stack: _tabs[index].stack,
             ),
           ),
         ),
@@ -105,12 +108,14 @@ class _MainLayoutViewState extends State<_MainLayoutView> {
 
 class MainTabItem {
   final String label;
-  final IconData icon;
   final Widget screen;
+  final bool? stack;
+  final IconData? icon;
 
   const MainTabItem({
     required this.label,
-    required this.icon,
     required this.screen,
+    this.stack,
+    this.icon,
   });
 }

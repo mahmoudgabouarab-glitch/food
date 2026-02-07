@@ -13,7 +13,8 @@ final class CartLoading extends CartState {}
 
 final class CartSuccess extends CartState {
   final GetCartResponse getCartResponse;
-  const CartSuccess(this.getCartResponse);
+  final int countOfItems;
+  const CartSuccess(this.getCartResponse, this.countOfItems);
   @override
   List<Object> get props => [getCartResponse];
 }

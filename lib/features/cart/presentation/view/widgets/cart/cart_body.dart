@@ -24,7 +24,7 @@ class CartBody extends StatelessWidget {
               body: _buildCarBody(state, context),
             );
           case CartFailure():
-            return Center(child: Text(state.err));
+            return Center(child: Text("You must Add items to cart"));
         }
       },
     );

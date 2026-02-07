@@ -14,7 +14,6 @@ class OrderHistoryBody extends StatelessWidget {
       builder: (context, state) {
         switch (state) {
           case OrderHistoryInitial():
-            break;
           case OrderHistoryLoading():
             return const Center(child: CustomLoading(size: 20));
           case OrderHistorySuccess():
@@ -25,13 +24,15 @@ class OrderHistoryBody extends StatelessWidget {
           case OrderHistoryError():
             return Center(child: Text(state.err));
         }
-        return const SizedBox.shrink();
       },
     );
   }
 }
 
 Widget _buildItemOrderHistory(OrderHistorySuccess state) {
+  if (state.orderHistoryModel.data!.isEmpty) {
+    return const Center(child: Text(" You don't have any orders yet"));
+  }
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 12),
     child: ListView.builder(
