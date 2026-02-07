@@ -32,6 +32,7 @@ class FavoritesTitle extends StatelessWidget {
             ),
           ],
         ),
+        spaceH(10),
       ],
     );
   }
