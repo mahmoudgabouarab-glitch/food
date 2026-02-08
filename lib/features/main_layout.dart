@@ -24,7 +24,10 @@ class MainLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (isGuest) {
-      return const _MainLayoutView();
+      return BlocProvider(
+        create: (context) => FavProductsCubit(getIt<HomeRepoImpl>()),
+        child: const _MainLayoutView(),
+      );
     }
     return MultiBlocProvider(
       providers: [

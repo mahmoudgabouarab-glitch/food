@@ -24,7 +24,6 @@ class FavoritesBody extends StatelessWidget {
     );
   }
 }
-
 Widget _buildFavoritesBody(GetFavProductsSuccess state) {
   return Scaffold(
     appBar: AppBar(centerTitle: false, title: const Text("Favorites")),
@@ -33,7 +32,9 @@ Widget _buildFavoritesBody(GetFavProductsSuccess state) {
       child: Column(
         children: [
           FavoritesTitle(favProductsResponse: state.favProductsModel),
-          ListOfItemFavorite(favProductsResponse: state.favProductsModel),
+          ListOfItemFavorite(
+            favProductsResponse: state.favProductsModel,
+          ),
         ],
       ),
     ),
