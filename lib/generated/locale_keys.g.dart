@@ -53,5 +53,6 @@ abstract class  LocaleKeys {
   static const confirm = 'confirm';
   static const logout = 'logout';
   static const logout_alert = 'logout_alert';
+  static const setting = 'setting';
 
 }

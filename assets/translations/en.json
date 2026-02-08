@@ -48,6 +48,7 @@
     "edite_profile": "Edite Profile",
     "confirm": "Confirm",
     "logout": "Logout",
-    "logout_alert": "Are you sure you want to logout?"
+    "logout_alert": "Are you sure you want to logout?",
+    "setting": "Setting"
    
 }

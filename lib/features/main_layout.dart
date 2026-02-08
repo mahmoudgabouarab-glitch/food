@@ -9,6 +9,7 @@ import 'package:food/features/Favorites/presentation/view/favorites_view.dart';
 import 'package:food/features/home/data/repo/home_repo_impl.dart';
 import 'package:food/features/home/presentation/view_model/vaf_products_cubit/fav_products_cubit.dart';
 import 'package:food/features/profile/data/repo/profile_repo_impl.dart';
+import 'package:food/features/profile/presentation/view/settings_view.dart';
 import 'package:food/features/profile/presentation/view_model/profile/profile_cubit.dart';
 import 'package:food/features/cart/data/repo/cart_repo_impl.dart';
 import 'package:food/features/cart/presentation/view/cart_view.dart';
@@ -16,7 +17,6 @@ import 'package:food/features/cart/presentation/view_model/cart_cubit/cart_cubit
 import 'package:food/features/home/presentation/view/home_view.dart';
 import 'package:food/features/order_history/data/repo/order_history_repo_impl.dart';
 import 'package:food/features/order_history/presentation/view/order_history_view.dart';
-import 'package:food/features/profile/presentation/view/profile_view.dart';
 import 'package:food/features/order_history/presentation/view_model/cubit/order_history_cubit.dart';
 import 'package:food/generated/locale_keys.g.dart';
 
@@ -87,9 +87,9 @@ class _MainLayoutViewState extends State<_MainLayoutView> {
       screen: OrderHistoryView(),
     ),
     MainTabItem(
-      label: LocaleKeys.profile.tr(),
-      icon: Icons.person_outlined,
-      screen: ProfileView(),
+      label: LocaleKeys.setting.tr(),
+      icon: Icons.settings_suggest,
+      screen: SettingsView(),
     ),
   ];
   @override
