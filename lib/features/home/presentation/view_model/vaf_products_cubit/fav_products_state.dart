@@ -46,4 +46,3 @@ final class GetFavProductsFailure extends FavProductsState {
   List<Object> get props => [err];
 }
 
-final class FavProductsUpdated extends FavProductsState {}

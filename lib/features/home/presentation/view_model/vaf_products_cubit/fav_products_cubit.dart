@@ -38,7 +38,7 @@ class FavProductsCubit extends Cubit<FavProductsState> {
           : _favoriteIds.add(id);
 
       emit(FavProductsSuccess(success.message));
-      emit(FavProductsUpdated());
+      await getFavProducts();
     });
   }
 }
