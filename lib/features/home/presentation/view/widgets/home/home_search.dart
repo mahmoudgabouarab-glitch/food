@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,6 +6,7 @@ import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/styles.dart';
 import 'package:food/core/widgets/custom_text_filed.dart';
 import 'package:food/features/home/presentation/view_model/search_cubit/search_products_cubit.dart';
+import 'package:food/generated/locale_keys.g.dart';
 
 class HomeSearch extends StatelessWidget {
   const HomeSearch({super.key});
@@ -22,7 +24,7 @@ class HomeSearch extends StatelessWidget {
               top: 5.h,
             ),
             child: _buildField(
-              label: "Search",
+              label: LocaleKeys.search.tr(),
               onchange: (value) => context
                   .read<SearchProductsCubit>()
                   .searchProducts(query: value.toLowerCase()),

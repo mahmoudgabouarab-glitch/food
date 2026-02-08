@@ -1,5 +1,6 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,6 +10,7 @@ import 'package:food/core/utils/styles.dart';
 import 'package:food/features/cart/data/model/get_cart_model/get_cart_response.dart';
 import 'package:food/features/cart/presentation/view/widgets/cart/remove_listener.dart';
 import 'package:food/features/cart/presentation/view_model/remove_cart_cubit/remove_cart_cubit.dart';
+import 'package:food/generated/locale_keys.g.dart';
 
 class OneItemOfCart extends StatelessWidget {
   const OneItemOfCart({super.key, required this.item});
@@ -63,7 +65,7 @@ class OneItemOfCart extends StatelessWidget {
                   if (topppings.isNotEmpty) ...[
                     spaceH(4),
                     Text(
-                      "Toppings:",
+                      "${LocaleKeys.toppings.tr()}:",
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: Styles.s14_700.copyWith(
@@ -102,7 +104,7 @@ class OneItemOfCart extends StatelessWidget {
                   if (sideOptions.isNotEmpty) ...[
                     spaceH(4),
                     Text(
-                      "Side Options:",
+                      "${LocaleKeys.side_options.tr()}:",
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: Styles.s14_700.copyWith(
@@ -159,9 +161,9 @@ class OneItemOfCart extends StatelessWidget {
 Future<OkCancelResult> _showOkCancelAlertDialog(BuildContext context) =>
     showOkCancelAlertDialog(
       context: context,
-      title: "Remove Item",
-      message: "Are you sure you want to remove this item?",
-      okLabel: "Ok",
-      cancelLabel: "Cancel",
+      title: LocaleKeys.remove_Item.tr(),
+      message: LocaleKeys.remove_Item_alert.tr(),
+      okLabel: LocaleKeys.ok.tr(),
+      cancelLabel: LocaleKeys.cancel.tr(),
       isDestructiveAction: true,
     );

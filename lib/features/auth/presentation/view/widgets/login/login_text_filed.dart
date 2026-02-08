@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/core/utils/spacing.dart';
 import 'package:food/core/widgets/custom_text_filed.dart';
 import 'package:food/features/auth/presentation/view_model/login/login_cubit.dart';
+import 'package:food/generated/locale_keys.g.dart';
 
 class LoginTextFiled extends StatelessWidget {
   const LoginTextFiled({super.key});
@@ -17,12 +19,12 @@ class LoginTextFiled extends StatelessWidget {
           spaceH(30),
           CustomTextFormFiled(
             prefixIcon: const Icon(Icons.email_outlined, color: Colors.grey),
-            hint: 'Email',
+            hint: LocaleKeys.email.tr(),
             keybordtype: TextInputType.emailAddress,
             controller: cubit.emailController,
             validator: (val) {
               if (val == null || val.isEmpty) {
-                return 'Email is required';
+                return LocaleKeys.email_required.tr();
               }
               return null;
             },
@@ -32,10 +34,10 @@ class LoginTextFiled extends StatelessWidget {
             prefixIcon: const Icon(Icons.lock, color: Colors.grey),
             keybordtype: TextInputType.visiblePassword,
             controller: cubit.passwordController,
-            hint: 'Password',
+            hint: LocaleKeys.password.tr(),
             validator: (val) {
               if (val == null || val.isEmpty) {
-                return 'Password is required';
+                return LocaleKeys.password_required.tr();
               }
               return null;
             },

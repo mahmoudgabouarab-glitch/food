@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/spacing.dart';
@@ -7,6 +8,7 @@ import 'package:food/features/home/presentation/view/widgets/details/details_act
 import 'package:food/features/home/presentation/view/widgets/details/details_slider.dart';
 import 'package:food/features/home/presentation/view/widgets/details/side_options_list_view.dart';
 import 'package:food/features/home/presentation/view/widgets/details/topping_list_view.dart';
+import 'package:food/generated/locale_keys.g.dart';
 
 class DetailsBody extends StatelessWidget {
   final ListOfProducts products;
@@ -24,11 +26,11 @@ class DetailsBody extends StatelessWidget {
             children: [
               DetailsSlider(products: products),
               spaceH(20),
-              const Text("Toppings"),
+              Text(LocaleKeys.toppings.tr()),
               spaceH(10),
               const ToppingListView(),
               spaceH(20),
-              const Text("SideOptions"),
+              Text(LocaleKeys.side_options.tr()),
               spaceH(10),
               const SideOptionsListView(),
               const AddToCartListener(),

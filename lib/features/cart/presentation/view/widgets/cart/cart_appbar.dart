@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/core/utils/extension.dart';
@@ -6,6 +7,7 @@ import 'package:food/features/profile/presentation/view_model/profile/profile_cu
 import 'package:food/features/cart/data/model/get_cart_model/get_cart_response.dart';
 import 'package:food/features/cart/presentation/view/order_view.dart';
 import 'package:food/features/order_history/presentation/view_model/cubit/order_history_cubit.dart';
+import 'package:food/generated/locale_keys.g.dart';
 
 class CartAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Data item;
@@ -20,7 +22,7 @@ class CartAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: CustomBtnNavBar(
         horizontal: 0,
-        text: 'Checkout',
+        text: LocaleKeys.checkout.tr(),
         ontap: () => context.push(
           MultiBlocProvider(
             providers: [

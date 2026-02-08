@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/core/utils/app_color.dart';
@@ -6,6 +7,7 @@ import 'package:food/core/widgets/app_text_button.dart';
 import 'package:food/features/auth/presentation/view_model/login/login_cubit.dart';
 import 'package:food/core/network/cache_keys.dart';
 import 'package:food/core/network/cache_helper.dart';
+import 'package:food/generated/locale_keys.g.dart';
 
 class LoginActions extends StatelessWidget {
   const LoginActions({super.key});
@@ -14,7 +16,7 @@ class LoginActions extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = context.read<LoginCubit>();
     return AppButton(
-      buttonText: 'Login',
+      buttonText: LocaleKeys.login.tr(),
       textStyle: Styles.s16_500.copyWith(color: AppColor.textPrimary),
       onPressed: () async {
         if (cubit.loginKey.currentState!.validate()) {

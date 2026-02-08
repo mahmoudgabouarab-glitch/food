@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/styles.dart';
 import 'package:food/features/order_history/presentation/view_model/cubit/order_history_cubit.dart';
+import 'package:food/generated/locale_keys.g.dart';
 
 class OrderHistoryAppBar extends StatelessWidget
     implements PreferredSizeWidget {
@@ -14,7 +16,7 @@ class OrderHistoryAppBar extends StatelessWidget
     return AppBar(
       title: Row(
         children: [
-          const Text("Order History"),
+          Text(LocaleKeys.order_history.tr()),
           const Spacer(),
           SizedBox(
             width: 40.w,

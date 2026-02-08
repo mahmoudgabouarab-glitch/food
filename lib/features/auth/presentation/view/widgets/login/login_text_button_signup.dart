@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'package:food/core/utils/app_color.dart';
@@ -5,6 +6,7 @@ import 'package:food/core/utils/extension.dart';
 import 'package:food/core/utils/spacing.dart';
 import 'package:food/core/utils/styles.dart';
 import 'package:food/features/auth/presentation/view/signup_view.dart';
+import 'package:food/generated/locale_keys.g.dart';
 
 class LoginTextButtonSingup extends StatelessWidget {
   const LoginTextButtonSingup({super.key});
@@ -18,7 +20,7 @@ class LoginTextButtonSingup extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Don't have an account?",
+              LocaleKeys.no_account.tr(),
               style: Styles.s14_400.copyWith(color: const Color(0xffffffff)),
             ),
             TextButton(
@@ -26,7 +28,7 @@ class LoginTextButtonSingup extends StatelessWidget {
                 context.pushReplacement(const SignupView());
               },
               child: Text(
-                "Sign Up",
+                LocaleKeys.sign_up.tr(),
                 style: Styles.s12_500.copyWith(color: AppColor.textSecondary),
               ),
             ),

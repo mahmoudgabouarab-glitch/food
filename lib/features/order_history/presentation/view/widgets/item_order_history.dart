@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/features/order_history/data/model/order/list_of_order_history.dart';
+import 'package:food/generated/locale_keys.g.dart';
 
 class ItemOrderHistory extends StatelessWidget {
   final ListOfOrderHistory listOfOrderHistory;
@@ -27,17 +29,17 @@ class ItemOrderHistory extends StatelessWidget {
                 height: 100.h,
               ),
             ),
-            const Text(
-              "Confirmed",
+             Text(
+              LocaleKeys.confirmed.tr(),
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             const Divider(),
-            _buildOrderHistoryItem("Date", date),
+            _buildOrderHistoryItem(LocaleKeys.date.tr(), date),
             const Divider(),
-            _buildOrderHistoryItem("Time", time),
+            _buildOrderHistoryItem(LocaleKeys.time.tr(), time),
             const Divider(),
             _buildOrderHistoryItem(
-              "Total Price",
+              LocaleKeys.total_price.tr(),
               "${double.parse(listOfOrderHistory.totalPrice) + 15 + 5}\$",
             ),
             const Divider(),

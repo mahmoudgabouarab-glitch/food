@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/styles.dart';
+import 'package:food/generated/locale_keys.g.dart';
 
 class CustomBtnNavBar extends StatelessWidget {
   final Widget? child;
@@ -32,7 +34,7 @@ class CustomBtnNavBar extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text("Total"),
+              Text(LocaleKeys.total.tr()),
               Text(title, style: Styles.s16_600),
             ],
           ),

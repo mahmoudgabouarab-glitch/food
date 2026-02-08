@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:food/core/network/cache_helper.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +7,7 @@ import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/extension.dart';
 import 'package:food/core/utils/styles.dart';
 import 'package:food/features/main_layout.dart';
+import 'package:food/generated/locale_keys.g.dart';
 
 class LoginTextButtonAsGuest extends StatelessWidget {
   const LoginTextButtonAsGuest({super.key});
@@ -20,7 +22,7 @@ class LoginTextButtonAsGuest extends StatelessWidget {
             context.pushReplacement(const MainLayout());
           },
           child: Text(
-            "LogIn as Guest",
+            LocaleKeys.guest_login.tr(),
             style: Styles.s14_700.copyWith(color: AppColor.textSecondary),
           ),
         ),

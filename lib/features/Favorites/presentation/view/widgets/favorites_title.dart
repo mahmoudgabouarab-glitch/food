@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:food/core/network/cache_helper.dart';
 import 'package:food/core/network/cache_keys.dart';
@@ -7,6 +8,7 @@ import 'package:food/core/utils/spacing.dart';
 import 'package:food/core/utils/styles.dart';
 import 'package:food/features/Favorites/presentation/view/edit_title_view.dart';
 import 'package:food/features/home/data/model/fav_products/fav_products_response.dart';
+import 'package:food/generated/locale_keys.g.dart';
 
 class FavoritesTitle extends StatelessWidget {
   final FavProductsResponse favProductsResponse;
@@ -15,7 +17,9 @@ class FavoritesTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var cacheTitle = CacheHelper.getDataString(key: CacheKeys.favoritesTitle);
-    var title = cacheTitle == null ? "Default Title" : cacheTitle.toString();
+    var title = cacheTitle == null
+        ? LocaleKeys.default_title.tr()
+        : cacheTitle.toString();
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -26,7 +30,7 @@ class FavoritesTitle extends StatelessWidget {
         Row(
           children: [
             Text(
-              "${favProductsResponse.data.length} items",
+              "${favProductsResponse.data.length} ${LocaleKeys.items.tr()}",
               style: Styles.s14_500,
             ),
             Spacer(),
@@ -37,7 +41,7 @@ class FavoritesTitle extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text("Edit title", style: Styles.s14_500),
+                  Text(LocaleKeys.edit_title.tr(), style: Styles.s14_500),
                   spaceW(4),
                   Icon(Icons.edit_note_outlined, color: AppColor.primary),
                 ],

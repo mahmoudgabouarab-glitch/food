@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,6 +7,7 @@ import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/styles.dart';
 import 'package:food/core/widgets/custom_text_filed.dart';
 import 'package:food/features/profile/presentation/view_model/profile/profile_cubit.dart';
+import 'package:food/generated/locale_keys.g.dart';
 
 class ProfileForm extends StatelessWidget {
   const ProfileForm({super.key});
@@ -17,13 +19,13 @@ class ProfileForm extends StatelessWidget {
     return Column(
       children: [
         SizedBox(height: 30.h),
-        _buildField("Name", cubit.namecontrollar),
+        _buildField(LocaleKeys.name.tr(), cubit.namecontrollar),
         SizedBox(height: 20.h),
-        _buildField("Email", cubit.emailcontrollar),
+        _buildField(LocaleKeys.email.tr(), cubit.emailcontrollar),
         SizedBox(height: 20.h),
-        _buildField("Address", cubit.addresscontrollar),
+        _buildField(LocaleKeys.address.tr(), cubit.addresscontrollar),
         SizedBox(height: 20.h),
-        _buildField("Visa", cubit.visacontrollar),
+        _buildField(LocaleKeys.visa.tr(), cubit.visacontrollar),
         SizedBox(height: 20.h),
       ],
     );

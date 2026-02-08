@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +11,7 @@ import 'package:food/core/widgets/custom_button.dart';
 import 'package:food/core/widgets/custom_text_filed.dart';
 import 'package:food/features/profile/presentation/view_model/profile/profile_cubit.dart';
 import 'package:food/features/profile/presentation/view_model/updata_profile/updata_profile_cubit.dart';
+import 'package:food/generated/locale_keys.g.dart';
 
 class ProfileActions extends StatelessWidget {
   const ProfileActions({super.key});
@@ -23,7 +25,7 @@ class ProfileActions extends StatelessWidget {
         ontap: () {
           _buildBottomSheet(context);
         },
-        child: const Center(child: Text("Edit Profile")),
+        child: Center(child: Text(LocaleKeys.edite_profile.tr())),
       ),
     );
   }
@@ -60,22 +62,31 @@ Future<T?> _buildBottomSheet<T>(BuildContext context) {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Name", style: Styles.s14_500),
-                    spaceH(8),
-                    _buildField("Name", cubitprofile.namecontrollar),
-                    spaceH(20),
-                    Text("Email", style: Styles.s14_500),
-                    spaceH(8),
-                    _buildField("Email", cubitprofile.emailcontrollar),
-                    spaceH(20),
-                    Text("Address", style: Styles.s14_500),
-                    spaceH(8),
-                    _buildField("Address", cubitprofile.addresscontrollar),
-                    spaceH(20),
-                    Text("Visa", style: Styles.s14_500),
+                    Text(LocaleKeys.name.tr(), style: Styles.s14_500),
                     spaceH(8),
                     _buildField(
-                      "Visa",
+                      LocaleKeys.name.tr(),
+                      cubitprofile.namecontrollar,
+                    ),
+                    spaceH(20),
+                    Text(LocaleKeys.email.tr(), style: Styles.s14_500),
+                    spaceH(8),
+                    _buildField(
+                      LocaleKeys.email.tr(),
+                      cubitprofile.emailcontrollar,
+                    ),
+                    spaceH(20),
+                    Text(LocaleKeys.address.tr(), style: Styles.s14_500),
+                    spaceH(8),
+                    _buildField(
+                      LocaleKeys.address.tr(),
+                      cubitprofile.addresscontrollar,
+                    ),
+                    spaceH(20),
+                    Text(LocaleKeys.visa.tr(), style: Styles.s14_500),
+                    spaceH(8),
+                    _buildField(
+                      LocaleKeys.visa.tr(),
                       cubitprofile.visacontrollar,
                       inputFormatters: [CardNumberFormatter()],
                     ),
@@ -93,7 +104,7 @@ Future<T?> _buildBottomSheet<T>(BuildContext context) {
                               visa: cubitprofile.visacontrollar.text,
                             );
                           },
-                          text: "Confirm",
+                          text: LocaleKeys.confirm.tr(),
                           radius: 15,
                         ),
                       ),

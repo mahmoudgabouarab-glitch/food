@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/core/utils/spacing.dart';
 import 'package:food/core/widgets/custom_text_filed.dart';
 import 'package:food/features/auth/presentation/view_model/signup/signup_cubit.dart';
+import 'package:food/generated/locale_keys.g.dart';
 
 class SignupTextFiled extends StatelessWidget {
   const SignupTextFiled({super.key});
@@ -17,11 +19,11 @@ class SignupTextFiled extends StatelessWidget {
           spaceH(15),
           CustomTextFormFiled(
             prefixIcon: const Icon(Icons.person, color: Colors.grey),
-            hint: 'Name',
+            hint: LocaleKeys.name.tr(),
             controller: cubit.nameController,
             validator: (val) {
               if (val == null || val.isEmpty) {
-                return 'Name is required';
+                return LocaleKeys.name_required.tr();
               }
               return null;
             },
@@ -29,11 +31,11 @@ class SignupTextFiled extends StatelessWidget {
           spaceH(16),
           CustomTextFormFiled(
             prefixIcon: const Icon(Icons.email_outlined, color: Colors.grey),
-            hint: 'Email',
+            hint: LocaleKeys.email.tr(),
             controller: cubit.emailController,
             validator: (val) {
               if (val == null || val.isEmpty) {
-                return 'Email is required';
+                return LocaleKeys.email_required.tr();
               }
               return null;
             },
@@ -41,11 +43,11 @@ class SignupTextFiled extends StatelessWidget {
           spaceH(16),
           CustomTextFormFiled(
             prefixIcon: const Icon(Icons.phone, color: Colors.grey),
-            hint: 'phone',
+            hint: LocaleKeys.phone.tr(),
             controller: cubit.phoneController,
             validator: (val) {
               if (val == null || val.isEmpty) {
-                return 'phone is required';
+                return LocaleKeys.phone_required.tr();
               }
               return null;
             },
@@ -53,12 +55,12 @@ class SignupTextFiled extends StatelessWidget {
           spaceH(16),
           CustomTextFormFiled(
             prefixIcon: const Icon(Icons.lock, color: Colors.grey),
-            hint: 'Password',
+            hint: LocaleKeys.password.tr(),
             controller: context.read<SignupCubit>().passwordController,
             obscureText: true,
             validator: (val) {
               if (val == null || val.isEmpty) {
-                return 'Password is required';
+                return LocaleKeys.password_required.tr();
               }
               return null;
             },

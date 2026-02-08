@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/core/utils/styles.dart';
@@ -6,6 +7,7 @@ import 'package:food/features/home/data/model/cart/add_to_cart_request.dart';
 import 'package:food/features/home/data/model/products_model/products_model.dart';
 import 'package:food/features/home/presentation/view_model/add_to_cart_cubit/add_to_cart_cubit.dart';
 import 'package:food/features/home/presentation/view_model/details_cubit/detsils_cubit/details_cubit.dart';
+import 'package:food/generated/locale_keys.g.dart';
 
 class DetailsActions extends StatelessWidget {
   final ListOfProducts products;
@@ -28,7 +30,7 @@ class DetailsActions extends StatelessWidget {
       },
       title: '\$${products.price}',
       child: Text(
-        "Add to cart",
+        LocaleKeys.add_to_cart.tr(),
         style: Styles.s16_500.copyWith(color: Colors.white),
       ),
     );

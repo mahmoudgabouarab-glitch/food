@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/styles.dart';
 import 'package:food/features/profile/presentation/view_model/updata_profile/updata_profile_cubit.dart';
+import 'package:food/generated/locale_keys.g.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -30,7 +32,7 @@ class UpdataAvatar extends StatelessWidget {
               compressQuality: 85,
               uiSettings: [
                 AndroidUiSettings(
-                  toolbarTitle: 'Crop Avatar',
+                  toolbarTitle: LocaleKeys.crop_avatar.tr(),
                   toolbarColor: AppColor.primary,
                   toolbarWidgetColor: Colors.white,
                   hideBottomControls: false,
@@ -39,7 +41,7 @@ class UpdataAvatar extends StatelessWidget {
                   
                 ),
                 IOSUiSettings(
-                  title: 'Crop Avatar',
+                  title: LocaleKeys.crop_avatar.tr(),
                   aspectRatioLockEnabled: true,
                   cropStyle: CropStyle.circle,
                 ),
@@ -50,7 +52,7 @@ class UpdataAvatar extends StatelessWidget {
               cubit.updateAvatar(croppedImage);
             }
           },
-          child: Text("Updata Avatar", style: Styles.s16_500),
+          child: Text(LocaleKeys.updata_avatar.tr(), style: Styles.s16_500),
         ),
       ),
     );

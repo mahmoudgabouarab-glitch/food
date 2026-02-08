@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/core/network/servise_locator.dart';
@@ -17,6 +18,7 @@ import 'package:food/features/order_history/data/repo/order_history_repo_impl.da
 import 'package:food/features/order_history/presentation/view/order_history_view.dart';
 import 'package:food/features/profile/presentation/view/profile_view.dart';
 import 'package:food/features/order_history/presentation/view_model/cubit/order_history_cubit.dart';
+import 'package:food/generated/locale_keys.g.dart';
 
 class MainLayout extends StatelessWidget {
   const MainLayout({super.key});
@@ -63,25 +65,29 @@ class _MainLayoutViewState extends State<_MainLayoutView> {
   int _currentIndex = 0;
 
   final List<MainTabItem> _tabs = [
-    MainTabItem(label: 'Home', icon: Icons.home, screen: HomeView()),
     MainTabItem(
-      label: 'Cart',
+      label: LocaleKeys.home.tr(),
+      icon: Icons.home,
+      screen: HomeView(),
+    ),
+    MainTabItem(
+      label: LocaleKeys.cart.tr(),
       stack: true,
       icon: Icons.shopping_cart_outlined,
       screen: CartView(),
     ),
     MainTabItem(
-      label: 'Favorites',
+      label: LocaleKeys.favorites.tr(),
       icon: Icons.favorite,
       screen: FavoritesView(),
     ),
     MainTabItem(
-      label: 'History',
+      label: LocaleKeys.order_history.tr(),
       icon: Icons.fastfood_outlined,
       screen: OrderHistoryView(),
     ),
     MainTabItem(
-      label: 'Profile',
+      label: LocaleKeys.profile.tr(),
       icon: Icons.person_outlined,
       screen: ProfileView(),
     ),

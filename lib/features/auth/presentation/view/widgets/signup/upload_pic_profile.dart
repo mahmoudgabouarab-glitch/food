@@ -1,10 +1,12 @@
 import 'dart:io';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/spacing.dart';
 import 'package:food/features/auth/presentation/view/widgets/signup/list_title_upload_pic_profile.dart';
 import 'package:food/features/auth/presentation/view_model/signup/signup_cubit.dart';
+import 'package:food/generated/locale_keys.g.dart';
 import 'package:image_picker/image_picker.dart';
 
 class UploadPicProfile extends StatelessWidget {
@@ -28,13 +30,13 @@ class UploadPicProfile extends StatelessWidget {
                         ListTitleUploadPicProfile(
                           uploadimage: uploadimage,
                           source: ImageSource.gallery,
-                          title: 'Gallery',
+                          title: LocaleKeys.Gallery.tr(),
                           icon: Icons.image_outlined,
                         ),
                         ListTitleUploadPicProfile(
                           uploadimage: uploadimage,
                           source: ImageSource.camera,
-                          title: 'Camera',
+                          title: LocaleKeys.Camera.tr(),
                           icon: Icons.camera_alt_outlined,
                         ),
                       ],
@@ -62,7 +64,7 @@ class UploadPicProfile extends StatelessWidget {
               ),
             ),
             spaceH(20),
-            const Center(child: Text("(optional)")),
+            Center(child: Text(LocaleKeys.optional.tr())),
           ],
         );
       },

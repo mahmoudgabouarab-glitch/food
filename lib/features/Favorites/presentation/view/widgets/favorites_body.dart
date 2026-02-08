@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,6 +6,7 @@ import 'package:food/core/widgets/custom_loading.dart';
 import 'package:food/features/Favorites/presentation/view/widgets/favorites_title.dart';
 import 'package:food/features/Favorites/presentation/view/widgets/list_of_item_favorite.dart';
 import 'package:food/features/home/presentation/view_model/vaf_products_cubit/fav_products_cubit.dart';
+import 'package:food/generated/locale_keys.g.dart';
 
 class FavoritesBody extends StatelessWidget {
   const FavoritesBody({super.key});
@@ -26,7 +28,7 @@ class FavoritesBody extends StatelessWidget {
 }
 Widget _buildFavoritesBody(GetFavProductsSuccess state) {
   return Scaffold(
-    appBar: AppBar(centerTitle: false, title: const Text("Favorites")),
+    appBar: AppBar(centerTitle: false, title:  Text(LocaleKeys.favorites.tr())),
     body: Padding(
       padding: EdgeInsets.all(12.r),
       child: Column(
