@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:food/features/home/data/model/products_model/products_model.dart';
 
 class FavProductsResponse extends Equatable {
   final int code;
@@ -66,4 +67,17 @@ class FavoriteProduct extends Equatable {
     price,
     isFavorite,
   ];
+}
+
+extension FavoriteProductsExtension on FavoriteProduct {
+  ListOfProducts toListOfProducts() {
+    return ListOfProducts(
+      id: id,
+      name: name,
+      description: description,
+      price: price,
+      image: image,
+      rating: rating,
+    );
+  }
 }
