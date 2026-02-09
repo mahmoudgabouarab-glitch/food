@@ -35,6 +35,7 @@ class ListTitleProfileAvatar extends StatelessWidget {
                   width: 200.w,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         state.profilemodel.data.name,
@@ -57,6 +58,9 @@ class ListTitleProfileAvatar extends StatelessWidget {
               ],
             ),
           );
+        }
+        if (state is ProfileLoading) {
+          return _buildSimmerListTitleProfileAvatar();
         }
         return const SizedBox.shrink();
       },
@@ -88,4 +92,69 @@ Widget _buildAvatar(ProfileState state) {
     );
   }
   return const SizedBox.shrink();
+}
+
+Widget _buildSimmerListTitleProfileAvatar() {
+  return Container(
+    height: 70.h,
+    width: double.infinity,
+    decoration: BoxDecoration(
+      color: Colors.grey.shade800,
+      borderRadius: BorderRadius.circular(10.r),
+    ),
+    child: Shimmer.fromColors(
+      baseColor: Colors.grey.shade700,
+      highlightColor: Colors.grey.shade600,
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: 70.h,
+              width: 70.w,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.white,
+              ),
+            ),
+            spaceW(12),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: 14.h,
+                  width: 150.w,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10.r),
+                  ),
+                ),
+                spaceH(6),
+                Container(
+                  height: 14.h,
+                  width: 100.w,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10.r),
+                  ),
+                ),
+              ],
+            ),
+            Spacer(),
+            Center(
+              child: Container(
+                height: 45.h,
+                width: 45.w,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
 }
