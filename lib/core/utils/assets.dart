@@ -3,4 +3,6 @@ class Assets {
   static const String visa = 'assets/image/visa.png';
   static const String burgergif = "assets/image/burger.gif";
   static const String guest = "assets/image/guestmode.png";
+  static const String arabicflag = "assets/svg/arabicflag.svg";
+  static const String englishflag = "assets/svg/englishflag.svg";
 }

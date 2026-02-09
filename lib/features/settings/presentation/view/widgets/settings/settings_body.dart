@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:food/core/utils/app_color.dart';
+import 'package:food/core/utils/function.dart';
 import 'package:food/core/utils/spacing.dart';
+import 'package:food/features/settings/presentation/view/widgets/settings/custom_list_title_sittings.dart';
 import 'package:food/features/settings/presentation/view/widgets/settings/language_action.dart';
 import 'package:food/features/settings/presentation/view/widgets/settings/logout_action.dart';
 import 'package:food/features/settings/presentation/view/widgets/settings/list_title_profile_avatar.dart';
@@ -21,10 +21,12 @@ class SettingsBody extends StatelessWidget {
           padding: EdgeInsets.all(12),
           child: Column(
             children: [
-              const ListTitleProfileAvatar(),
-              spaceH(20),
-              const Divider(thickness: 1),
-              spaceH(20),
+              if (!isGuest) ...[
+                const ListTitleProfileAvatar(),
+                spaceH(20),
+                const Divider(thickness: 1.5),
+                spaceH(20),
+              ],
               const LanguageAction(),
               CustomListTitleSittings(
                 title: LocaleKeys.theme.tr(),
@@ -43,42 +45,6 @@ class SettingsBody extends StatelessWidget {
               ),
               const LogoutAction(),
             ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class CustomListTitleSittings extends StatelessWidget {
-  final String title;
-  final IconData? icon;
-  final Widget? leading;
-  final void Function()? onTap;
-  final Color? color;
-  final Widget? trailing;
-  const CustomListTitleSittings({
-    super.key,
-    required this.title,
-    this.icon,
-    this.leading,
-    this.onTap,
-    this.color,
-    this.trailing,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Padding(
-        padding: EdgeInsets.only(bottom: 12.h),
-        child: Card(
-          margin: EdgeInsets.zero,
-          child: ListTile(
-            leading: leading ?? Icon(icon, color: color ?? AppColor.primary),
-            title: Text(title),
-            trailing: trailing,
           ),
         ),
       ),
