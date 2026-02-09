@@ -8,7 +8,7 @@ import 'package:food/features/home/presentation/view/widgets/home/product_catego
 import 'package:food/features/home/presentation/view/widgets/home/product_list_view.dart';
 import 'package:food/features/home/presentation/view_model/category_cubit/category_cubit.dart';
 import 'package:food/features/home/presentation/view_model/products_cubit/products_cubit.dart';
-import 'package:food/features/profile/presentation/view_model/profile/profile_cubit.dart';
+import 'package:food/features/settings/presentation/view_model/profile/profile_cubit.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({super.key});

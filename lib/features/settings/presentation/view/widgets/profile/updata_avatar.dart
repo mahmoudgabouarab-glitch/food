@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/styles.dart';
-import 'package:food/features/profile/presentation/view_model/updata_profile/updata_profile_cubit.dart';
+import 'package:food/features/settings/presentation/view_model/updata_profile/updata_profile_cubit.dart';
 import 'package:food/generated/locale_keys.g.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';

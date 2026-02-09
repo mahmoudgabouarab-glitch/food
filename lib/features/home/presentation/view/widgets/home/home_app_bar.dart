@@ -6,8 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/extension.dart';
 import 'package:food/core/utils/function.dart';
-import 'package:food/features/profile/presentation/view/profile_view.dart';
-import 'package:food/features/profile/presentation/view_model/profile/profile_cubit.dart';
+import 'package:food/features/settings/presentation/view/profile_view.dart';
+import 'package:food/features/settings/presentation/view_model/profile/profile_cubit.dart';
 import 'package:food/generated/locale_keys.g.dart';
 import 'package:shimmer/shimmer.dart';
 

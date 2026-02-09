@@ -20,6 +20,8 @@ void main() async {
       path: 'assets/translations',
       fallbackLocale: Locale('ar'),
       startLocale: Locale('en'),
+      saveLocale: true,
+      
       child: MyApp(),
     ),
   );

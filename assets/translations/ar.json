@@ -49,6 +49,11 @@
     "confirm": "تاكيد",
     "logout": "تسجيل الخروج",
     "logout_alert": "هل تريد تسجيل الخروج؟",
-    "setting": "الاعدادات"
-    
+    "setting": "الاعدادات",
+    "language": "اللغة",
+    "arabic": "العربية",
+    "english": "الانجليزية",
+    "theme": "الوضع",
+    "about_us": "من نحن",
+    "contact_us": "اتصل بنا"
 }

@@ -2,8 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:food/core/errors/failure.dart';
 import 'package:food/core/network/api_service.dart';
-import 'package:food/features/profile/data/model/profile_model.dart';
-import 'package:food/features/profile/data/repo/profile_repo.dart';
+import 'package:food/features/settings/data/model/profile_model.dart';
+import 'package:food/features/settings/data/repo/profile_repo.dart';
 import 'package:image_cropper/image_cropper.dart';
 
 class ProfileRepoImpl extends ProfileRepo {

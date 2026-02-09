@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
-import 'package:food/features/profile/presentation/view_model/profile/profile_cubit.dart';
+import 'package:food/features/settings/presentation/view_model/profile/profile_cubit.dart';
 import 'package:food/features/cart/presentation/view_model/payment_cubit/payment_cubit.dart';
 
 class VisaCard extends StatelessWidget {

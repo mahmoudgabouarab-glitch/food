@@ -49,6 +49,11 @@
     "confirm": "Confirm",
     "logout": "Logout",
     "logout_alert": "Are you sure you want to logout?",
-    "setting": "Setting"
-   
+    "setting": "Setting",
+    "language": "Language",
+    "arabic": "Arabic",
+    "english": "English",
+    "theme": "Theme",
+    "about_us": "About Us",
+    "contact_us": "Contact Us"
 }

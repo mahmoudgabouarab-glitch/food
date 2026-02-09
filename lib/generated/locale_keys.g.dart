@@ -54,5 +54,11 @@ abstract class  LocaleKeys {
   static const logout = 'logout';
   static const logout_alert = 'logout_alert';
   static const setting = 'setting';
+  static const language = 'language';
+  static const arabic = 'arabic';
+  static const english = 'english';
+  static const theme = 'theme';
+  static const about_us = 'about_us';
+  static const contact_us = 'contact_us';
 
 }

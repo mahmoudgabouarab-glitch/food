@@ -1,27 +1,34 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food/core/utils/app_color.dart';
 import 'package:food/core/utils/extension.dart';
+import 'package:food/core/widgets/custom_loading.dart';
 import 'package:food/core/widgets/custom_snakbar.dart';
 import 'package:food/features/auth/presentation/view/login_view.dart';
 import 'package:food/features/auth/presentation/view_model/logout/logout_cubit.dart';
+import 'package:food/features/settings/presentation/view/widgets/settings/settings_body.dart';
 import 'package:food/generated/locale_keys.g.dart';
 
-class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const ProfileAppBar({super.key});
+class LogoutAction extends StatelessWidget {
+  const LogoutAction({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<LogoutCubit, LogoutState>(
+    return BlocListener<LogoutCubit, LogoutState>(
       listener: (context, state) {
         switch (state) {
           case LogoutInitial():
-            break;
           case LogoutLoading():
-            break;
+            showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (context) =>
+                  const Center(child: CustomLoading(size: 20)),
+            );
           case LogoutSuccess():
+            context.popPage();
             context.pushAndRemoveUntil(const LoginView());
             CustomSnackBar.show(
               context,
@@ -36,33 +43,19 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
             );
         }
       },
-      builder: (context, state) {
-        final cubit = context.read<LogoutCubit>();
-        return AppBar(
-          backgroundColor: Colors.transparent,
-          scrolledUnderElevation: 0,
-          actions: [
-            IconButton(
-              onPressed: state is LogoutLoading
-                  ? null
-                  : () async {
-                      final result = await _showOkCancelAlertDialog(context);
-                      if (result == OkCancelResult.ok) {
-                        await cubit.postLogout();
-                      }
-                    },
-              icon: state is LogoutLoading
-                  ? const CupertinoActivityIndicator()
-                  : const Icon(Icons.logout),
-            ),
-          ],
-        );
-      },
+      child: CustomListTitleSittings(
+        title: LocaleKeys.logout.tr(),
+        leading: const Icon(Icons.logout, color: AppColor.error),
+        onTap: () async {
+          final cubit = context.read<LogoutCubit>();
+          final result = await _showOkCancelAlertDialog(context);
+          if (result == OkCancelResult.ok) {
+            await cubit.postLogout();
+          }
+        },
+      ),
     );
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
 Future<OkCancelResult> _showOkCancelAlertDialog(BuildContext context) =>

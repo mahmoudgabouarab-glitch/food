@@ -9,8 +9,8 @@ import 'package:food/core/utils/spacing.dart';
 import 'package:food/core/utils/styles.dart';
 import 'package:food/core/widgets/custom_button.dart';
 import 'package:food/core/widgets/custom_text_filed.dart';
-import 'package:food/features/profile/presentation/view_model/profile/profile_cubit.dart';
-import 'package:food/features/profile/presentation/view_model/updata_profile/updata_profile_cubit.dart';
+import 'package:food/features/settings/presentation/view_model/profile/profile_cubit.dart';
+import 'package:food/features/settings/presentation/view_model/updata_profile/updata_profile_cubit.dart';
 import 'package:food/generated/locale_keys.g.dart';
 
 class ProfileActions extends StatelessWidget {

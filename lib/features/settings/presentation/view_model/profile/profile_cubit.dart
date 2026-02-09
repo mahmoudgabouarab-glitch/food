@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food/features/profile/data/model/profile_model.dart';
-import 'package:food/features/profile/data/repo/profile_repo.dart';
+import 'package:food/features/settings/data/model/profile_model.dart';
+import 'package:food/features/settings/data/repo/profile_repo.dart';
 
 part 'profile_state.dart';
 
