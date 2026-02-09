@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:food/core/utils/extension.dart';
 import 'package:food/core/utils/function.dart';
 import 'package:food/core/utils/spacing.dart';
+import 'package:food/features/settings/presentation/view/widgets/settings/contact_us.dart';
 import 'package:food/features/settings/presentation/view/widgets/settings/custom_list_title_sittings.dart';
 import 'package:food/features/settings/presentation/view/widgets/settings/language_action.dart';
 import 'package:food/features/settings/presentation/view/widgets/settings/logout_action.dart';
@@ -40,8 +42,8 @@ class SettingsBody extends StatelessWidget {
               ),
               CustomListTitleSittings(
                 title: LocaleKeys.contact_us.tr(),
-                icon: Icons.info,
-                onTap: () {},
+                icon: Icons.contactless_outlined,
+                onTap: () => context.push(const ContactUs()),
               ),
               const LogoutAction(),
             ],

@@ -60,5 +60,10 @@ abstract class  LocaleKeys {
   static const theme = 'theme';
   static const about_us = 'about_us';
   static const contact_us = 'contact_us';
+  static const facebook = 'facebook';
+  static const twitter = 'twitter';
+  static const instagram = 'instagram';
+  static const whatsapp = 'whatsapp';
+  static const location = 'location';
 
 }
