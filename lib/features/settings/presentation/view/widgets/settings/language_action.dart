@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:food/core/utils/assets.dart';
 import 'package:food/core/utils/spacing.dart';
@@ -14,31 +15,36 @@ class LanguageAction extends StatelessWidget {
     return CustomListTitleSittings(
       title: LocaleKeys.language.tr(),
       icon: Icons.language,
-      trailing: PopupMenuButton<String>(
-        icon: const Icon(Icons.keyboard_arrow_down, size: 26),
-        onSelected: (value) {
-          if (value == 'ar') {
-            context.setLocale(const Locale('ar'));
-          } else {
-            context.setLocale(const Locale('en'));
-          }
-        },
-        itemBuilder: (context) => [
-          PopupMenuItem(
-            value: 'ar',
-            child: _buildChildPopupItem(
-              path: Assets.arabicflag,
-              title: LocaleKeys.arabic.tr(),
+      trailing: SizedBox(
+        width: 18.w,
+        height: 18.h,
+        child: PopupMenuButton<String>(
+          padding: EdgeInsets.zero,
+          icon: Icon(Icons.arrow_forward_ios_rounded, size: 18.sp),
+          onSelected: (value) {
+            if (value == 'ar') {
+              context.setLocale(const Locale('ar'));
+            } else {
+              context.setLocale(const Locale('en'));
+            }
+          },
+          itemBuilder: (context) => [
+            PopupMenuItem(
+              value: 'ar',
+              child: _buildChildPopupItem(
+                path: Assets.arabicflag,
+                title: LocaleKeys.arabic.tr(),
+              ),
             ),
-          ),
-          PopupMenuItem(
-            value: 'en',
-            child: _buildChildPopupItem(
-              path: Assets.englishflag,
-              title: LocaleKeys.english.tr(),
+            PopupMenuItem(
+              value: 'en',
+              child: _buildChildPopupItem(
+                path: Assets.englishflag,
+                title: LocaleKeys.english.tr(),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:food/core/utils/extension.dart';
 import 'package:food/core/utils/function.dart';
 import 'package:food/core/utils/spacing.dart';
+import 'package:food/features/settings/presentation/view/widgets/settings/about_us.dart';
 import 'package:food/features/settings/presentation/view/widgets/settings/contact_us.dart';
 import 'package:food/features/settings/presentation/view/widgets/settings/custom_list_title_sittings.dart';
 import 'package:food/features/settings/presentation/view/widgets/settings/language_action.dart';
@@ -31,14 +32,9 @@ class SettingsBody extends StatelessWidget {
               ],
               const LanguageAction(),
               CustomListTitleSittings(
-                title: LocaleKeys.theme.tr(),
-                icon: Icons.dark_mode,
-                onTap: () {},
-              ),
-              CustomListTitleSittings(
                 title: LocaleKeys.about_us.tr(),
                 icon: Icons.help,
-                onTap: () {},
+                onTap: () => context.push(const AboutUs()),
               ),
               CustomListTitleSittings(
                 title: LocaleKeys.contact_us.tr(),

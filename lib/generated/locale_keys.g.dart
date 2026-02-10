@@ -65,5 +65,8 @@ abstract class  LocaleKeys {
   static const instagram = 'instagram';
   static const whatsapp = 'whatsapp';
   static const location = 'location';
+  static const about_us_title = 'about_us_title';
+  static const about_us_subtitle1 = 'about_us_subtitle1';
+  static const about_us_subtitle2 = 'about_us_subtitle2';
 
 }

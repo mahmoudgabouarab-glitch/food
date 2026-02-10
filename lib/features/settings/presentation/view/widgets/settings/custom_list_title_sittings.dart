@@ -30,7 +30,8 @@ class CustomListTitleSittings extends StatelessWidget {
           child: ListTile(
             leading: leading ?? Icon(icon, color: color ?? AppColor.primary),
             title: Text(title),
-            trailing: trailing,
+            trailing:
+                trailing ?? Icon(Icons.arrow_forward_ios_rounded, size: 18.sp),
           ),
         ),
       ),
