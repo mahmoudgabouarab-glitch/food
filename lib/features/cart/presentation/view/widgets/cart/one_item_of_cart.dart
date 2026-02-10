@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
+import 'package:food/core/utils/function.dart';
 import 'package:food/core/utils/spacing.dart';
 import 'package:food/core/utils/styles.dart';
 import 'package:food/features/cart/data/model/get_cart_model/get_cart_response.dart';
@@ -42,7 +43,9 @@ class OneItemOfCart extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Align(
-                    alignment: Alignment.topRight,
+                    alignment: isArabic(context)
+                        ? Alignment.topLeft
+                        : Alignment.topRight,
                     child: InkWell(
                       onTap: () async {
                         final result = await _showOkCancelAlertDialog(context);

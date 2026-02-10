@@ -25,41 +25,42 @@ class _ProductCategoryNameState extends State<ProductCategoryName> {
           case CategoryLoading():
             return _buildShimmerCategore();
           case CategorySuccess():
-            return SliverToBoxAdapter(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: List.generate(state.categoryModel.data.length, (
-                    index,
-                  ) {
-                    final cubit = state.categoryModel.data[index];
-                    return Padding(
-                      padding: currentIndex == 0
-                          ? EdgeInsets.only(left: 12.w)
-                          : EdgeInsets.only(right: 12.w),
-                      child: MaterialButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.r),
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            currentIndex = index;
-                          });
-                        },
-                        color: currentIndex == index
-                            ? AppColor.btn
-                            : AppColor.background,
-                        child: Text(
-                          cubit.name,
-                          style: Styles.s16_500.copyWith(
-                            color: currentIndex == index
-                                ? Colors.white
-                                : AppColor.textthirth,
+            return SliverPadding(
+              padding: EdgeInsets.only(left: 12.w, right: 12.w),
+              sliver: SliverToBoxAdapter(
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: List.generate(state.categoryModel.data.length, (
+                      index,
+                    ) {
+                      final cubit = state.categoryModel.data[index];
+                      return Padding(
+                        padding: EdgeInsets.only(left: 12.w),
+                        child: MaterialButton(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.r),
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              currentIndex = index;
+                            });
+                          },
+                          color: currentIndex == index
+                              ? AppColor.btn
+                              : AppColor.background,
+                          child: Text(
+                            cubit.name,
+                            style: Styles.s16_500.copyWith(
+                              color: currentIndex == index
+                                  ? Colors.white
+                                  : AppColor.textthirth,
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  }),
+                      );
+                    }),
+                  ),
                 ),
               ),
             );

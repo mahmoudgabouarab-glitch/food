@@ -1,3 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 import 'package:food/core/network/cache_helper.dart';
 import 'package:food/core/network/cache_keys.dart';
 
@@ -11,16 +13,15 @@ void checkIsloggedinuser() {
     isloggedInUser = false;
   }
 }
-
-//----------------Guest Check--------------------\\
-// bool isGuest = false;
-// void checkIsGuest() {
-//   var guestData = CacheHelper.getData(key: CacheKeys.isGuest);
-//   if (guestData != null && guestData == true) {
-//     isGuest = true;
-//   } else {
-//     isGuest = false;
-//   }
-// }
-
+//----------------guest Check--------------------\\
 bool get isGuest => CacheHelper.getData(key: CacheKeys.isGuest) == true;
+
+
+//----------------Arabic Check--------------------\\
+bool isArabic(BuildContext context) {
+  if (Locale("ar") == context.locale) {
+    return true;
+  } else {
+    return false;
+  }
+}

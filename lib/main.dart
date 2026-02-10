@@ -21,7 +21,6 @@ void main() async {
       fallbackLocale: Locale('ar'),
       startLocale: Locale('en'),
       saveLocale: true,
-      
       child: MyApp(),
     ),
   );

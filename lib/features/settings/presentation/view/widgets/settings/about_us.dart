@@ -12,15 +12,15 @@ class AboutUs extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(LocaleKeys.about_us.tr()), centerTitle: false),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(12),
         child: Card(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(12),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(LocaleKeys.about_us_title.tr(), style: Styles.s18_600),
-                spaceH(10),
+                spaceH(5),
                 Text(LocaleKeys.about_us_subtitle1.tr(), style: Styles.s16_500),
                 spaceH(10),
                 Text(LocaleKeys.about_us_subtitle2.tr(), style: Styles.s16_500),
