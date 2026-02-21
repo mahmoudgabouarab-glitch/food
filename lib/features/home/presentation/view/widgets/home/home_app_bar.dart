@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
+import 'package:food/core/utils/assets.dart';
 import 'package:food/core/utils/extension.dart';
 import 'package:food/core/utils/function.dart';
 import 'package:food/features/settings/presentation/view/profile_view.dart';
@@ -43,7 +44,7 @@ class HomeAppBar extends StatelessWidget {
 }
 
 Widget _buildImageGif() {
-  return Image.asset("assets/image/burger.gif", fit: BoxFit.cover);
+  return Image.asset(Assets.burgergif, fit: BoxFit.cover);
 }
 
 Widget _buildAppBarBloc() {
@@ -161,7 +162,7 @@ Widget _buildAppBarContent({
 Widget _buildAppBarForGuest(BuildContext context) {
   return _buildAppBarContent(
     context: context,
-    title: "Hello We are waiting for you",
+    title: LocaleKeys.waiting_for_you.tr(),
     childCircleAvatar: ClipOval(child: const Icon(Icons.person, size: 18)),
   );
 }

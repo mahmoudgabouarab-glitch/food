@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/spacing.dart';
@@ -6,6 +7,7 @@ import 'package:food/features/cart/presentation/view/widgets/order/cash_card.dar
 import 'package:food/features/cart/presentation/view/widgets/order/order_action.dart';
 import 'package:food/features/cart/presentation/view/widgets/order/order_bloc.dart';
 import 'package:food/features/cart/presentation/view/widgets/order/visa_card.dart';
+import 'package:food/generated/locale_keys.g.dart';
 
 class OrderBody extends StatelessWidget {
   final double totalPrice;
@@ -26,7 +28,7 @@ class OrderBody extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         scrolledUnderElevation: 0,
-        title: const Text("Order Summary"),
+        title: Text(LocaleKeys.orderSummary.tr()),
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -36,16 +38,19 @@ class OrderBody extends StatelessWidget {
             crossAxisAlignment: .start,
             children: [
               spaceH(15),
-              _buildRowOrder("Order", "\$$totalPrice"),
-              _buildRowOrder("Tax", "\$15"),
-              _buildRowOrder("Delivery", "\$5"),
+              _buildRowOrder(LocaleKeys.order.tr(), "\$$totalPrice"),
+              _buildRowOrder(LocaleKeys.tax.tr(), "\$15"),
+              _buildRowOrder(LocaleKeys.delivery.tr(), "\$5"),
               const Divider(),
               spaceH(20),
-              _buildRowOrder("Total", "\$${totalPrice + 15 + 5}"),
+              _buildRowOrder(LocaleKeys.total.tr(), "\$${totalPrice + 15 + 5}"),
               spaceH(10),
-              _buildRowOrder("Estimated delivery time", "15 - 30 mins"),
+              _buildRowOrder(
+                LocaleKeys.estimatedDeliveryTime.tr(),
+                LocaleKeys.deliveryTimeRange.tr(),
+              ),
               spaceH(40),
-              const Text("Payment methods"),
+              Text(LocaleKeys.paymentMethods.tr()),
               spaceH(20),
               const CashCard(),
               spaceH(20),

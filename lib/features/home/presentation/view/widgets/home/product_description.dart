@@ -1,13 +1,16 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/app_color.dart';
+import 'package:food/core/utils/function.dart';
 import 'package:food/core/utils/spacing.dart';
 import 'package:food/core/utils/styles.dart';
 import 'package:food/core/widgets/custom_loading.dart';
 import 'package:food/core/widgets/custom_snakbar.dart';
 import 'package:food/features/home/data/model/products_model/products_model.dart';
 import 'package:food/features/home/presentation/view_model/vaf_products_cubit/fav_products_cubit.dart';
+import 'package:food/generated/locale_keys.g.dart';
 
 class ProductDescription extends StatelessWidget {
   final ListOfProducts oneProduct;
@@ -42,6 +45,7 @@ class ProductDescription extends StatelessWidget {
                 style: Styles.s12_500.copyWith(color: AppColor.textPrimary),
               ),
               const Spacer(),
+
               _favProducts(oneProduct),
             ],
           ),
@@ -76,7 +80,17 @@ Widget _favProducts(ListOfProducts product) {
         return const CustomLoading(color: Colors.white);
       }
       return InkWell(
-        onTap: () => cubit.postFavProducts(product.id),
+        onTap: () {
+          if (isGuest) {
+            CustomSnackBar.show(
+              context,
+              message: LocaleKeys.msgGuset.tr(),
+              type: SnackBarType.error,
+            );
+          } else {
+            cubit.postFavProducts(product.id);
+          }
+        },
         child: Container(
           width: 30.w,
           height: 30.h,

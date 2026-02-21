@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food/core/utils/function.dart';
 import 'package:food/core/utils/styles.dart';
 import 'package:food/core/widgets/custom_btn_nav_bar.dart';
+import 'package:food/core/widgets/custom_snakbar.dart';
 import 'package:food/features/home/data/model/cart/add_to_cart_request.dart';
 import 'package:food/features/home/data/model/products_model/products_model.dart';
 import 'package:food/features/home/presentation/view_model/add_to_cart_cubit/add_to_cart_cubit.dart';
@@ -16,17 +18,24 @@ class DetailsActions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomBtnNavBar(
-      ontap: ()  {
-         context.read<AddToCartCubit>().addToCart(
-          AddToCartItem(
-            productId: products.id,
-            quantity: 1,
-            spicy: context.read<DetailsCubit>().state.spicy,
-            toppings: context.read<DetailsCubit>().selectedToppingIds,
-            sideOptions: context.read<DetailsCubit>().selectedSideOptionIds,
-          ),
-        );
-        
+      ontap: () {
+        if (isGuest) {
+          CustomSnackBar.show(
+            context,
+            message: LocaleKeys.msgGuset.tr(),
+            type: SnackBarType.error,
+          );
+        } else {
+          context.read<AddToCartCubit>().addToCart(
+            AddToCartItem(
+              productId: products.id,
+              quantity: 1,
+              spicy: context.read<DetailsCubit>().state.spicy,
+              toppings: context.read<DetailsCubit>().selectedToppingIds,
+              sideOptions: context.read<DetailsCubit>().selectedSideOptionIds,
+            ),
+          );
+        }
       },
       title: '\$${products.price}',
       child: Text(

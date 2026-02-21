@@ -63,5 +63,14 @@
     "location": "Location",
     "about_us_title": "About MR Burger",
     "about_us_subtitle1": "Welcome to Burgerana, where your passion for burgers becomes an unforgettable experience! We are more than just a food delivery app; we are a bridge connecting burger lovers with the finest restaurants in your city. We strive to make every bite a journey of flavors, and every order an easy and swift experience.",
-    "about_us_subtitle2": "Our mission is simple: to satisfy your cravings with the highest quality, fastest delivery, and a seamless user experience. From classic burgers to unique creations, we offer choices to suit every taste. Join us and enjoy the world of burgers like never before!"
+    "about_us_subtitle2": "Our mission is simple: to satisfy your cravings with the highest quality, fastest delivery, and a seamless user experience. From classic burgers to unique creations, we offer choices to suit every taste. Join us and enjoy the world of burgers like never before!",
+    "msgGuset": "You must be logged in to use this feature",
+    "waiting_for_you": "Hello We are waiting for you",
+    "orderSummary": "Order Summary",
+    "order": "Order",
+    "tax": "Tax",
+    "delivery": "Delivery",
+    "estimatedDeliveryTime": "Estimated delivery time",
+    "deliveryTimeRange": "15 - 30 mins",
+    "paymentMethods": "Payment methods"
 }

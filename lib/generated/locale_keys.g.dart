@@ -68,5 +68,14 @@ abstract class  LocaleKeys {
   static const about_us_title = 'about_us_title';
   static const about_us_subtitle1 = 'about_us_subtitle1';
   static const about_us_subtitle2 = 'about_us_subtitle2';
+  static const msgGuset = 'msgGuset';
+  static const waiting_for_you = 'waiting_for_you';
+  static const orderSummary = 'orderSummary';
+  static const order = 'order';
+  static const tax = 'tax';
+  static const delivery = 'delivery';
+  static const estimatedDeliveryTime = 'estimatedDeliveryTime';
+  static const deliveryTimeRange = 'deliveryTimeRange';
+  static const paymentMethods = 'paymentMethods';
 
 }

@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:food/generated/locale_keys.g.dart';
 
 abstract class Failure {
   final String errormessage;
@@ -43,10 +45,7 @@ class ServiseFailure extends Failure {
         );
 
       case 401:
-        return ServiseFailure(
-          'You must be logged in to use this feature',
-          statusCode: statusCode,
-        );
+        return ServiseFailure(LocaleKeys.msgGuset.tr(), statusCode: statusCode);
 
       case 403:
         return ServiseFailure(
@@ -76,10 +75,7 @@ class ServiseFailure extends Failure {
         }
         return ServiseFailure('Validation error', statusCode: statusCode);
       case 500:
-        return ServiseFailure(
-          'You must Add items to cart',
-          statusCode: statusCode,
-        );
+        return ServiseFailure(response['message'], statusCode: statusCode);
       case 429:
         return ServiseFailure(response['message'], statusCode: statusCode);
 

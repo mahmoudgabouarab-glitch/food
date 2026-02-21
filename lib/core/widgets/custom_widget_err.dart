@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food/core/utils/assets.dart';
@@ -6,6 +7,7 @@ import 'package:food/core/utils/spacing.dart';
 import 'package:food/core/utils/styles.dart';
 import 'package:food/core/widgets/custom_button.dart';
 import 'package:food/features/auth/presentation/view/login_view.dart';
+import 'package:food/generated/locale_keys.g.dart';
 
 class CustomWidgetErr extends StatelessWidget {
   const CustomWidgetErr({super.key});
@@ -18,10 +20,7 @@ class CustomWidgetErr extends StatelessWidget {
         children: [
           Image.asset(Assets.guest, height: 260.h),
           spaceH(20),
-          Text(
-            "You must be logged in to use this feature",
-            style: Styles.s16_500,
-          ),
+          Text(LocaleKeys.msgGuset.tr(), style: Styles.s16_500),
           spaceH(20),
           Btn(
             ontap: () {
