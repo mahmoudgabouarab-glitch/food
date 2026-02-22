@@ -9,8 +9,8 @@ import 'package:food/core/widgets/custom_button.dart';
 import 'package:food/features/auth/presentation/view/login_view.dart';
 import 'package:food/generated/locale_keys.g.dart';
 
-class CustomWidgetErr extends StatelessWidget {
-  const CustomWidgetErr({super.key});
+class CustomGuestWidget extends StatelessWidget {
+  const CustomGuestWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class CustomWidgetErr extends StatelessWidget {
               context.pushReplacement(const LoginView());
             },
             radius: 20,
-            child: Text("Login", style: Styles.s18_600),
+            child: Text(LocaleKeys.login.tr(), style: Styles.s18_600),
           ),
         ],
       ),

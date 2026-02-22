@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food/core/utils/function.dart';
-import 'package:food/core/widgets/custom_widget_err.dart';
+import 'package:food/core/widgets/custom_guest_widget.dart';
 import 'package:food/features/Favorites/presentation/view/widgets/favorites_body.dart';
 
 class FavoritesView extends StatelessWidget {
@@ -8,6 +8,6 @@ class FavoritesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return isGuest ? const CustomWidgetErr() : const FavoritesBody();
+    return isGuest ? const CustomGuestWidget() : const FavoritesBody();
   }
 }
