@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:food/core/network/api_keys.dart';
 import 'package:food/core/network/bloc_observer.dart';
 import 'package:food/core/network/cache_helper.dart';
 import 'package:food/core/network/servise_locator.dart';
@@ -11,6 +13,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await CacheHelper().init();
+  Stripe.publishableKey = ApiKeys.publishableKey;
   setupServiceLocator();
   checkIsloggedinuser();
   Bloc.observer = SimpleBlocObserver();

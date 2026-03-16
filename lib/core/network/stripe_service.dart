@@ -44,7 +44,10 @@ class StripeService {
   Future<CustomerModel> createCustomer() async {
     var response = await postStripe(endpoint: "customers");
     final customerModel = CustomerModel.fromJson(response);
-    await CacheHelper.saveData(key: "CustomerId", value: customerModel.id);
+    await CacheHelper.saveData(
+      key: CacheKeys.customerId,
+      value: customerModel.id,
+    );
     return customerModel;
   }
 

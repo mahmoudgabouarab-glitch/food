@@ -8,4 +8,5 @@ abstract class CartRepo {
   Future<Either<Failure, GetCartResponse>> getCart();
   Future<Either<Failure, GetCartResponse>> deleteCart({required String id});
   Future<Either<Failure, OrderResponse>> postOrder(OrderRequest request);
+  Future<Either<Failure, void>> payment({required int amount});
 }

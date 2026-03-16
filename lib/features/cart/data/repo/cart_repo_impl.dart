@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:food/core/errors/failure.dart';
 import 'package:food/core/network/api_service.dart';
+import 'package:food/core/network/stripe_service.dart';
 import 'package:food/features/cart/data/model/get_cart_model/get_cart_response.dart';
 import 'package:food/features/cart/data/model/order_model/order_request.dart';
 import 'package:food/features/cart/data/model/order_model/order_response.dart';
@@ -9,8 +10,9 @@ import 'package:food/features/cart/data/repo/cart_repo.dart';
 
 class CartRepoImpl extends CartRepo {
   final ApiServise _api;
+  final StripeService _stripeService;
 
-  CartRepoImpl(this._api);
+  CartRepoImpl(this._api, this._stripeService);
   @override
   Future<Either<Failure, GetCartResponse>> getCart() async {
     try {
@@ -47,6 +49,19 @@ class CartRepoImpl extends CartRepo {
       final data = await _api.post(endpoint: "orders", data: request.toJson());
 
       return Right(OrderResponse.fromJson(data));
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServiseFailure.fromdioException(e));
+      }
+      return Left(ServiseFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> payment({required int amount}) async {
+    try {
+      await _stripeService.makePayment(amount: amount);
+      return Right(null);
     } catch (e) {
       if (e is DioException) {
         return Left(ServiseFailure.fromdioException(e));
