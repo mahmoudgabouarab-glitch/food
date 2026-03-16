@@ -5,7 +5,8 @@ import 'package:food/features/cart/data/model/get_cart_model/get_cart_response.d
 import 'package:food/features/cart/data/repo/cart_repo_impl.dart';
 import 'package:food/features/cart/presentation/view/widgets/order/order_body.dart';
 import 'package:food/features/cart/presentation/view_model/order_cubit/order_cubit.dart';
-import 'package:food/features/cart/presentation/view_model/payment_cubit/payment_cubit.dart';
+import 'package:food/features/cart/presentation/view_model/stripe_cubit/payment_method_cubit.dart';
+import 'package:food/features/cart/presentation/view_model/stripe_cubit/stripe_cubit.dart';
 
 class OrderView extends StatelessWidget {
   final List<CartItem> cartItems;
@@ -22,6 +23,7 @@ class OrderView extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => OrderCubit(getIt<CartRepoImpl>())),
         BlocProvider(create: (context) => PaymentCubit()),
+        BlocProvider(create: (context) => StripeCubit(getIt<CartRepoImpl>())),
       ],
       child: OrderBody(totalPrice: totalPrice, cartItems: cartItems),
     );

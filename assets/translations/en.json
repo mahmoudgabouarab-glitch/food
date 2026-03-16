@@ -72,5 +72,7 @@
     "delivery": "Delivery",
     "estimatedDeliveryTime": "Estimated delivery time",
     "deliveryTimeRange": "15 - 30 mins",
-    "paymentMethods": "Payment methods"
+    "paymentMethods": "Payment methods",
+    "CashOnDelivery": "Cash on Delivery",
+    "DebitCard": "Debit card"
 }

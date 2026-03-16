@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/features/cart/data/repo/cart_repo.dart';
@@ -13,9 +11,9 @@ class StripeCubit extends Cubit<StripeState> {
   Future<void> payment({required int amount}) async {
     emit(StripeLoading());
     final result = await _repo.payment(amount: amount);
-    result.fold((failure) {
-      log(failure.errormessage);
-      emit(StripeFailure(failure.errormessage));
-    }, (success) => emit(StripeSuccess()));
+    result.fold(
+            (failure) => emit(StripeFailure(failure.errormessage)),
+      (success) => emit(StripeSuccess()),
+    );
   }
 }

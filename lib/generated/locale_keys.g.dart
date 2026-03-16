@@ -77,5 +77,7 @@ abstract class  LocaleKeys {
   static const estimatedDeliveryTime = 'estimatedDeliveryTime';
   static const deliveryTimeRange = 'deliveryTimeRange';
   static const paymentMethods = 'paymentMethods';
+  static const CashOnDelivery = 'CashOnDelivery';
+  static const DebitCard = 'DebitCard';
 
 }

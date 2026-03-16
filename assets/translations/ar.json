@@ -72,5 +72,7 @@
     "delivery": "التوصيل",
     "estimatedDeliveryTime": "وقت التوصيل المتوقع",
     "deliveryTimeRange": "15 - 30 دقيقة",
-    "paymentMethods": "طرق الدفع"
+    "paymentMethods": "طرق الدفع",
+    "CashOnDelivery": "الدفع عند الاستلام",
+    "DebitCard": "بطاقة ائتمان"
 }
