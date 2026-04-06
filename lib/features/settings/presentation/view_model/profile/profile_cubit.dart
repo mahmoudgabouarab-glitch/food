@@ -11,7 +11,6 @@ class ProfileCubit extends Cubit<ProfileState> {
   final TextEditingController namecontrollar = .new();
   final TextEditingController emailcontrollar = .new();
   final TextEditingController addresscontrollar = .new();
-  final TextEditingController visacontrollar = .new();
   final ProfileRepo _repo;
 
   //get profile
@@ -28,7 +27,6 @@ class ProfileCubit extends Cubit<ProfileState> {
         namecontrollar.text = success.data.name;
         emailcontrollar.text = success.data.email;
         addresscontrollar.text = success.data.address;
-        visacontrollar.text = success.data.visa ?? "";
         emit(ProfileSuccess(success));
       },
     );
@@ -40,7 +38,6 @@ class ProfileCubit extends Cubit<ProfileState> {
     namecontrollar.dispose();
     emailcontrollar.dispose();
     addresscontrollar.dispose();
-    visacontrollar.dispose();
     return super.close();
   }
 }

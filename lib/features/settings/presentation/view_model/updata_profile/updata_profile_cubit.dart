@@ -15,7 +15,6 @@ class UpdataProfileCubit extends Cubit<UpdataProfileState> {
     required String name,
     required String email,
     required String address,
-    required String visa,
   }) async {
     emit(UpdataProfileLoading());
 
@@ -23,7 +22,6 @@ class UpdataProfileCubit extends Cubit<UpdataProfileState> {
       name: name,
       email: email,
       address: address,
-      visa: visa.replaceAll(' ', ''),
     );
 
     data.fold(

@@ -43,6 +43,7 @@ class LogoutAction extends StatelessWidget {
                     type: SnackBarType.success,
                   );
                 case LogoutFailure():
+                  context.popPage();
                   CustomSnackBar.show(
                     context,
                     message: state.err,

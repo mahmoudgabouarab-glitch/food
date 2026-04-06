@@ -82,14 +82,6 @@ Future<T?> _buildBottomSheet<T>(BuildContext context) {
                       LocaleKeys.address.tr(),
                       cubitprofile.addresscontrollar,
                     ),
-                    spaceH(20),
-                    Text(LocaleKeys.visa.tr(), style: Styles.s14_500),
-                    spaceH(8),
-                    _buildField(
-                      LocaleKeys.visa.tr(),
-                      cubitprofile.visacontrollar,
-                      inputFormatters: [CardNumberFormatter()],
-                    ),
                     spaceH(30),
                     Center(
                       child: SizedBox(
@@ -101,7 +93,6 @@ Future<T?> _buildBottomSheet<T>(BuildContext context) {
                               name: cubitprofile.namecontrollar.text,
                               email: cubitprofile.emailcontrollar.text,
                               address: cubitprofile.addresscontrollar.text,
-                              visa: cubitprofile.visacontrollar.text,
                             );
                           },
                           text: LocaleKeys.confirm.tr(),

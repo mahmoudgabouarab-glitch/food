@@ -13,29 +13,21 @@ class HomeSearch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SearchProductsCubit, SearchProductsState>(
-      builder: (context, state) {
-        return SliverToBoxAdapter(
-          child: Padding(
-            padding: EdgeInsets.only(
-              left: 12.w,
-              right: 12.w,
-              bottom: 20.h,
-              top: 5.h,
-            ),
-            child: _buildField(
-              label: LocaleKeys.search.tr(),
-              onchange: (value) => context
-                  .read<SearchProductsCubit>()
-                  .searchProducts(query: value.toLowerCase()),
-              prefixIcon: const Icon(
-                Icons.search,
-                color: AppColor.textSecondary,
-              ),
-            ),
-          ),
-        );
-      },
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: EdgeInsets.only(
+          left: 12.w,
+          right: 12.w,
+          bottom: 20.h,
+          top: 5.h,
+        ),
+        child: _buildField(
+          label: LocaleKeys.search.tr(),
+          onchange: (value) =>
+              context.read<SearchProductsCubit>().searchProducts(query: value),
+          prefixIcon: const Icon(Icons.search, color: AppColor.textSecondary),
+        ),
+      ),
     );
   }
 }

@@ -25,8 +25,6 @@ class ProfileForm extends StatelessWidget {
         SizedBox(height: 20.h),
         _buildField(LocaleKeys.address.tr(), cubit.addresscontrollar),
         SizedBox(height: 20.h),
-        _buildField(LocaleKeys.visa.tr(), cubit.visacontrollar),
-        SizedBox(height: 20.h),
       ],
     );
   }
